@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/PWalkersCrisps/RoyCoin#readme",
   "dependencies": {
+    "node": "^16.9.1",
     "discord.js": "^13.1.0",
-    "fs": "^0.0.1-security",
-    "node": "^16.9.1"
+    "fs": "^0.0.1-security"
   }
 }
