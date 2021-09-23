@@ -19,6 +19,13 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", async (message) =>{
+
+    let randomCoinChance = Math.floor(Math.random(1, 20))
+    if (randomCoinChance === 7){
+        
+    }
+
+
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
     const args = message.content.slice(prefix.length).split(/ +/);
