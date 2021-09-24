@@ -59,27 +59,32 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
-    let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
-    console.log(randomCoinChance)
-    if (randomCoinChance === 1){ //if the random number is equal to 7 then iy will start the proccess of giving a roy coin
-        const response = await profileModel.findOneAndUpdate({
-            userID: message.author.id, //it looks for the id of the author
-        }, {
-            $inc: {
-                coins: 1, //when the id of the author is found, it gives them one coin
-            }
-        });
+    if (!cooldowns.has(message.author.id)) {
+        let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
+        if (randomCoinChance === 1){ //if the random number is equal to 7 then iy will start the proccess of giving a roy coin
+            const response = await profileModel.findOneAndUpdate({
+                userID: message.author.id, //it looks for the id of the author
+            }, {
+                $inc: {
+                    coins: 1, //when the id of the author is found, it gives them one coin
+                }
+            });
 
-        const exampleEmbed = new MessageEmbed()
-        .setColor('#ffff00')
-        .addFields(
-            { name: 'Roy Coin', value: 'Youve been rewarded with a Roy Coin for being a good boy' },
-        )
-        .setTimestamp()
-        .setFooter('Reddit Gold Replacement?');
-        message.author.send({ embeds: [exampleEmbed] });
+            const exampleEmbed = new MessageEmbed()
+            .setColor('#ffff00')
+            .addFields(
+                { name: 'Roy Coin', value: 'Youve been rewarded with a Roy Coin for being a good boy' },
+            )
+            .setTimestamp()
+            .setFooter('Reddit Gold Replacement?');
+            message.author.send({ embeds: [exampleEmbed] });
+        }
+        cooldowns.add(message.author.id);
+        setTimeout(() => {
+           // Removes the user from the set after a while
+            cooldowns.delete(message.author.id);
+        }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
     }
-
 
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
  
