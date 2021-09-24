@@ -37,6 +37,8 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 
 client.on("messageCreate", async (message) =>{ //whenever a message is created then everything here will be active
 
+    if(message.author.bot) return;
+
     ///-----Mongoose-----///
 
     let profileData;
@@ -68,7 +70,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     }
 
 
-    if(!message.content.startsWith(prefix) || message.author.bot) return; //if the message didnt start with the bot's prefix or it was sent by a bot, it just goes back to the start
+    if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
  
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
