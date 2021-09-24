@@ -23,6 +23,9 @@ for(const file of commandFiles){
 
 client.on("ready", () => { //when the client is 'ready' then it will execute everything below
     console.log(`${client.user.tag} is online, hopefully it works`);
+    client.user.setActivity("to the glorious sounds of capitalism", {
+        type: "LISTENING",
+    });
 });
 
 ///-----Mongoose-----///
@@ -61,7 +64,19 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     if (!cooldowns.has(message.author.id)) {
         let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
-        if (randomCoinChance === 1){ //if the random number is equal to 7 then iy will start the proccess of giving a roy coin
+        if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
+            if (message.guild.roles.id(878972495728902154 || 891024951447003146)){
+                let authorGender = "boy";
+            }
+            else if (message.guild.roles.id(878972423834320906 || 891024996716142662)){
+                let authorGender = "girl";
+            }
+            else{
+                let authorGender = "child";
+            }
+
+
+
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //it looks for the id of the author
             }, {
@@ -69,21 +84,20 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                     coins: 1, //when the id of the author is found, it gives them one coin
                 }
             });
-
             const exampleEmbed = new MessageEmbed()
             .setColor('#ffff00')
             .addFields(
-                { name: 'Roy Coin', value: 'Youve been rewarded with a Roy Coin for being a good boy' },
+                { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good ${authorGender}`},
             )
             .setTimestamp()
             .setFooter('Reddit Gold Replacement?');
             message.author.send({ embeds: [exampleEmbed] });
 
-            cooldowns.add(message.author.id);
-            setTimeout(() => {
-               // Removes the user from the set after a while
-                cooldowns.delete(message.author.id);
-            }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
+            // cooldowns.add(message.author.id);
+            // setTimeout(() => {
+            //    // Removes the user from the set after a while
+            //     cooldowns.delete(message.author.id);
+            // }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
         }
     }
 
