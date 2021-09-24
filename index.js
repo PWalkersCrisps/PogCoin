@@ -78,12 +78,13 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             .setTimestamp()
             .setFooter('Reddit Gold Replacement?');
             message.author.send({ embeds: [exampleEmbed] });
+
+            cooldowns.add(message.author.id);
+            setTimeout(() => {
+               // Removes the user from the set after a while
+                cooldowns.delete(message.author.id);
+            }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
         }
-        cooldowns.add(message.author.id);
-        setTimeout(() => {
-           // Removes the user from the set after a while
-            cooldowns.delete(message.author.id);
-        }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
     }
 
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
