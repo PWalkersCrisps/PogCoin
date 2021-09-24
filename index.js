@@ -76,6 +76,8 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             const heHimRole = message.guild.roles.cache.some(r => r.name === 'he');
             const sheHerRole = message.guild.roles.cache.some(r => r.name === 'she');
             
+            console.log(message.author.roles);
+
             if (message.author.roles.some(heHimRole)){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
