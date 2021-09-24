@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "discord.js": "^13.1.0",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.0.7",
+    "dotenv": "^10.0.0"
   }
 }
