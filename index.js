@@ -3,7 +3,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 const fs = require("fs");
 const mongoose = require("mongoose");
-const Profile = require("./models/profileSchema.js");
+const profileModel = require("./models/profileSchema.js");
 
 require("dotenv").config();
 
@@ -44,10 +44,10 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     let profileData;
     try{
 
-        profileData = await Profile.findOne({userID: message.author.id});
+        profileData = await profileModel.findOne({userID: message.author.id});
         if(!profileData)
         {
-            let newUser = await Profile.create({
+            let newUser = await profileModel.create({
                 userID: message.author.id,
                 coins: 0,
             });
