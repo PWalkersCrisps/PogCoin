@@ -74,7 +74,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 }
             });
 
-            if (message.member.roles.has(message.guild.roles.find("name", "he"))){
+            if (message.member.roles.has(message.guild.roles.cache.find("name", "he"))){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
@@ -85,7 +85,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 message.author.send({ embeds: [royCoinEmbedReward] });
 
             }
-            else if (message.member.roles.has(message.guild.roles.find("name", "she"))){
+            else if (message.member.roles.has(message.guild.roles.cache.find("name", "she"))){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
