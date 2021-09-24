@@ -65,14 +65,14 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     if (!cooldowns.has(message.author.id)) {
         let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
         if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
-            if (message.guild.roles.id(878972495728902154 || 891024951447003146)){
-                let authorGender = "boy";
+            if (guild.roles.cache.get(878972495728902154 || 891024951447003146)){
+                const authorGender = "boy";
             }
-            else if (message.guild.roles.id(878972423834320906 || 891024996716142662)){
-                let authorGender = "girl";
+            else if (guild.roles.cache.get(878972423834320906 || 891024996716142662)){
+                const authorGender = "girl";
             }
             else{
-                let authorGender = "child";
+                const authorGender = "child";
             }
 
 
