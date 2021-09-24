@@ -77,7 +77,8 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         )
         .setTimestamp()
         .setFooter('Reddit Gold Replacement?');
-        message.author.send(exampleEmbed);
+        ;
+        channel.send({ embeds: [exampleEmbed] });
     }
 
 
