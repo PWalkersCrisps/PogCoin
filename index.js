@@ -4,6 +4,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require("fs");
 const mongoose = require("mongoose");
 const profileModel = require("./models/profileSchema.js");
+const { MessageEmbed } = require('discord.js');
 
 require("dotenv").config();
 
