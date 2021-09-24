@@ -74,7 +74,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 }
             });
 
-            if (message.guild.roles.cache.get(878972495728902154 || 891024951447003146)){
+            if (message.member.roles.cache.find(r => r.id === 878972495728902154) || message.member.roles.cache.find(r => r.id === 891024951447003146)){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
@@ -85,7 +85,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 message.author.send({ embeds: [royCoinEmbedReward] });
 
             }
-            else if (message.guild.roles.cache.get(878972423834320906 || 891024996716142662)){
+            else if (message.member.roles.cache.find(r => r.id === 878972423834320906) || message.member.roles.cache.find(r => r.id === 891024996716142662)){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
