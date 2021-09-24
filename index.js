@@ -59,7 +59,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     }
 
     let randomCoinChance = Math.floor(Math.random(1, 5)) //makes up a random number when a message is created
-    if (randomCoinChance === 1){ //if the random number is equal to 7 then iy will start the proccess of giving a roy coin
+    if (randomCoinChance == 1){ //if the random number is equal to 7 then iy will start the proccess of giving a roy coin
         const response = await profileModel.findOneAndUpdate({
             userID: message.author.id, //it looks for the id of the author
         }, {
