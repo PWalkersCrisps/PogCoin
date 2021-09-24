@@ -68,7 +68,15 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 coins: 1, //when the id of the author is found, it gives them one coin
             }
         });
-        message.author.send("Due to you being swagger, Roy Town has given you an investment oppotunity\n\nYouve got one more Roy Coin")
+
+        const exampleEmbed = new MessageEmbed()
+        .setColor('#ffff00')
+        .addFields(
+            { name: 'Roy Coin', value: 'Youve been rewarded with a Roy Coin for being a good boy' },
+        )
+        .setTimestamp()
+        .setFooter('Reddit Gold Replacement?');
+        message.author.send(exampleEmbed);
     }
 
 
