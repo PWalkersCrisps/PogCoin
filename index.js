@@ -78,7 +78,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             
             console.log(sheHerRole);
 
-            if (message.author.roles.has(heHimRole)){
+            if (message.member.roles.cache.some(role => role.name === 'he')){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
