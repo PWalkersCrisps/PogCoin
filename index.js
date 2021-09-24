@@ -78,7 +78,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             
             console.log(sheHerRole);
 
-            if (message.author.roles.some(heHimRole)){
+            if (heHimRole){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
@@ -89,7 +89,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 message.author.send({ embeds: [royCoinEmbedReward] });
 
             }
-            else if (message.author.roles.some(sheHerRole)){
+            else if (sheHerRole){
                 const royCoinEmbedReward = new MessageEmbed()
                 .setColor('#ffff00')
                 .addFields(
