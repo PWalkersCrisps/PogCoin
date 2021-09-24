@@ -76,7 +76,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             const heHimRole = message.guild.roles.cache.some(r => r.name === 'he');
             const sheHerRole = message.guild.roles.cache.some(r => r.name === 'she');
             
-            console.log(heHimRole);
+            console.log(sheHerRole);
 
             if (message.author.roles.some(heHimRole)){
                 const royCoinEmbedReward = new MessageEmbed()
