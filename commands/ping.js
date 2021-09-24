@@ -5,6 +5,6 @@ module.exports = {
     name: "ping",
     description: "pings the server to see the delay between the client",
     async execute(client, message, args, Discord){
-        message.channel.send(`🏓Latency is ${message.createdTimestamp - Date.now()}ms.`)
+        message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms.`)
     }
 }

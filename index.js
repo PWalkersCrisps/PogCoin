@@ -65,17 +65,6 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     if (!cooldowns.has(message.author.id)) {
         let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
         if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
-            if (message.guild.roles.cache.get(878972495728902154 || 891024951447003146)){
-                const authorGender = "boy";
-            }
-            else if (message.guild.roles.cache.get(878972423834320906 || 891024996716142662)){
-                const authorGender = "girl";
-            }
-            else{
-                const authorGender = "child";
-            }
-
-
 
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //it looks for the id of the author
@@ -84,14 +73,40 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                     coins: 1, //when the id of the author is found, it gives them one coin
                 }
             });
-            const exampleEmbed = new MessageEmbed()
-            .setColor('#ffff00')
-            .addFields(
-                { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good ${authorGender}`},
-            )
-            .setTimestamp()
-            .setFooter('Reddit Gold Replacement?');
-            message.author.send({ embeds: [exampleEmbed] });
+
+            if (message.guild.roles.cache.get(878972495728902154 || 891024951447003146)){
+                const royCoinEmbedReward = new MessageEmbed()
+                .setColor('#ffff00')
+                .addFields(
+                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good boy`},
+                )
+                .setTimestamp()
+                .setFooter('Reddit Gold Replacement?');    
+                message.author.send({ embeds: [royCoinEmbedReward] });
+
+            }
+            else if (message.guild.roles.cache.get(878972423834320906 || 891024996716142662)){
+                const royCoinEmbedReward = new MessageEmbed()
+                .setColor('#ffff00')
+                .addFields(
+                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good girl`},
+                )
+                .setTimestamp()
+                .setFooter('Reddit Gold Replacement?');   
+                message.author.send({ embeds: [royCoinEmbedReward] });
+ 
+            }
+            else{
+                const royCoinEmbedReward = new MessageEmbed()
+                .setColor('#ffff00')
+                .addFields(
+                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good child`},
+                )
+                .setTimestamp()
+                .setFooter('Reddit Gold Replacement?');    
+                message.author.send({ embeds: [royCoinEmbedReward] });
+                
+            }
 
             // cooldowns.add(message.author.id);
             // setTimeout(() => {
