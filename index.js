@@ -68,6 +68,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 coins: 1, //when the id of the author is found, it gives them one coin
             }
         });
+        message.author.send("Due to you being swagger, Roy Town has given you an investment oppotunity\n\nYouve got one more Roy Coin")
     }
 
 
