@@ -73,8 +73,8 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                     coins: 1, //when the id of the author is found, it gives them one coin
                 }
             });
-            var heHimRole = role.guild.roles.cache.find(r => r.name === 'he');
-            var sheHerRole = role.guild.roles.cache.find(r => r.name === 'she');
+            const heHimRole = member.guild.roles.cache.find(r => r.name === 'he');
+            const sheHerRole = member.guild.roles.cache.find(r => r.name === 'she');
             
             if (message.member.roles.has(heHimRole)){
                 const royCoinEmbedReward = new MessageEmbed()
