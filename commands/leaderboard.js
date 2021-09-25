@@ -19,6 +19,8 @@ module.exports = {
             let LeaderboardEmbed = new MessageEmbed()
             .setTitle("Roy Coins Leaderboard")
 
+            console.log(res);
+
             if (res.length === 0){ //No results gathered
                 LeaderboardEmbed.setColor("RED");
                 LeaderboardEmbed.addField("No data shown", "Sucks for that to happen");
