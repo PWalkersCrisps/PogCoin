@@ -3,23 +3,20 @@
 
 //I DO HAVE TO MENTION IF THIS IS BEING EXPANDED APON, THIS IS NOT VERY EFFICIENT, THE MORE USERS IT HAS TO READ THEN THE LONGER IT WILL TAKE
 
-
-const { Collection } = require("discord.js");
-
 module.exports = {
     name: "leaderboard",
     description: "Displays the top 10 users",
     async execute(client, message, args, Discord, profileData, MessageEmbed){
 
 
-        const leaderBoardCollection = new Collection()
+        const leaderBoardCollection = new Discord.Collection();
 
         await Promise.all(
             message.guild.members.cache.map(async(member) => {
                 const id = profileData.userID;
                 const coins = profileData.coins;
                 return coins !== 0 
-                ? Collection.add(id, {
+                ? leaderBoardCollection.set(id, {
                     id,
                     coins,
                 })
