@@ -33,5 +33,24 @@ module.exports = {
                 }
             }
         }
+        else{ //More then 10 results gathered
+            LeaderboardEmbed.setColor("#8c03fc");
+            for(i = 0; i < 10; i++){
+                let memberLB = message.guild.cache.get(res[i].userID) || "User Left";
+                if (memberLB === "User Left"){
+                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
+                }
+                else{
+                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+                }
+            }
+
+            
+  
+        }
+
+
+        message.author.send({ embeds: [LeaderboardEmbed] });
+
     }
 }
