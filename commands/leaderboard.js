@@ -28,7 +28,7 @@ module.exports = {
         )
         .setTimestamp()
         .setFooter('Reddit Gold Replacement?');    
-        message.author.channel.send({ embeds: [royCoinLeaderBoard] }); //sends the embed that was just created
+        message.channel.send({ embeds: [royCoinLeaderBoard] }); //sends the embed that was just created
 
 
     }
