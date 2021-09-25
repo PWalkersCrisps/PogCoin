@@ -12,7 +12,7 @@ module.exports = {
 
         const royCoinLeaderBoard = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#6603fc')
-        .addTitle('Roy Coin Leaderboards')
+        .setTitle('Roy Coin Leaderboards')
         .setDescription('Some description here') //Temp description, ig just write something creative here
         .addFields(
             { name: `1`, value: ``},
