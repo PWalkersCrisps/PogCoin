@@ -1,43 +1,56 @@
-//THIS IS NOT MY CODE ITS FROM A TUTORIAL, IF YOU CAN FIND BETTER CODE, PLEASE DO MODIFY THIS, I WILL APPRECIATE IT A LOT
-//TUTORIAL: https://www.youtube.com/watch?v=NFOoUhiUrbk
-
-//I DO HAVE TO MENTION IF THIS IS BEING EXPANDED APON, THIS IS NOT VERY EFFICIENT, THE MORE USERS IT HAS TO READ THEN THE LONGER IT WILL TAKE
+const Discord = require("discord.js")
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
+const mongoose = require("mongoose");
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "leaderboard",
     description: "Displays the top 10 users",
-    async execute(client, message, args, Discord, profileData, MessageEmbed){
+    async execute(message, args, profileData){
 
+        const id = new profileData.userID;
+        const coins = new profileData.coins;
 
-        const leaderBoardCollection = new Discord.Collection();
+        coins
+        .find({serverID: message.guild.id})
+        .sort([['coins', 'decending']])
+        .exec((err, res) => {
+            if(err) console.log(err);
 
-        await Promise.all(
-            message.guild.members.cache.map(async(member) => {
-                const id = profileData.userID;
-                const coins = profileData.coins;
-                return coins !== 0 
-                ? leaderBoardCollection.set(id, {
-                    id,
-                    coins,
-                })
-                :null
-            })
-        )
+            let LeaderboardEmbed = new MessageEmbed()
+            .setTitle("Roy Coins Leaderboard")
 
-        const data = leaderBoardCollection.sort((a, b) => b.coins - a.coins).first(10)
+            if (res.length === 0){ //No results gathered
+                LeaderboardEmbed.setColor("RED");
+                LeaderboardEmbed.addField("No data down", "Sucks for that to happen");
+            }
+            else if (res.length < 10){ //Less then 10 results gathered
+                LeaderboardEmbed.setColor("#8c03fc");
+                for(i = 0; i < res.length; i++){
+                    let memberLB = message.guild.members.get(res[i].userID) || "User Left";
+                    if (memberLB === "User Left"){
+                        LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
+                    }
+                    else{
+                        LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+                    }
+                }
+            }
+            else{ //More then 10 results gathered
+                LeaderboardEmbed.setColor("#8c03fc");
+                for(i = 0; i < 10; i++){
+                    let memberLB = message.guild.members.get(res[i].userID) || "User Left";
+                    if (memberLB === "User Left"){
+                        LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
+                    }
+                    else{
+                        LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+                    }
+                }
 
-        const royCoinLeaderBoard = new MessageEmbed() //Starts the proccess for creating an embed
-        .setColor('#6603fc')
-        .setTitle('Roy Coin Leaderboards')
-        .setDescription(
-            data.map((v, i) => {
-                return `${i+1}) ${client.user.cache.some(v.id).tag} => ${v.coins} Roy Coins`
-            })
-        )
-        .setTimestamp()
-        .setFooter('Reddit Gold Replacement?');    
-        message.channel.send({ embeds: [royCoinLeaderBoard] }); //sends the embed that was just created
-
+            }
+  
+        });
 
     }
 }
