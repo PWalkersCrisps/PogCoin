@@ -34,7 +34,7 @@ module.exports = {
             }
         }
 
-        message.author.send({ embeds: [LeaderboardEmbed] });
+        message.channel.send({ embeds: [LeaderboardEmbed] });
 
     }
 }
