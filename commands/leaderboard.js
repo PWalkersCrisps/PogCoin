@@ -2,18 +2,20 @@ const Discord = require("discord.js")
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 const mongoose = require("mongoose");
 const { MessageEmbed } = require('discord.js');
+const profileModel = require("./models/profileSchema.js");
+
+profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
+
 
 module.exports = {
     name: "leaderboard",
     description: "Displays the top 10 users",
-    async execute(message, args, profileData){
+    async execute(message, args){
 
         const id = profileData.userID;
         const coins = profileData.coins;
 
-        coins
-        .sort([['coins', 'decending']])
-        .exec((err, res) => {
+        coins.find({}).sort({descending}).exec((err, docs) => {
             if(err) console.log(err);
 
             let LeaderboardEmbed = new MessageEmbed()
@@ -21,7 +23,7 @@ module.exports = {
 
             if (res.length === 0){ //No results gathered
                 LeaderboardEmbed.setColor("RED");
-                LeaderboardEmbed.addField("No data down", "Sucks for that to happen");
+                LeaderboardEmbed.addField("No data shown", "Sucks for that to happen");
             }
             else if (res.length < 10){ //Less then 10 results gathered
                 LeaderboardEmbed.setColor("#8c03fc");
