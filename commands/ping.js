@@ -1,10 +1,7 @@
-const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
-
 module.exports = {
     name: "ping",
-    description: "pings the server to see the delay between the client",
+    description: "pings the server to see the delay between the client and the server",
     async execute(client, message, args, Discord){
-        message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms.`)
+        message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms.`) //Its creates a time stamp for the message then compares it to when the message is actually sent to get a mostly accurate representation of the Client/Server delay
     }
 }

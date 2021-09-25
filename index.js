@@ -12,6 +12,8 @@ const cooldowns = new Set();
 
 const prefix = ">";
 
+///-----Command Handler-----///
+
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync("./commands/").filter(file => file.endsWith(".js"));
@@ -41,15 +43,15 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 
 client.on("messageCreate", async (message) =>{ //whenever a message is created then everything here will be active
 
-    if(message.author.bot) return;
+    if(message.author.bot) return; //If the user is classified as a bot, everything below will not execute
 
     ///-----Mongoose-----///
 
     let profileData;
     try{
 
-        profileData = await profileModel.findOne({userID: message.author.id});
-        if(!profileData)
+        profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
+        if(!profileData) //Checks if the user has any data in the DB
         {
             let newUser = await profileModel.create({
                 userID: message.author.id,
@@ -73,42 +75,38 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                     coins: 1, //when the id of the author is found, it gives them one coin
                 }
             });
-            const heHimRole = message.guild.roles.cache.some(r => r.name === 'he');
-            const sheHerRole = message.guild.roles.cache.some(r => r.name === 'her');
-            
-            console.log(sheHerRole);
 
-            if (message.member.roles.cache.some(role => role.name === 'he')){
-                const royCoinEmbedReward = new MessageEmbed()
+            if (message.member.roles.cache.some(role => role.name === 'he')){ //checks if the auther has the he/him role
+                const royCoinEmbedReward = new MessageEmbed() //Starts the proccess for creating an embed
                 .setColor('#ffff00')
                 .addFields(
                     { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good boy`},
                 )
                 .setTimestamp()
                 .setFooter('Reddit Gold Replacement?');    
-                message.author.send({ embeds: [royCoinEmbedReward] });
+                message.author.send({ embeds: [royCoinEmbedReward] }); //sends the embed that was just created 
 
             }
-            else if (message.member.roles.cache.some(role => role.name === 'her')){
-                const royCoinEmbedReward = new MessageEmbed()
+            else if (message.member.roles.cache.some(role => role.name === 'her')){ //checks if the auther has the she/her role
+                const royCoinEmbedReward = new MessageEmbed() //Starts the proccess for creating an embed
                 .setColor('#ffff00')
                 .addFields(
                     { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good girl`},
                 )
                 .setTimestamp()
                 .setFooter('Reddit Gold Replacement?');   
-                message.author.send({ embeds: [royCoinEmbedReward] });
+                message.author.send({ embeds: [royCoinEmbedReward] }); //sends the embed that was just created
  
             }
-            else{
-                const royCoinEmbedReward = new MessageEmbed()
+            else{ //If the user has the they/them or dont have a gender role, it will always default to this
+                const royCoinEmbedReward = new MessageEmbed() //Starts the proccess for creating an embed
                 .setColor('#ffff00')
                 .addFields(
                     { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good child`},
                 )
                 .setTimestamp()
                 .setFooter('Reddit Gold Replacement?');    
-                message.author.send({ embeds: [royCoinEmbedReward] });
+                message.author.send({ embeds: [royCoinEmbedReward] }); //sends the embed that was just created
                 
             }
 
