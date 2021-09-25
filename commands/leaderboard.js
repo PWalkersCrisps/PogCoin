@@ -31,7 +31,7 @@ module.exports = {
         .setTitle('Roy Coin Leaderboards')
         .setDescription(
             data.map((v, i) => {
-                return `${i+1}) ${client.user.cache.get(v.id).tag} => ${v.coins} Roy Coins`
+                return `${i+1}) ${client.user.cache.some(v.id).tag} => ${v.coins} Roy Coins`
             })
         )
         .setTimestamp()
