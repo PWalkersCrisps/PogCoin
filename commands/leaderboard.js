@@ -6,35 +6,37 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: "leaderboard",
     description: "Displays the top 10 users",
-    async execute(message, args, profileData){
+    async execute(args, profileData){
 
-        const id = profileData.userID;
-        const coins = profileData.coins;
+        client.on("messageCreate", async (message) =>{
 
-        const query = new mongoose.Query();
-        const res = query.sort({coins: 'desc'})
+            const id = profileData.userID;
+            const coins = profileData.coins;
 
-        let LeaderboardEmbed = new MessageEmbed()
-        .setTitle("Roy Coins Leaderboard")
+            const query = new mongoose.Query();
+            const res = query.sort({coins: 'desc'})
 
-        if (res.length === 0){ //No results gathered
-            LeaderboardEmbed.setColor("RED");
-            LeaderboardEmbed.addField("No data shown", "Sucks for that to happen");
-        }
-        else if (res.length < 10){ //Less then 10 results gathered
-            LeaderboardEmbed.setColor("#8c03fc");
-            for(i = 0; i < res.length; i++){
-                let memberLB = message.guild.cache.get(res[i].userID) || "User Left";
-                if (memberLB === "User Left"){
-                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
-                }
-                else{
-                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+            let LeaderboardEmbed = new MessageEmbed()
+            .setTitle("Roy Coins Leaderboard")
+
+            if (res.length === 0){ //No results gathered
+                LeaderboardEmbed.setColor("RED");
+                LeaderboardEmbed.addField("No data shown", "Sucks for that to happen");
+            }
+            else if (res.length < 10){ //Less then 10 results gathered
+                LeaderboardEmbed.setColor("#8c03fc");
+                for(i = 0; i < res.length; i++){
+                    let memberLB = message.guild.cache.get(res[i].userID) || "User Left";
+                    if (memberLB === "User Left"){
+                        LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
+                    }
+                    else{
+                        LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+                    }
                 }
             }
-        }
 
-        message.channel.send({ embeds: [LeaderboardEmbed] });
-
+            message.channel.send({ embeds: [LeaderboardEmbed] });
+        });
     }
 }
