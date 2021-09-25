@@ -11,6 +11,7 @@ module.exports = {
         const id = profileData.userID;
         const coins = profileData.coins;
 
+        const query = new mongoose.Query();
         const res = query.sort({coins: 'desc'})
         if(err) console.log(err);
 
