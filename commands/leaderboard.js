@@ -15,7 +15,7 @@ module.exports = {
         const id = profileData.userID;
         const coins = profileData.coins;
 
-        coins.find({}).sort({coins: descending}).exec((err, docs) => {
+        eplease.find({}).sort({coins: descending}).exec((err, docs) => {
             if(err) console.log(err);
 
             let LeaderboardEmbed = new MessageEmbed()
