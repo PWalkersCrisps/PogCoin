@@ -11,7 +11,7 @@ module.exports = {
         const id = profileData.userID;
         const coins = profileData.coins;
 
-        Room.find({}).sort({coins: descending}).exec((err, docs) => {
+        coins.find({}, null, {sort: 'coins'}, (err, docs) => {
             if(err) console.log(err);
 
             let LeaderboardEmbed = new MessageEmbed()
