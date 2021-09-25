@@ -24,7 +24,7 @@ module.exports = {
             })
         )
 
-        const data = Collection.sort((a, b) => b.coins - a.coins).first(10)
+        const data = leaderBoardCollection.sort((a, b) => b.coins - a.coins).first(10)
 
         const royCoinLeaderBoard = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#6603fc')
