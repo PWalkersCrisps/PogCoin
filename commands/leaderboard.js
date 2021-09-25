@@ -8,8 +8,8 @@ module.exports = {
     description: "Displays the top 10 users",
     async execute(message, args, profileData){
 
-        const id = new profileData.userID;
-        const coins = new profileData.coins;
+        const id = profileData.userID;
+        const coins = profileData.coins;
 
         coins
         .find({serverID: message.guild.id})
