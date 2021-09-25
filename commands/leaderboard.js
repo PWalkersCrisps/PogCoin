@@ -2,15 +2,11 @@ const Discord = require("discord.js")
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 const mongoose = require("mongoose");
 const { MessageEmbed } = require('discord.js');
-const profileModel = require("./models/profileSchema.js");
-
-profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
-
 
 module.exports = {
     name: "leaderboard",
     description: "Displays the top 10 users",
-    async execute(message, args){
+    async execute(message, args, profileData){
 
         const id = profileData.userID;
         const coins = profileData.coins;
