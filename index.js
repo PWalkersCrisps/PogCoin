@@ -64,7 +64,9 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
-    if (!cooldowns.has(message.author.id)) {
+    //-----Roy Coin-----///
+
+    if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
         let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
         if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
 
@@ -110,11 +112,11 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 
             }
 
-            // cooldowns.add(message.author.id);
-            // setTimeout(() => {
-            //    // Removes the user from the set after a while
-            //     cooldowns.delete(message.author.id);
-            // }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
+            cooldowns.add(message.author.id);
+            setTimeout(() => {
+               // Removes the user from the set after a while
+                cooldowns.delete(message.author.id);
+            }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds
         }
     }
 
