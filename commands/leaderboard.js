@@ -13,7 +13,6 @@ module.exports = {
 
         const query = new mongoose.Query();
         const res = query.sort({coins: 'desc'})
-        if(err) console.log(err);
 
         let LeaderboardEmbed = new MessageEmbed()
         .setTitle("Roy Coins Leaderboard")
