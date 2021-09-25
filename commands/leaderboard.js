@@ -20,7 +20,7 @@ module.exports = {
                 const coins = profileData.coins;
                 return coins !== 0 ? Collection.set(id, {
                     id,
-                    bal,
+                    coins,
                 })
                 :null
             })
