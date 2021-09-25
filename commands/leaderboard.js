@@ -19,7 +19,7 @@ module.exports = {
                 const id = profileData.userID;
                 const coins = profileData.coins;
                 return coins !== 0 
-                ? Collection.set(id, {
+                ? Collection.add(id, {
                     id,
                     coins,
                 })
