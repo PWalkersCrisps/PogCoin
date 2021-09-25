@@ -12,8 +12,7 @@ module.exports = {
         const coins = profileData.coins;
 
         coins
-        .cache
-        .find({serverID: message.guild.id})
+        .get({serverID: message.guild.id})
         .sort([['coins', 'decending']])
         .exec((err, res) => {
             if(err) console.log(err);
