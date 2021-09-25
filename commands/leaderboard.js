@@ -18,7 +18,8 @@ module.exports = {
             message.guild.members.cache.map(async(member) => {
                 const id = profileData.userID;
                 const coins = profileData.coins;
-                return coins !== 0 ? Collection.set(id, {
+                return coins !== 0 
+                ? Collection.set(id, {
                     id,
                     coins,
                 })
