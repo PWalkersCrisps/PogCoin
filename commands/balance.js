@@ -4,9 +4,9 @@ module.exports = {
     name: "balance",
     description: "check your balance",
     async execute(client, message, args, Discord, profileData, MessageEmbed){
-        if (cooldowns.has(message.author.id)) {
+        if (cooldowns.has(message.author.id)) { //checks if the author currently has a cooldown on this command
             message.channel.send(`Dont think Roy is gonna be too happy with you spamming\n\nPlease can you wait like 1 minute?`); 
-        } else {
+        } else { //if the author doesnt have a cooldown then this code executes
 
             const royCoinBalance = new MessageEmbed()
             .setColor('#ff00ff')
@@ -18,7 +18,7 @@ module.exports = {
             message.channel.send({ embeds: [royCoinBalance] });
 
 
-            cooldowns.add(message.author.id);
+            cooldowns.add(message.author.id); //adds a cooldown to the authors
             setTimeout(() => {
                // Removes the user from the set after a while
                 cooldowns.delete(message.author.id);
