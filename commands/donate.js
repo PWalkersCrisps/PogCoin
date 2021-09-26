@@ -1,4 +1,4 @@
-const profileModel = require("../models/profileScema");
+const profileModel = require("../models/profileSchema");
 
 module.exports = {
     name: "donate",
