@@ -7,7 +7,12 @@ module.exports = {
     async execute(client, message, args, Discord){
 
         
-        if (!message.mentions.users.first().id) return message.channel.send('You need to mention a user.');
+        if (!message.mentions.users.first()) return message.channel.send('You need to mention a user.');
+
+        profileDataSender = await profileModel.findOne({userID: message.author.id});
+
+        if(profileDataSender.coins <= 0) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some roycoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>` )
+
 
         const senderResponse = await profileModel.findOneAndUpdate({
             userID: message.author.id,
