@@ -25,10 +25,33 @@ for(const file of commandFiles){
 
 client.on("ready", () => { //when the client is 'ready' then it will execute everything below
     console.log(`${client.user.tag} is online, hopefully it works`);
-    client.user.setActivity("to the glorious sounds of capitalism", {
+    client.user.setActivity("the glorious sounds of capitalism", {
         type: "LISTENING",
     });
 });
+
+client.on('guildCreate', joinedGuild => {
+
+    const serverJoin = new MessageEmbed()
+    .setColor("#ffff00")
+    .setTitle("roycoin")
+    .setDescription("roycoin has arrived into your uncapitalist society\n\nIt wont be uncapitalist, for any longer...")
+    .setImage("https://cdn.discordapp.com/attachments/891107523757740062/891814157995880498/coinsmall.png")
+    .setTimestamp()
+    .setFooter("Is this the new Reddit gold replacement? is it???")
+    .addFields(
+        {name: "Why im here?", value: "Ive just dectected a lack of capitalism here, so i decided to start one and force every single one of you into it"},
+        {name: "Cool, what do you do?", value: "You can get coins form me every hour, but heres a twist, you only have a chance of getting it"},
+        {name: "What can i do with these coins?", value: "You can spend them ig... i mean, i havent started building my shop in this town yet, you gotta give me some time to build, im not like macdonalds where i can just place a builder like its sims city or something like that. But at the moment ig give it to people that you think deserve it"},
+        {name: "Ok now wha...", value: "SHUT UP, youre questions are stupid"},
+        {name: "your*", value: "SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP, YOU KNOW WHAT IM GOING TO MAKE THE CHANCE OF GETTING THESE COINS EVEN HARDER"},
+        {name: "\n\nHop on roytown", value: "Hop on roytown"},
+
+    )
+
+    joinedGuild.defaultChannel.send({ embeds: [serverJoin] })
+    .catch(console.log("No default channel!"))
+})
 
 ///-----Mongoose-----///
 
