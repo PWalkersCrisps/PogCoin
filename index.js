@@ -76,7 +76,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
 
-    switch(command){ //This switch case will cycle trhough all of the cases here to get to something that is true
+    switch(command){ //This switch case will cycle through all of the cases here to get to something that is true
         case "ping":
             client.commands.get('ping').execute(client, message, args, Discord);
             break;
@@ -97,3 +97,4 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 })
 
 client.login(process.env.DISCORD_TOKEN); //this is the token of the bot
+    
