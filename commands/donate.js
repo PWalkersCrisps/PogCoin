@@ -8,7 +8,7 @@ module.exports = {
         let mentionedUser = message.mentions.users.first();
         if (!mentionedUser) return message.channel.send('You need to mention a user.');
 
-        const response = await profileModel.findOneAndUpdate({
+        const senderResponse = await profileModel.findOneAndUpdate({
             userID: message.author.id,
         }, {
             $inc: {
@@ -26,7 +26,7 @@ module.exports = {
             //const savedUser = await newUser.save();
         }
 
-        const response = await profileModel.findOneAndUpdate({
+        const reciverResponse = await profileModel.findOneAndUpdate({
             userID: message.mentionedUser.id,
         }, {
             $inc: {
