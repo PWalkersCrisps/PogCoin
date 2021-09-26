@@ -19,18 +19,15 @@ module.exports = {
         const targetData = await profileModel.findOne({ userID: message.mentions.users.first().id });
         if (!targetData) 
 
-        await profileModel.findOneAndUpdate(
-            {
-            userID: message.mentions.users.first().id,
-            },
-            {
+        const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
+            userID: message.mentions.users.first().id, //looks for the record of the message author's account
+        }, {
             $inc: {
-                coins: amount,
-            },
+                coins: amount, //decreases the amount of coins that the author has by the stated amount
             }
-        );
+        });
 
-        return message.channel.send(`This player has been given their coins! ${amount} of coins!`);
+        return message.channel.send(`<@${message.mentions.users.first().id}> has just been given ${amount} coins\n\nmake fun of them ig?`);
         } catch (err) {
         console.log(err);
         }
