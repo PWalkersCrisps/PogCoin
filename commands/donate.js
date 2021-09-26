@@ -6,8 +6,10 @@ module.exports = {
     description: "pings the server to see the delay between the client and the server",
     async execute(client, message, args, Discord){
 
-        if (!message.mentions.users.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
-
+        if (!message.mentions.users.first()) {
+            message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
+            return;
+        }
         let amount = 1;
         if (args.length) amount = args[1];
 

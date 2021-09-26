@@ -5,7 +5,10 @@ module.exports = {
   description: "give a player some coins",
   async execute(message, args, cmd, client, discord, profileData) {
 
-    if (!args.length) return message.channel.send("You need to mention a player to give them coins");
+    if (!args.length){
+        message.channel.send("You need to mention a member to give them coins");
+        return
+    }
     const amount = args[1];
     if (!message.mentions.users.first()) return message.channel.send("That user does not exist");
 
