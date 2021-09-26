@@ -9,6 +9,8 @@ module.exports = {
         let mentionedUser = message.mentions.users.first().id;
         if (!mentionedUser) return message.channel.send('You need to mention a user.');
 
+        console.log(mentionedUser)
+
         const senderResponse = await profileModel.findOneAndUpdate({
             userID: message.author.id,
         }, {
