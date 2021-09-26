@@ -3,7 +3,7 @@ const profileModel = require("../models/profileScema");
 module.exports = {
     name: "donate",
     description: "pings the server to see the delay between the client and the server",
-    async execute(client, message, args, Discord, profileData, MessageEmbed){
+    async execute(client, message, args, Discord, MessageEmbed){
 
         let mentionedUser = message.mentions.users.first();
         if (!mentionedUser) return message.channel.send('You need to mention a user.');
