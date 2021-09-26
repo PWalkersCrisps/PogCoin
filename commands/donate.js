@@ -7,7 +7,7 @@ module.exports = {
     async execute(client, message, args, Discord){
 
         
-        if (!mentionedUser) return message.channel.send('You need to mention a user.');
+        if (!message.mentions.users.first().id) return message.channel.send('You need to mention a user.');
 
         const senderResponse = await profileModel.findOneAndUpdate({
             userID: message.author.id,
