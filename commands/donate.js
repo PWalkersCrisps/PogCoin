@@ -16,18 +16,18 @@ module.exports = {
             }
         });
         
-        profileDataMentioned = await profileModel.findOne({userID: message.mentionedUser.id});
+        profileDataMentioned = await profileModel.findOne({userID: message.mentionedUser});
         if(!profileDataMentioned) //Checks if the user has any data in the DB
         {
             let newUser = await profileModel.create({
-                userID: message.mentionedUser.id,
+                userID: message.mentionedUser,
                 coins: 0,
             });
             //const savedUser = await newUser.save();
         }
 
         const reciverResponse = await profileModel.findOneAndUpdate({
-            userID: message.mentionedUser.id,
+            userID: message.mentionedUser,
         }, {
             $inc: {
                 coins: 1,
