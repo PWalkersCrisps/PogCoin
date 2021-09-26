@@ -67,7 +67,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     //-----Roy Coin-----///
 
     if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
-        let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
+        let randomCoinChance = Math.floor(Math.random() * 100)+1 //makes up a random number when a message is created
         if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
 
             const response = await profileModel.findOneAndUpdate({

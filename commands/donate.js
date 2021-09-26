@@ -39,10 +39,10 @@ module.exports = {
         .setColor('#00ffff')
         .setTimestamp()
         .addFields(
-            { name: 'Roy Coin Charity', value: `@<${message.author.id}> just gave `}
+            { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentionedUser}> a Roy Coin?!?`}
         )
         .setFooter('Reddit Gold Replacement?');
-        message.author.send({ embeds: [royCoinDonate] });
+        message.channel.send({ embeds: [royCoinDonate] });
 
     }
 }

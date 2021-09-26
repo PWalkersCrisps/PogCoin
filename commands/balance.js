@@ -15,7 +15,7 @@ module.exports = {
                 { name: 'Roy Coin Bank', value: `You have ${profileData.coins}<:RoyCoin:891377698922958879>`}
             )
             .setFooter('Reddit Gold Replacement?');
-            message.author.send({ embeds: [royCoinBalance] });
+            message.channel.send({ embeds: [royCoinBalance] });
 
 
             cooldowns.add(message.author.id);
