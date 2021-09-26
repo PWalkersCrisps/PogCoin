@@ -87,6 +87,11 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
+    if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
+ 
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
+
     if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
         let randomCoinChance = Math.floor(Math.random() * 100)+1 //makes up a random number when a message is created
         if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
@@ -94,10 +99,6 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         }
     }
 
-    if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
- 
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
 
     switch(command){ //This switch case will cycle through all of the cases here to get to something that is true
         case "ping":
