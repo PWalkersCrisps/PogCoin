@@ -3,7 +3,7 @@ const cooldowns = new Set();
 module.exports = {
     name: "balance",
     description: "check your balance",
-    async execute(client, message, args, Discord, profileData){
+    async execute(client, message, args, Discord, profileData, MessageEmbed){
         if (cooldowns.has(message.author.id)) {
             message.channel.send(`Dont think Roy is gonna be too happy with you spamming\n\nPlease can you wait like 1 minute?`); 
         } else {

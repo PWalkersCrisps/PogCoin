@@ -126,7 +126,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         //case "leaderboard" || "lb":
         //    client.commands.get('leaderboard').execute(client, message, args, Discord, profileData, MessageEmbed);
         //    break;
-        case "bal" || "balance":
+        case "balance":
             client.commands.get('balance').execute(client, message, args, Discord, profileData, MessageEmbed);
             break;
         
