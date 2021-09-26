@@ -11,8 +11,8 @@ module.exports = {
             message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
             return;
         }
-        let amount = 1;
-        if (args.length) amount = args[1];
+        //let amount = 1;
+        //if (args.length) amount = args[1];
 
         profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender
         if(profileDataSender.coins < amount) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some roycoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
@@ -21,7 +21,7 @@ module.exports = {
             userID: message.author.id, //looks for the record of the message author's account
         }, {
             $inc: {
-                coins: -amount, //decreases the amount of coins that the author has by the stated amount
+                coins: -1, //decreases the amount of coins that the author has by the stated amount
             }
         });
         
@@ -39,7 +39,7 @@ module.exports = {
             userID: message.mentions.users.first().id,
         }, {
             $inc: {
-                coins: amount, //increases the amount of coins that the mentioned has by 1
+                coins: 1, //increases the amount of coins that the mentioned has by 1
             }
         });
 
