@@ -48,16 +48,21 @@ module.exports = {
         .setTimestamp()
         .setFooter('Reddit Gold Replacement?');
 
-        if (amount === 1){
-            royCoinDonate.addFields(
-                { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a Roy Coin?!?`}
-            )
-        }
-        else if (amount > 1){
-            royCoinDonate.addFields(
-                { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} Roy Coins?!?`}
-            )    
-        }
+        royCoinDonate.addFields(
+            { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a Roy Coin?!?`}
+        )
+
+
+        // if (amount === 1){
+        //     royCoinDonate.addFields(
+        //         { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a Roy Coin?!?`}
+        //     )
+        // }
+        // else if (amount > 1){
+        //     royCoinDonate.addFields(
+        //         { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} Roy Coins?!?`}
+        //     )    
+        // }
 
         message.channel.send({ embeds: [royCoinDonate] });
 
