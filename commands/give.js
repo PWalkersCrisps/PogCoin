@@ -17,7 +17,14 @@ module.exports = {
 
         try {
         const targetData = await profileModel.findOne({ userID: message.mentions.users.first().id });
-        if (!targetData) 
+        if (!targetData)
+        {
+            let newUser = await profileModel.create({
+                userID: message.mentions.users.first().id,
+                coins: 0,
+            });
+            //const savedUser = await newUser.save();
+        }
 
         const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
             userID: message.mentions.users.first().id, //looks for the record of the message author's account
