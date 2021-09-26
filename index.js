@@ -66,7 +66,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     //-----Roy Coin-----///
 
-    if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
+    if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* have the author's
         let randomCoinChance = Math.floor(Math.random() * 100)+1 //makes up a random number when a message is created
         if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
 
@@ -84,14 +84,14 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             .setFooter('Reddit Gold Replacement?');    
 
 
-            if (message.member.roles.cache.some(role => role.name === 'he')){ //checks if the auther has the he/him role
+            if (message.member.roles.cache.some(role => role.name === 'he')){ //checks if the author has the he/him role
                 royCoinEmbedReward.addFields(
                     { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good boy`},
                 )
                 message.author.send({ embeds: [royCoinEmbedReward] }); //sends the embed that was just created 
 
             }
-            else if (message.member.roles.cache.some(role => role.name === 'her')){ //checks if the auther has the she/her role
+            else if (message.member.roles.cache.some(role => role.name === 'her')){ //checks if the author has the she/her role
                 royCoinEmbedReward.addFields(
                     { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good girl`},
                 )
@@ -119,7 +119,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
 
-    switch(command){ //This switch case will cycle trhough all of the cases here to get to something that is true
+    switch(command){ //This switch case will cycle through all of the cases here to get to something that is true
         case "ping":
             client.commands.get('ping').execute(client, message, args, Discord);
             break;
