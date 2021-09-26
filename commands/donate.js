@@ -6,7 +6,7 @@ module.exports = {
     description: "pings the server to see the delay between the client and the server",
     async execute(client, message, args, Discord){
 
-        let mentionedUser = message.mentions.users.first();
+        let mentionedUser = message.mentions.users.first().id;
         if (!mentionedUser) return message.channel.send('You need to mention a user.');
 
         const senderResponse = await profileModel.findOneAndUpdate({
