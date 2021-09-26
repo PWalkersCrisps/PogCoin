@@ -1,9 +1,10 @@
 const profileModel = require("../models/profileSchema");
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "donate",
     description: "pings the server to see the delay between the client and the server",
-    async execute(client, message, args, Discord, MessageEmbed){
+    async execute(client, message, args, Discord){
 
         let mentionedUser = message.mentions.users.first();
         if (!mentionedUser) return message.channel.send('You need to mention a user.');
