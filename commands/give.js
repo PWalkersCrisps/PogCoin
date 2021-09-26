@@ -1,5 +1,6 @@
 const profileModel = require("../models/profileSchema");
 const { MessageEmbed } = require('discord.js');
+const mongoose = require('mongoose');
 
 module.exports = {
     name: "give",
