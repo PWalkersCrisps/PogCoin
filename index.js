@@ -129,6 +129,9 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         case "balance":
             client.commands.get('balance').execute(client, message, args, Discord, profileData, MessageEmbed);
             break;
+        case "donate":
+            client.commands.get('balance').execute(client, message, args, Discord, profileData, MessageEmbed);
+            break;
         
     }
 })

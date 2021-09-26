@@ -1,4 +1,4 @@
-const profileModel = require("../models/profileSchema");
+const profileModel = require("../models/profileSchema   ");
 
 module.exports = {
     name: "donate",
@@ -33,6 +33,15 @@ module.exports = {
                 coins: 1,
             }
         });
+
+        const royCoinDonate = new MessageEmbed()
+        .setColor('#00ffff')
+        .setTimestamp()
+        .addFields(
+            { name: 'Roy Coin Charity', value: `@<${message.author.id}> just gave `}
+        )
+        .setFooter('Reddit Gold Replacement?');
+        message.author.send({ embeds: [royCoinDonate] });
 
     }
 }
