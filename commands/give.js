@@ -1,10 +1,15 @@
 const profileModel = require("../models/profileSchema");
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "give",
     description: "give a player some coins",
-    async execute(message, args, cmd, client, discord, profileData) {
+    async execute(client, message, args, Discord, profileData) {
 
+        if (!args.length){
+            message.channel.send("You need to mention a member to give them coins");
+            return;
+        }
         const amount = args[1];
         if (!message.mentions.users.first()) return message.channel.send("That user does not exist");
 
