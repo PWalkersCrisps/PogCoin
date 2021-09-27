@@ -87,13 +87,12 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
-    if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
-        let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
-        console.log(randomCoinChance);
-        if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
-            client.commands.get('royCoinRNG').execute(Discord, client, message, args, profileModel, profileData, MessageEmbed);
-        }
+    let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
+    console.log(randomCoinChance);
+    if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
+        client.commands.get('royCoinRNG').execute(Discord, client, message, args, profileModel, profileData, MessageEmbed);
     }
+    
 
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
  
