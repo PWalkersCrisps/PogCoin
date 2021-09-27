@@ -2,7 +2,7 @@ const cooldowns = new Set();
 const mongoose = require("mongoose");
 
 module.exports = {
-    name: "ping",
+    name: "royCoinRNG",
     description: "pings the server to see the delay between the client and the server",
     async execute(Discord, client, message, args, profileModel, profileData, MessageEmbed){
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
