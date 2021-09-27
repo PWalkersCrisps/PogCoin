@@ -1,4 +1,5 @@
 const cooldowns = new Set();
+const mongoose = require("mongoose");
 
 module.exports = {
     name: "ping",
