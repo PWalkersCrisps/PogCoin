@@ -6,11 +6,9 @@ module.exports = {
     description: "When member talk without cooldown they have chance to gain coin",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
-        const authorid = message.author.id;
-
-        if (!cooldowns.has(authorid)) { //goes to check if the cooldowns map *DOESNT* habe the author's
+        if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
-                userID: authorid, //looks for the id of the author
+                userID: message.author.id, //looks for the id of the author
             }, {
                 $inc: {
                     coins: 1, //when the id of the author is found, it gives them one coin
