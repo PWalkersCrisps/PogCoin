@@ -6,9 +6,11 @@ module.exports = {
     description: "pings the server to see the delay between the client and the server",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
-        if (!cooldowns.has(message.author.cache.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
+        const authorid = message.author.id;
+
+        if (!cooldowns.has(authorid)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
-                userID: message.author.id, //looks for the id of the author
+                userID: authorid, //looks for the id of the author
             }, {
                 $inc: {
                     coins: 1, //when the id of the author is found, it gives them one coin
