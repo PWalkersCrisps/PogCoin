@@ -1,11 +1,10 @@
-const profileModel = require("../models/profileSchema");
-const { MessageEmbed } = require('discord.js');
+
 const mongoose = require('mongoose');
 
 module.exports = {
     name: "give",
     description: "give a player some coins",
-    async execute(client, message, args, Discord, profileData) {
+    async execute(Discord, client, message, MessageEmbed, profileModel, profileData) {
 
         if (!args.length){
             message.channel.send("You need to mention a member to give them coins");

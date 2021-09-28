@@ -1,12 +1,10 @@
 const cooldowns = new Set();
 const mongoose = require("mongoose");
-const profileModel = require("../models/profileSchema.js");
-
 
 module.exports = {
     name: "royCoinRNG",
     description: "pings the server to see the delay between the client and the server",
-    async execute(Discord, client, message, profileData, MessageEmbed){
+    async execute(Discord, client, message, MessageEmbed, profileModel, profileData){
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //looks for the id of the author

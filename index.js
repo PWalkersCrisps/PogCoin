@@ -90,7 +90,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
     console.log(randomCoinChance);
     if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
-        client.commands.get('royCoinRNG').execute(Discord, client, message, profileModel, profileData, MessageEmbed);
+        client.commands.get('royCoinRNG').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
     }
     
 
@@ -101,19 +101,19 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     switch(command){ //This switch case will cycle through all of the cases here to get to something that is true
         case "ping":
-            client.commands.get('ping').execute(client, message, args, Discord);
+            client.commands.get('ping').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
             break;
         //case "leaderboard" || "lb":
-        //    client.commands.get('leaderboard').execute(client, message, args, Discord, profileData, MessageEmbed);
+        //    client.commands.get('leaderboard').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
         //    break;
         case "balance":
-            client.commands.get('balance').execute(client, message, args, Discord, profileData, MessageEmbed);
+            client.commands.get('balance').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
             break;
         case "donate":
-            client.commands.get('donate').execute(client, message, args, Discord, profileData, MessageEmbed);
+            client.commands.get('donate').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
             break;
         case "give":
-            client.commands.get('give').execute(client, message, args, Discord, profileData, MessageEmbed);
+            client.commands.get('give').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
         break;
         
     }
