@@ -43,7 +43,7 @@ module.exports = {
             setTimeout(() => {
                 // Removes the user from the set after a while
                 cooldowns.delete(message.author.id);
-            }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds        
+            }, 1 * 60000); //First number is minutes the second one times it because it is in milliseconds        
         }
     }
 }
