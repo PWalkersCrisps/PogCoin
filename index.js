@@ -101,19 +101,19 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     switch(command){ //This switch case will cycle through all of the cases here to get to something that is true
         case "ping":
-            client.commands.get('ping').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
+            client.commands.get('ping').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         //case "leaderboard" || "lb":
-        //    client.commands.get('leaderboard').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
+        //    client.commands.get('leaderboard').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
         //    break;
         case "balance":
-            client.commands.get('balance').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
+            client.commands.get('balance').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         case "donate":
-            client.commands.get('donate').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
+            client.commands.get('donate').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         case "give":
-            client.commands.get('give').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
+            client.commands.get('give').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
         break;
         
     }

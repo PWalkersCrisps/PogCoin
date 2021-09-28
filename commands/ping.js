@@ -1,7 +1,7 @@
 module.exports = {
     name: "ping",
     description: "pings the server to see the delay between the client and the server",
-    async execute(Discord, client, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
         const royCoinPing = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#ffff00')

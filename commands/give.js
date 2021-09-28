@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 module.exports = {
     name: "give",
     description: "give a player some coins",
-    async execute(Discord, client, message, MessageEmbed, profileModel, profileData) {
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData) {
 
         if (!args.length){
             message.channel.send("You need to mention a member to give them coins");

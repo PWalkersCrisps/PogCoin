@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 module.exports = {
     name: "donate",
     description: "pings the server to see the delay between the client and the server",
-    async execute(Discord, client, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
         if (!message.mentions.users.first()) {
             message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute

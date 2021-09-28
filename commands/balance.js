@@ -3,7 +3,7 @@ const cooldowns = new Set();
 module.exports = {
     name: "balance",
     description: "check your balance",
-    async execute(Discord, client, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         if (cooldowns.has(message.author.id)) { //checks if the author currently has a cooldown on this command
             message.channel.send(`Dont think Roy is gonna be too happy with you spamming\n\nPlease can you wait like 1 minute?`); 
         } else { //if the author doesnt have a cooldown then this code executes

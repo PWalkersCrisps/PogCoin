@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 module.exports = {
     name: "leaderboard",
     description: "Displays the top 10 users",
-    async execute(Discord, client, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
 
         const id = profileData.userID;
