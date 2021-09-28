@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 module.exports = {
     name: "royCoinRNG",
-    description: "pings the server to see the delay between the client and the server",
+    description: "When member talk without cooldown they have chance to gain coin",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
         const authorid = message.author.id;
