@@ -1,11 +1,13 @@
+const Discord = require("discord.js");
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "ping",
     description: "pings the server to see the delay between the client and the server",
-    async execute(Discord, client, args, profileData){
+    async execute(args, profileData){
 
-        client.on("messageCreate", message =>{
+        client.on("messageCreate", async (message) =>{ 
             const royCoinPing = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#ffff00')
             .setTimestamp()
