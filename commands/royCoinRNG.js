@@ -8,7 +8,7 @@ module.exports = {
     description: "When member talk without cooldown they have chance to gain coin",
     async execute(args, MessageEmbed, profileModel, profileData){
 
-        client.on("messageCreate", message => {
+        client.on("messageCreate", async(message) => {
             if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
                 const response = await profileModel.findOneAndUpdate({
                     userID: message.author.id, //looks for the id of the author
@@ -47,6 +47,6 @@ module.exports = {
                     cooldowns.delete(message.author.id);
                 }, 1 * 60000); //First number is minutes the second one times it because it is in milliseconds        
             }
-        }
+        })
     }
 }
