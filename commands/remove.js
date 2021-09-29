@@ -13,7 +13,7 @@ module.exports = {
         const amount = args[1];
         if (!message.mentions.users.first()) return message.channel.send("That user does not exist");
 
-        if (!(amount % 1 != 0 || amount <= 0)) return message.channel.send("Ayo if you want to actually take money make it an actual number");
+        if (amount % 1 != 0 || amount <= 0) return message.channel.send("Ayo if you want to actually take money make it an actual number");
 
         try {
         const targetData = await profileModel.findOne({ userID: message.mentions.users.first().id });
