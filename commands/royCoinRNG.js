@@ -1,10 +1,12 @@
+const Discord = require("discord.js");
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
 const cooldowns = new Set();
 const mongoose = require("mongoose");
 
 module.exports = {
     name: "royCoinRNG",
     description: "When member talk without cooldown they have chance to gain coin",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(args, message, MessageEmbed, profileModel, profileData){
 
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
