@@ -208,6 +208,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         }
     }
     
+    
 
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
  
