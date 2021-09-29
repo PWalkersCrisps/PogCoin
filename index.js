@@ -69,7 +69,6 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     if(message.author.bot) return; //If the user is classified as a bot, everything below will not execute
 
-    authorid = message.author.id;
 
     ///-----Mongoose-----///
 
@@ -93,7 +92,44 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
     console.log(randomCoinChance);
     if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
-        client.commands.get('royCoinRNG').execute(Discord, client, message, MessageEmbed, profileModel, profileData, authorid);
+        if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
+            const response = await profileModel.findOneAndUpdate({
+                userID: message.author.id, //looks for the id of the author
+            }, {
+                $inc: {
+                    coins: 1, //when the id of the author is found, it gives them one coin
+                }
+            });
+            
+            const royCoinEmbedReward = new MessageEmbed() //Starts the proccess for creating an embed
+            .setColor('#ffff00')
+            .setTimestamp()
+            .setFooter('Reddit Gold Replacement?');    
+            
+            if (message.member.roles.cache.some(role => role.name === 'he')){ //checks if the auther has the he/him role
+                royCoinEmbedReward.addFields(
+                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good boy`},
+                )        
+            }
+            else if (message.member.roles.cache.some(role => role.name === 'her')){ //checks if the auther has the she/her role
+                royCoinEmbedReward.addFields(
+                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good girl`},
+                )        
+            }
+            else{ //If the user has the they/them or dont have a gender role, it will always default to this
+                royCoinEmbedReward.addFields(
+                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good child`},
+                )            
+            }
+
+            message.author.send({ embeds: [royCoinEmbedReward] }); //sends the embed that was just created
+            
+            cooldowns.add(message.author.id); //Adds a cooldown to the id of the author
+            setTimeout(() => {
+                // Removes the user from the set after a while
+                cooldowns.delete(message.author.id);
+            }, 1 * 60000); //First number is minutes the second one times it because it is in milliseconds        
+        }
     }
     
 
