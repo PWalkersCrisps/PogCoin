@@ -69,6 +69,8 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     if(message.author.bot) return; //If the user is classified as a bot, everything below will not execute
 
+    authorid = message.author.id;
+
     ///-----Mongoose-----///
 
     let profileData;
@@ -91,7 +93,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     let randomCoinChance = Math.floor(Math.random() * 5)+1 //makes up a random number when a message is created
     console.log(randomCoinChance);
     if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
-        client.commands.get('royCoinRNG').execute(Discord, client, message, MessageEmbed, profileModel, profileData);
+        client.commands.get('royCoinRNG').execute(Discord, client, message, MessageEmbed, profileModel, profileData, authorid);
     }
     
 
