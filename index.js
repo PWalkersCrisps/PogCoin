@@ -77,8 +77,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     if(reaction.emoji.id === '891377698922958879') return console.log("Donate");
 
-
-
+    client.commands.get('donate').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
 
 });
 
@@ -88,11 +87,7 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(()=>{
-    const channel = client.channels.cache.find(channel => channel.name === "heroku-log")
-
     console.log(`Connected to the MongoDB database`)
-
-    channel.send("Connected to the MongoDB database")
 }).catch((err)=>{
     console.log(err);
 });
