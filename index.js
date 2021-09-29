@@ -77,7 +77,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     if(!reaction.emoji.id === '891377698922958879') return;
 
-    console.log(user);
+    console.log(user.id);
+    console.log(reaction.message.author.id)
 
     return;
 
