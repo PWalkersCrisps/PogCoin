@@ -154,6 +154,10 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         case "give":
             client.commands.get('give').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
         break;
+        case "remove":
+            client.commands.get('remove').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
+
         
     }
 })
