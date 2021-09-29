@@ -204,7 +204,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             setTimeout(() => {
                 // Removes the user from the set after a while
                 cooldowns.delete(message.author.id);
-            }, 1 * 60000); //First number is minutes the second one times it because it is in milliseconds        
+            }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds        
         }
     }
     
