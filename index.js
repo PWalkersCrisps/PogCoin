@@ -1,11 +1,10 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] });
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_MESSAGE_REACTIONS"] });
 
 const fs = require("fs");
 const mongoose = require("mongoose");
 const profileModel = require("./models/profileSchema.js");
 const { MessageEmbed } = require('discord.js');
-
 
 require("dotenv").config();
 
@@ -20,17 +19,23 @@ client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync("./commands/").filter(file => file.endsWith(".js"));
 for(const file of commandFiles){
     const command = require(`./commands/${file}`)
-
     client.commands.set(command.name, command);
 }
 
+//runs when its on
 client.on("ready", () => { //when the client is 'ready' then it will execute everything below
+    const channel = client.channels.cache.find(channel => channel.name === "heroku-log")
+
     console.log(`${client.user.tag} is online, hopefully it works`);
+    channel.send(`${client.user.tag} is online, hopefully it works`)
+
     client.user.setActivity("the glorious sounds of capitalism", {
         type: "LISTENING",
     });
+
 });
 
+//runs when its invited to a new server
 client.on('guildCreate', joinedGuild => {
 
     const serverJoin = new MessageEmbed()
@@ -54,13 +59,40 @@ client.on('guildCreate', joinedGuild => {
     //.catch(console.log("No default channel!"))
 })
 
+//run whenever an emote is placed
+
+client.on('messageReactionAdd', async (reaction, user) => {
+
+    // When a reaction is received, check if the structure is partial
+	if (reaction.partial) {
+		// If the message this reaction belongs to was removed, the fetching might result in an API error which should be handled
+		try {
+			await reaction.fetch();
+		} catch (error) {
+			console.error('Something went wrong when fetching the message:', error);
+			// Return as `reaction.message.author` may be undefined/null
+			return;
+		}
+	}
+
+    if(reaction.emoji.id === '891377698922958879') return console.log("Donate");
+
+
+
+
+});
+
 ///-----Mongoose-----///
 
 mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(()=>{
+    const channel = client.channels.cache.find(channel => channel.name === "heroku-log")
+
     console.log(`Connected to the MongoDB database`)
+
+    channel.send("Connected to the MongoDB database")
 }).catch((err)=>{
     console.log(err);
 });
@@ -68,7 +100,6 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 client.on("messageCreate", async (message) =>{ //whenever a message is created then everything here will be active
 
     if(message.author.bot) return; //If the user is classified as a bot, everything below will not execute
-
 
     ///-----Mongoose-----///
 
