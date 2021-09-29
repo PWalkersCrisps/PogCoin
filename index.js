@@ -55,8 +55,8 @@ client.on('guildCreate', joinedGuild => {
 
     )
 
-    //joinedGuild.defaultChannel.send({ embeds: [serverJoin] })
-    //.catch(console.log("No default channel!"))
+    joinedGuild.defaultChannel.send({ embeds: [serverJoin] })
+    .catch(console.log("No default channel!"))
 })
 
 //run whenever an emote is placed
