@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const profileModel = require("./models/profileSchema.js");
 const { MessageEmbed } = require('discord.js');
 
+
 require("dotenv").config();
 
 const cooldowns = new Set();
