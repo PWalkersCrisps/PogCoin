@@ -77,10 +77,6 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
     if(!reaction.emoji.id === '891377698922958879') return;
 
-    console.log(user.id);
-    console.log(reaction.message.author.id)
-
-
     profileDataSender = await profileModel.findOne({userID: user.id}); //Gets the profile data of the sender
     if(profileDataSender.coins <= 0) return user.send(`<@${user.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some roycoins`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
 
