@@ -1,11 +1,12 @@
 const cooldowns = new Set();
 const mongoose = require("mongoose");
 const profileModel = require("../models/profileSchema.js");
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "royCoinRNG",
     description: "When member talk without cooldown they have chance to gain coin",
-    async execute(Discord, client, args, message, MessageEmbed, profileData, authorid){
+    async execute(Discord, client, args, message, profileData, authorid){
 
         if (!cooldowns.has(authorid)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
