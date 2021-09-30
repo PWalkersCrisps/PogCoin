@@ -7,12 +7,11 @@ module.exports = {
 
         if (items.length === 0) return message.channel.send(`<@${message.author.id}> Unfortunatly im not selling right now, ig you just need to be patient`);
 
-        const shoplist = items
-        .map((value, index) =>{
-            return `**${index+1}** ${value.item} -> ${value.price}coins\n`
-        })
+        const shoplist = items.map((value, index) =>{
+            return `**${index + 1}** ${value.item} -> ${value.price} coins!`
+        });
 
-        message.channel.send(`${shoplist}`);
+        message.channel.send(shoplist);
 
     }
 }
