@@ -5,7 +5,14 @@ module.exports = {
     description: "Helps the user with commands",
     async execute(Discord, client, args, message, profileModel, profileData){
 
-        const cmdChoice = args[0];
+
+        let cmdChoice;
+        if (!args.length){
+            cmdChoice = "help";
+        }
+        else{
+            let cmdChoice = args[0];
+        }
 
         const royCoinEmbedHelp = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#bc73f0')
