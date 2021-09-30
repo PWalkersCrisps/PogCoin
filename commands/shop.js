@@ -11,7 +11,7 @@ module.exports = {
             return `\n**${index + 1})** ${value.item} -> ${value.price} coins!`
         });
 
-        let shoplist = itemlist.replaceAll(",", "");
+        let shoplist = itemlist.replace(",", "");
 
         const shoplistEmbed = new MessageEmbed()
         .setColor("#7de48b")
