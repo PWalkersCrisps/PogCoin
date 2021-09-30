@@ -5,7 +5,7 @@ module.exports = {
     description: "Helps the user with commands",
     async execute(Discord, client, args, message, profileModel, profileData){
 
-        const cmdChoice = args[1];
+        const cmdChoice = args[0];
 
         const royCoinEmbedHelp = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#bc73f0')
@@ -40,14 +40,14 @@ module.exports = {
             case "give":
                 royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Only admins can use it"},
-                    {name: "Usage", value: "**>give [amount]"},
+                    {name: "Usage", value: "**>give [amount]**"},
                     {name: "Command", value: "Give [amount]\nWith this you can make fun of people who gained more money"}
                 );
                 break;
             case "remove":
                 royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Only admins can use it"},
-                    {name: "Usage", value: "**>remove [amount]"},
+                    {name: "Usage", value: "**>remove [amount]**"},
                     {name: "Command", value: "Removes [amount]\nWith this you can make fun of people who lost their money"}
                 );
                 break;
