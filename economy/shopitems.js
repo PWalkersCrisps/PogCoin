@@ -11,4 +11,17 @@ module.exports = [
         item: "Spook's ghostly book",
         price: "25"
     },
+    {
+        item: "Ginger's fat finger",
+        price: "50"
+    },
+    {
+        item: "Ric's universe reset",
+        price: "125"
+    },
+    {
+        item: "Blossom's cum pizza",
+        price: "10"
+    },
+
 ]
