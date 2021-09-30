@@ -51,7 +51,7 @@ module.exports = {
                 break;
         }
 
-        message.channel.send({embed: [royCoinEmbedHelp]})
+        message.channel.send({ embeds: [royCoinEmbedHelp] });
 
     }
 }
