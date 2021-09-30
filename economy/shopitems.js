@@ -1,27 +1,18 @@
 module.exports = [
     {
-        item: "PWC's magic sword",
-        price: "20"
+        item: "Role 1",
+        price: "20",
+        roleid: "893237084586917918",
     },
     {
-        item: "Roy's staff of forgiving",
-        price: "30"
+        item: "Role 2",
+        price: "60",
+        roleid: "893237109853401139",
     },
     {
-        item: "Spook's ghostly book",
-        price: "25"
-    },
-    {
-        item: "Ginger's fat finger",
-        price: "50"
-    },
-    {
-        item: "Ric's universe reset",
-        price: "125"
-    },
-    {
-        item: "Blossom's cum pizza",
-        price: "10"
+        item: "Role 3",
+        price: "120",
+        roleid: "893237304620118056",
     },
 
 ]
