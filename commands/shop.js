@@ -16,7 +16,7 @@ module.exports = {
         .setTimestamp()
         .setFooter("Steam Shop Replacement?")
         .addFields(
-            {name: "Roy Shop", value: shoplist}
+            {name: "Roy Shop", value: `${shoplist}`}
         );
 
         message.channel.send({ embeds: [shoplistEmbed] })
