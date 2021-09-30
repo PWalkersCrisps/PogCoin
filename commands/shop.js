@@ -8,7 +8,7 @@ module.exports = {
         if (items.length === 0) return message.channel.send(`<@${message.author.id}> Unfortunatly im not selling right now, ig you just need to be patient`);
 
         const shoplist = items.map((value, index) =>{
-            return `**${index + 1})** ${value.item} -> ${value.price} coins!\n`
+            return `\n**${index + 1})** ${value.item} -> ${value.price} coins!`
         });
 
         const shoplistEmbed = new MessageEmbed()
