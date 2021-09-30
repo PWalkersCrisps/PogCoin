@@ -1,4 +1,4 @@
-const items = require("./shopitems")
+const items = require("../economy/shopitems")
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
