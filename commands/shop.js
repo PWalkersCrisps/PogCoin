@@ -9,7 +9,7 @@ module.exports = {
 
         const shoplist = items
         .map((value, index) =>{
-            return `**${index+1}** ${value.item} -> ${value.price}coins`
+            return `**${index+1}** ${value.item} -> ${value.price}coins\n`
         })
 
         message.channel.send(`${shoplist}`);
