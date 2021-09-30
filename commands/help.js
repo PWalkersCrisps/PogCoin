@@ -1,11 +1,13 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
     name: "help",
     description: "Helps the user with commands",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, profileModel, profileData){
 
         const cmdChoice = args[1];
 
-        const royCoinEmbedHelp = MessageEmbed() //Starts the proccess for creating an embed
+        const royCoinEmbedHelp = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#bc73f0')
         .setTimestamp()
         .setFooter('Reddit Gold Replacement?');    
