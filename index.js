@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const cooldowns = new Set();
 
-const prefix = ">";
+const prefix = process.env.DISCORD_PREFIX;
 
 ///-----Command Handler-----///
 

@@ -5,14 +5,7 @@ module.exports = {
     description: "Helps the user with commands",
     async execute(Discord, client, args, message, profileModel, profileData){
 
-
-        let cmdChoice;
-        if (!args.length){
-            cmdChoice = "help";
-        }
-        else{
-            let cmdChoice = args[0];
-        }
+        const cmdChoice = args[0];
 
         const royCoinEmbedHelp = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#bc73f0')
@@ -24,38 +17,45 @@ module.exports = {
         switch(cmdChoice){
 
             case "ping":
-                royCoinEmbedHelp.addFields(
+                royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Anyone can use it"},
-                    {name: "Usage", value: "**>ping**"},
+                    {name: "Usage", value: `**${process.env.DISCORD_PREFIX}ping**`},
                     {name: "Command", value: "Pings the server this bot is hosted on so that you can see the delay between discord and it"}
                 );
                 break;
             case "balance":
-                royCoinEmbedHelp.addFields(
+                royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Anyone can use it"},
-                    {name: "Usage", value: "**>balance**"},
+                    {name: "Usage", value: `**${process.env.DISCORD_PREFIX}balance**`},
                     {name: "Command", value: "Checks how much roycoins you have"}
                 );
                 break;
             case "donate":
-                royCoinEmbedHelp.addFields(
+                royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Anyone can use it"},
-                    {name: "Usage", value: "**>donate**"},
+                    {name: "Usage", value: `**${process.env.DISCORD_PREFIX}donate**`},
                     {name: "Command", value: "Donates 1 roycoin to the mentioned user, alternativly you react to someones message with :roycoin:"}
                 );
                 break;
             case "give":
-                royCoinEmbedHelp.addFields(
+                royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Only admins can use it"},
-                    {name: "Usage", value: "**>give [amount]**"},
+                    {name: "Usage", value: `**${process.env.DISCORD_PREFIX}give [amount]**`},
                     {name: "Command", value: "Give [amount]\nWith this you can make fun of people who gained more money"}
                 );
                 break;
             case "remove":
-                royCoinEmbedHelp.addFields(
+                royCoinEmbedHelp.addfields(
                     {name: "Permissions", value: "Only admins can use it"},
-                    {name: "Usage", value: "**>remove [amount]**"},
+                    {name: "Usage", value: `**${process.env.DISCORD_PREFIX}remove [amount]**`},
                     {name: "Command", value: "Removes [amount]\nWith this you can make fun of people who lost their money"}
+                );
+                break;
+            case undefined:
+                royCoinEmbedHelp.addfields(
+                    {name: "Help", value: "This is the help command"},
+                    {name: "Current prefix", value: `${process.env.DISCORD_PREFIX}`},
+                    {name: "Commands", value: `Ping - Pings the Server\nBalance - Check your current roycoin balance\nDonate {user} - Give someone a roycoin\nGive {user} [Amount] - **Admin Command** - Give the user some coins \nRemove {user} [amount] - **Admin Command** - Remove coins from the user `}
                 );
                 break;
         }
