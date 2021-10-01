@@ -39,8 +39,8 @@ module.exports = {
         message.channel.send({ embeds: [royCoinDonate] })
 
         if((items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid) === "893530512822501457"){
-            const roygbivID = client.users.cache.get("233631025245323265")
-            roygbivID.send(`my gosh, <@${message.author.id}> really grinded to get the custom role!!! congratulate them!!`);
+            
+            client.users.cache.get("233631025245323265").send(`my gosh, <@${message.author.id}> really grinded to get the custom role!!! congratulate them!!`);
         }
 
 
