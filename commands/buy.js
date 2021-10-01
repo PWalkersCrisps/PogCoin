@@ -18,14 +18,14 @@ module.exports = {
 
         const roleGive = items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid;
 
-        message.member.roles.add(message.guild.roles.cache.find(r => r.id === roleGiveID));
+        message.member.roles.add(message.guild.roles.cache.find(r => r.id === roleGive));
 
         const royCoinDonate = new MessageEmbed()
         .setColor('#00ffff')
         .setTimestamp()
         .setFooter('Amazon Replacement?')
         .addFields(
-            {name: "royshop", value: `wowza, moneybags <@${message.author.id}> just got <@&${message.guild.roles.cache.find(r => r.id === roleGiveID)}>`}
+            {name: "royshop", value: `wowza, moneybags <@${message.author.id}> just got <@&${message.guild.roles.cache.find(r => r.id === roleGive)}>`}
         )
 
         message.channel.send({ embeds: [royCoinDonate] })
