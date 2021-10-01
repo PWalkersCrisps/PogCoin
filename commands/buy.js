@@ -15,7 +15,7 @@ module.exports = {
         const itemPrice = items.find((val) => (val.item.toLowerCase()) === itemToBuy).price;
         if(profileData.coins < itemPrice) return message.channel.send("Man... youre broke, get more more roycoins");
 
-        const buyRole = message.guild.roles.cache.find(r => r.id === items.find((val) => (val.item.toLowerCase()) === itemToBuy).price);
+        const buyRole = message.guild.roles.cache.find(r => r.id === items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid);
 
         console.log(buyRole)
 
