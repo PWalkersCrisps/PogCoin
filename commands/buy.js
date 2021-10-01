@@ -40,7 +40,7 @@ module.exports = {
 
         if((items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid) === "893530512822501457"){
             const roygbivUser = await client.users.fetch('233631025245323265').catch(console.error);
-            roygbivUser.cache.fetch("233631025245323265").send(`my gosh, <@${message.author.id}> really grinded to get the custom role!!! congratulate them!!`);
+            roygbivUser.send(`my gosh, <@${message.author.id}> really grinded to get the custom role!!! congratulate them!!`);
         }
 
 
