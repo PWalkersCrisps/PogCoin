@@ -17,7 +17,7 @@ module.exports = {
 
         console.log();
 
-        message.author.roles.add(message.guild.roles.cache.find(r => r.id === items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid))
+        message.author.roles.add(message.guild.roles.cache.find(r => r.id === 893237084586917918))
 
     }
 }
