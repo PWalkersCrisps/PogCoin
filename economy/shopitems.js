@@ -14,5 +14,10 @@ module.exports = [
         price: "120",
         roleid: "893237304620118056",
     },
+    {
+        item: "CustomRole",
+        price: "350",
+        roleid: "893530512822501457",
+    },
 
 ]
