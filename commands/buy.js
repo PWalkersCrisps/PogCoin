@@ -15,13 +15,6 @@ module.exports = {
         const itemPrice = items.find((val) => (val.item.toLowerCase()) === itemToBuy).price;
         if(profileData.coins < itemPrice) return message.channel.send("Man... youre broke, get more more roycoins");
 
-        const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
-            userID: message.author.id, //looks for the record of the message author's account
-        }, {
-            $inc: {
-                coins: -itemPrice, //decreases the amount of coins that the author has by the stated amount
-            }
-        });
 
         const roleGive = items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid;
 
