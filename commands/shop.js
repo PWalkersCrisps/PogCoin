@@ -12,6 +12,7 @@ module.exports = {
         .setTimestamp()
         .setFooter("Steam Shop Replacement?")
         .setTitle("Roy Shop")
+        .setDescription(`Use ${process.env.DISCORD_PREFIX}buy to buy a role`)
 
         const itemlist = items.map((value, index) =>{
             `**${index + 1})** ${value.item} -> ${value.price} coins!`
