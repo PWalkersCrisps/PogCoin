@@ -2,7 +2,7 @@ const items = require("../economy/shopitems");
 
 
 module.exports = {
-    name: "ping",
+    name: "buy",
     description: "pings the server to see the delay between the client and the server",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
