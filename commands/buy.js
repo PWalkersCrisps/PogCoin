@@ -1,6 +1,6 @@
 const items = require("../economy/shopitems");
 const { MessageEmbed } = require("discord.js");
-const profileModel = require("./models/profileSchema.js");
+const profileModel = require("../models/profileSchema.js");
 
 module.exports = {
     name: "buy",
