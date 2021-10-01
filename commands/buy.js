@@ -17,7 +17,7 @@ module.exports = {
 
         console.log();
 
-        message.author.roles.add(message.guild.roles.cache.find(r => r.id === 893237084586917918))
+        message.member.roles.add(message.guild.roles.cache.find(r => r.id === 893237084586917918))
 
     }
 }
