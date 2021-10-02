@@ -148,6 +148,7 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 client.on("messageCreate", async (message) =>{ //whenever a message is created then everything here will be active
 
     if(message.author.bot) return; //If the user is classified as a bot, everything below will not execute
+    if(message.author.id === "388838784331939840") return message.channel.send("Sorry ric, no roycoins for you");
 
     ///-----Mongoose-----///
 
@@ -246,10 +247,10 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('remove').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
-        case "trivia":
-            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
-            client.commands.get('trivia').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
-            break;
+        // case "trivia":
+        //     if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+        //     client.commands.get('trivia').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+        //     break;
 
         
     }
