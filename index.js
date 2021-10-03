@@ -42,7 +42,7 @@ client.on('guildCreate', joinedGuild => {
     .setColor("#ffff00")
     .setTitle("roycoin")
     .setDescription("roycoin has arrived into your uncapitalist society\n\nIt wont be uncapitalist, for any longer...")
-    .setImage("https://cdn.discordapp.com/attachments/891107523757740062/891814157995880498/coinsmall.png")
+    .setThumbnail("https://cdn.discordapp.com/attachments/891107523757740062/891814157995880498/coinsmall.png")
     .setTimestamp()
     .setFooter("Is this the new Reddit gold replacement? is it???")
     .addFields(
