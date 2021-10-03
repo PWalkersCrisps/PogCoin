@@ -55,7 +55,7 @@ module.exports = {
                 royCoinEmbedHelp.addFields(
                     {name: "Help", value: "This is the help command"},
                     {name: "Current prefix", value: `${process.env.DISCORD_PREFIX}`},
-                    {name: "Commands", value: `Ping - Pings the Server\nBalance - Check your current roycoin balance\nDonate {user} - Give someone a roycoin\nGive {user} [Amount] - **Admin Command** - Give the user some coins \nRemove {user} [amount] - **Admin Command** - Remove coins from the user `}
+                    {name: "Commands", value: `Ping - Pings the Server\nBalance - Check your current roycoin balance\nDonate {user} - Give someone a roycoin\nShop - Lists the current items in the shop\nBuy [item] - Buys the selected item, given that you have enough money\nGive {user} [Amount] - **Admin Command** - Give the user some coins \nRemove {user} [amount] - **Admin Command** - Remove coins from the user `}
                 );
                 break;
         }
