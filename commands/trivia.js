@@ -1,4 +1,4 @@
-const triviaList = require("../triviaQuestions");
+const triviaList = require("../arrays/triviaQuestions");
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
