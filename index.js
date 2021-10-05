@@ -55,7 +55,7 @@ client.on('guildCreate', joinedGuild => {
 
     )
 
-    joinedGuild.channels.cache.find(channel => channel.name === "generla").send({ embeds: [serverJoin] })
+    joinedGuild.channels.cache.find(channel => channel.id === "816008277619638332").send({ embeds: [serverJoin] });
 })
 
 //run whenever an emote is placed
