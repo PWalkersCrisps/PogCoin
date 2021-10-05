@@ -51,7 +51,7 @@ client.on('guildCreate', joinedGuild => {
         {name: "What can i do with these coins?", value: "You can spend them ig... i mean, i havent started building my shop in this town yet, you gotta give me some time to build, im not like macdonalds where i can just place a builder like its sims city or something like that. But at the moment ig give it to people that you think deserve it"},
         {name: "Ok now wha...", value: "SHUT UP, youre questions are stupid"},
         {name: "your*", value: "SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP, YOU KNOW WHAT IM GOING TO MAKE THE CHANCE OF GETTING THESE COINS EVEN HARDER"},
-        {name: "\n\nHop on roytown", value: "Hop on roytown"},
+        {name: "", value: "I woul very much appreciate it if you just didnt correct my mistakes, if you want to complain, go to PWalkersCrisps..."},
 
     )
 
@@ -239,11 +239,11 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             client.commands.get('buy').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         case "give":
-            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('give').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         case "remove":
-            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('remove').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         // case "trivia":

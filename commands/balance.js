@@ -13,7 +13,7 @@ module.exports = {
             const royCoinBalance = new MessageEmbed()
             .setColor('#ff00ff')
             .setTimestamp()
-            .setFooter('Reddit Gold Replacement?');
+            .setFooter('Bitcoin Replacement?');
 
             if(userPinged === undefined){
                 royCoinBalance.addFields(
