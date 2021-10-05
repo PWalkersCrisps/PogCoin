@@ -1,36 +1,36 @@
 module.exports = [
     {
-        item: "Role 1",
+        item: "Role1",
         price: "15",
         roleid: "893237084586917918",
     },
     {
-        item: "Role 2",
+        item: "Role2",
         price: "15",
         roleid: "893237084586917918",
     },
     {
-        item: "Role 3",
+        item: "Role3",
         price: "15",
         roleid: "893237084586917918",
     },
     {
-        item: "Role 4",
+        item: "Role4",
         price: "15",
         roleid: "893237084586917918",
     },
     {
-        item: "Role 5",
+        item: "Role5",
         price: "15",
         roleid: "893237084586917918",
     },
     {
-        item: "Role 6",
+        item: "Role6",
         price: "15",
         roleid: "893237084586917918",
     },
     {
-        item: "Role 7",
+        item: "Role7",
         price: "15",
         roleid: "893237084586917918",
     },
