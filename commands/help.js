@@ -10,7 +10,7 @@ module.exports = {
         const royCoinEmbedHelp = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#bc73f0')
         .setTimestamp()
-        .setFooter('Reddit Gold Replacement?');    
+        .setFooter('Wikipedia Replacement?');    
 
         console.log(cmdChoice)
 
