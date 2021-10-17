@@ -13,7 +13,7 @@ module.exports = {
         const res = query.sort({coins: 'desc'})
 
         let LeaderboardEmbed = new MessageEmbed()
-        .setTitle("Roy Coins Leaderboard")
+        .setTitle("pog Coins Leaderboard")
 
         console.log(res);
 
@@ -26,10 +26,10 @@ module.exports = {
             for(i = 0; i < res.length; i++){
                 let memberLB = message.guild.members.cache.get(res[i].userID) || "User Left";
                 if (memberLB === "User Left"){
-                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
+                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**pog Coins: ${res[i].coins}**`);
                 }
                 else{
-                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**pog Coins: ${res[i].coins}**`)
                 }
             }
         }
@@ -38,10 +38,10 @@ module.exports = {
             for(i = 0; i < 10; i++){
                 let memberLB = message.guild.members.cache.get(res[i].userID) || "User Left";
                 if (memberLB === "User Left"){
-                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**Roy Coins: ${res[i].coins}**`);
+                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB}`, `**pog Coins: ${res[i].coins}**`);
                 }
                 else{
-                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**Roy Coins: ${res[i].coins}**`)
+                    LeaderboardEmbed.addField(`${i + 1}. ${memberLB.user.name}`, `**pog Coins: ${res[i].coins}**`)
                 }
             }
         }
