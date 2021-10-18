@@ -42,7 +42,7 @@ client.on('guildCreate', joinedGuild => {
     .setColor("#ffff00")
     .setTitle("pogcoin")
     .setDescription("pogcoin has arrived into your uncapitalist society\n\nIt wont be uncapitalist, for any longer...")
-    .setThumbnail("https://cdn.discordapp.com/attachments/891107523757740062/891814157995880498/coinsmall.png")
+    .setThumbnail("https://cdn.discordapp.com/attachments/839247233518272602/899631633722929192/paintcoin.gif")
     .setTimestamp()
     .setFooter("Is this the new Reddit gold replacement? is it???")
     .addFields(
