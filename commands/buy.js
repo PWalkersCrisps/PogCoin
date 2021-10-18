@@ -40,13 +40,6 @@ module.exports = {
             {name: "pogshop", value: `wowza, moneybags <@${message.author.id}> just got ${message.guild.roles.cache.find(r => r.id === roleGive)}`}
         )
 
-        message.channel.send({ embeds: [pogCoinDonate] })
-
-        if((items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid) === "893530512822501457"){
-            const poggbivUser = await client.users.fetch('233631025245323265').catch(console.error);
-            poggbivUser.send(`my gosh, <@${message.author.id}> really grinded to get the custom role!!! congratulate them!!`);
-        }
-
 
     }
 }
