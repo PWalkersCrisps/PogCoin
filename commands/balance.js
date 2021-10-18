@@ -24,7 +24,7 @@ module.exports = {
                 const profileDataPinged = profileData = await profileModel.findOne({userID: userPinged.id}); //Attempts to look for a user in the DB with the user's id
 
                 pogCoinBalance.addFields(
-                    { name: 'pog Coin Bank', value: `<@${userPinged.id}> has ${profileDataPinged.coins}<:pogCoin:891377698922958879>`}
+                    { name: 'pog Coin Bank', value: `<@${userPinged.id}> has ${profileDataPinged.coins} <:pogcoin:899662337399750666>`}
                 )    
             }
 
