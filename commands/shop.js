@@ -11,12 +11,12 @@ module.exports = {
         .setColor("#7de48b")
         .setTimestamp()
         .setFooter("Steam Shop Replacement?")
-        .setTitle("Roy Shop")
+        .setTitle("pog Shop")
         .setDescription(`Use ${process.env.DISCORD_PREFIX}buy to buy a role`)
 
         const itemlist = items.map((value, index) =>{
             return shoplistEmbed.addFields(
-                {name: `**${index + 1})** ${value.item}`, value: `${value.price} roycoins!`}
+                {name: `**${index + 1})** ${value.item}`, value: `${value.price} pogcoins!`}
             )
         });
 

@@ -40,9 +40,9 @@ client.on('guildCreate', joinedGuild => {
 
     const serverJoin = new MessageEmbed()
     .setColor("#ffff00")
-    .setTitle("roycoin")
-    .setDescription("roycoin has arrived into your uncapitalist society\n\nIt wont be uncapitalist, for any longer...")
-    .setThumbnail("https://cdn.discordapp.com/attachments/891107523757740062/891814157995880498/coinsmall.png")
+    .setTitle("pogcoin")
+    .setDescription("pogcoin has arrived into your uncapitalist society\n\nIt wont be uncapitalist, for any longer...")
+    .setThumbnail("https://cdn.discordapp.com/attachments/839247233518272602/899631633722929192/paintcoin.gif")
     .setTimestamp()
     .setFooter("Is this the new Reddit gold replacement? is it???")
     .addFields(
@@ -79,7 +79,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(!reaction.emoji.id === '891377698922958879') return;
 
     profileDataSender = await profileModel.findOne({userID: user.id}); //Gets the profile data of the sender
-    if(profileDataSender.coins <= 0) return user.send(`<@${user.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some roycoins`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
+    if(profileDataSender.coins <= 0) return user.send(`<@${user.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
 
     const senderResponse = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
         userID: user.id, //looks for the record of the message author's account
@@ -107,28 +107,28 @@ client.on('messageReactionAdd', async (reaction, user) => {
         }
     });
 
-    const royCoinDonate = new MessageEmbed()
+    const pogCoinDonate = new MessageEmbed()
     .setColor('#00ffff')
     .setTimestamp()
     .setFooter('Reddit Gold Replacement?');
 
-    royCoinDonate.addFields(
-        { name: 'Roy Coin Charity', value: `<@${user.id}> just gave you a Roy Coin?!?`}
+    pogCoinDonate.addFields(
+        { name: 'Pog Coin Charity', value: `<@${user.id}> just gave you a Pog Coin?!?`}
     )
 
 
     // if (amount === 1){
-    //     royCoinDonate.addFields(
-    //         { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a Roy Coin?!?`}
+    //     pogCoinDonate.addFields(
+    //         { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a pog Coin?!?`}
     //     )
     // }
     // else if (amount > 1){
-    //     royCoinDonate.addFields(
-    //         { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} Roy Coins?!?`}
+    //     pogCoinDonate.addFields(
+    //         { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} pog Coins?!?`}
     //     )    
     // }
 
-    reaction.message.author.send({ embeds: [royCoinDonate] });
+    reaction.message.author.send({ embeds: [pogCoinDonate] });
 
 
 });
@@ -147,7 +147,7 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 client.on("messageCreate", async (message) =>{ //whenever a message is created then everything here will be active
 
     if(message.author.bot) return; //If the user is classified as a bot, everything below will not execute
-    if(message.author.id === "388838784331939840") return message.channel.send("Sorry ric, no roycoins for you");
+    if(message.author.id === "388838784331939840") return message.channel.send("Sorry ric, no pogcoins for you");
 
     ///-----Mongoose-----///
 
@@ -169,7 +169,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     }
 
     let randomCoinChance = Math.floor(Math.random() * 100)+1 //makes up a random number when a message is created
-    if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a roy coin
+    if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a pog coin
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //looks for the id of the author
@@ -179,28 +179,28 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
                 }
             });
             
-            const royCoinEmbedReward = new MessageEmbed() //Starts the proccess for creating an embed
+            const pogCoinEmbedReward = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#ffff00')
             .setTimestamp()
             .setFooter('Reddit Gold Replacement?');    
             
             if (message.member.roles.cache.some(role => role.name === 'he')){ //checks if the auther has the he/him role
-                royCoinEmbedReward.addFields(
-                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good boy`},
+                pogCoinEmbedReward.addFields(
+                    { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good boy`},
                 )        
             }
             else if (message.member.roles.cache.some(role => role.name === 'her')){ //checks if the auther has the she/her role
-                royCoinEmbedReward.addFields(
-                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good girl`},
+                pogCoinEmbedReward.addFields(
+                    { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good girl`},
                 )        
             }
             else{ //If the user has the they/them or dont have a gender role, it will always default to this
-                royCoinEmbedReward.addFields(
-                    { name: 'Roy Coin', value: `Youve been rewarded with a Roy Coin for being a good child`},
+                pogCoinEmbedReward.addFields(
+                    { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good child`},
                 )            
             }
 
-            message.author.send({ embeds: [royCoinEmbedReward] }); //sends the embed that was just created
+            message.author.send({ embeds: [pogCoinEmbedReward] }); //sends the embed that was just created
             
             cooldowns.add(message.author.id); //Adds a cooldown to the id of the author
             setTimeout(() => {

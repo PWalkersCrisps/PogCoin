@@ -18,7 +18,7 @@ module.exports = {
 
         const itemPrice = items.find((val) => (val.item.toLowerCase()) === itemToBuy).price;
 
-        if(profileData.coins < itemPrice) return message.channel.send("Man... youre broke, get more more roycoins");
+        if(profileData.coins < itemPrice) return message.channel.send("Man... youre broke, get more more pogcoins");
 
         const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
             userID: message.author.id, //looks for the record of the message author's account
@@ -32,20 +32,13 @@ module.exports = {
 
         message.member.roles.add(message.guild.roles.cache.find(r => r.id === roleGive));
 
-        const royCoinDonate = new MessageEmbed()
+        const pogCoinDonate = new MessageEmbed()
         .setColor('#00ffff')
         .setTimestamp()
         .setFooter('Amazon Replacement?')
         .addFields(
-            {name: "royshop", value: `wowza, moneybags <@${message.author.id}> just got ${message.guild.roles.cache.find(r => r.id === roleGive)}`}
+            {name: "pogshop", value: `wowza, moneybags <@${message.author.id}> just got ${message.guild.roles.cache.find(r => r.id === roleGive)}`}
         )
-
-        message.channel.send({ embeds: [royCoinDonate] })
-
-        if((items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid) === "893530512822501457"){
-            const roygbivUser = await client.users.fetch('233631025245323265').catch(console.error);
-            roygbivUser.send(`my gosh, <@${message.author.id}> really grinded to get the custom role!!! congratulate them!!`);
-        }
 
 
     }

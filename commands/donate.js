@@ -15,7 +15,7 @@ module.exports = {
         //if (args.length) amount = args[1];
 
         profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender
-        if(profileDataSender.coins <= 0) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some roycoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
+        if(profileDataSender.coins <= 0) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
 
         const senderResponse = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
             userID: message.author.id, //looks for the record of the message author's account
@@ -43,28 +43,28 @@ module.exports = {
             }
         });
 
-        const royCoinDonate = new MessageEmbed()
+        const pogCoinDonate = new MessageEmbed()
         .setColor('#00ffff')
         .setTimestamp()
         .setFooter('Reddit Gold Replacement?');
 
-        royCoinDonate.addFields(
-            { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a Roy Coin?!?`}
+        pogCoinDonate.addFields(
+            { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a pog Coin?!?`}
         )
 
 
         // if (amount === 1){
-        //     royCoinDonate.addFields(
-        //         { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a Roy Coin?!?`}
+        //     pogCoinDonate.addFields(
+        //         { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a pog Coin?!?`}
         //     )
         // }
         // else if (amount > 1){
-        //     royCoinDonate.addFields(
-        //         { name: 'Roy Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} Roy Coins?!?`}
+        //     pogCoinDonate.addFields(
+        //         { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} pog Coins?!?`}
         //     )    
         // }
 
-        message.channel.send({ embeds: [royCoinDonate] });
+        message.channel.send({ embeds: [pogCoinDonate] });
 
     }
 }
