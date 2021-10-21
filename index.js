@@ -76,7 +76,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 		}
 	}
 
-    if(!reaction.emoji.id === '891377698922958879') return;
+    if(!(reaction.emoji.id === '900766174189604914')) return;
 
     profileDataSender = await profileModel.findOne({userID: reaction.id}); //Gets the profile data of the sender
     if(profileDataSender.coins <= 0) return reaction.send(`<@${reaction.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
