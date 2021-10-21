@@ -251,6 +251,19 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('remove').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
+        case "reset":
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            client.commands.get('reset').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
+        case "restart":
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            client.commands.get('restart').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
+        case "stop":
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            client.commands.get('stop').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
+        
         // case "trivia":
         //     if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
         //     client.commands.get('trivia').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
