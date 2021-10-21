@@ -59,7 +59,7 @@ client.on('guildCreate', joinedGuild => {
 })
 
 //run whenever an emote is placed
-
+/*
 client.on('messageReactionAdd', async (reaction, user) => {
 
     if(reaction.message.author.bot) return user.send("YOU IDIOT THAT WAS A BOT???")
@@ -132,6 +132,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
 
 });
+
+*/
 
 ///-----Mongoose-----///
 
