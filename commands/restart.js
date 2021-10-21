@@ -12,8 +12,8 @@ module.exports = {
         );
 
         let m = await message.channel.send({ embeds: [restartEmbed] });
-        await m.react("reaction_1");
-        await m.react("reaction_2");
+        await m.react("✅");
+        await m.react("❌");
 
         const filter = (reaction, user) => {
             return ['✅', '❌'].includes(reaction.emoji.name) && user.id === message.user.id;
