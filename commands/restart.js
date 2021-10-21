@@ -11,10 +11,9 @@ module.exports = {
             {name: "Are you sure you want to restart", value: "React with ✅ to continue restarting \nReact with ❌ to stop restarting\n\n**WARNING: THIS WILL RESTART THE CURRENT LIST OF COOLDOWNS**"}
         );
 
-        message.channel.send({ embeds: [restartEmbed] }) 
-        .then(msg=> { msg.react("✅") })
-        .then(msg=> { msg.react("❌") })
-        .catch();
+        let m = await message.channel.send({ embeds: [restartEmbed] });
+        await m.react("reaction_1");
+        await m.react("reaction_2");
 
         const filter = (reaction, user) => {
             return ['✅', '❌'].includes(reaction.emoji.name) && user.id === message.user.id;
