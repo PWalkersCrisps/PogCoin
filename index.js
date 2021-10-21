@@ -159,7 +159,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         {
             let newUser = await profileModel.create({
                 userID: message.author.id,
-                coins: 0,
+                coins: 1,
             });
             //const savedUser = await newUser.save();
         }
@@ -169,7 +169,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     }
 
     let randomCoinChance = Math.floor(Math.random() * 1000)+1 //makes up a random number when a message is created
-    if (randomCoinChance === 1){ //if the random number is equal to 7 then it will start the proccess of giving a pog coin
+    if (randomCoinChance === 1){ //if the random number is equal to 1 then it will start the proccess of giving a pog coin
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //looks for the id of the author
@@ -241,13 +241,12 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         case "balls":
             client.commands.get('balls').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
-
         case "give":
-            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('give').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         case "remove":
-            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
+            if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('remove').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
         // case "trivia":
