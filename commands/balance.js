@@ -22,6 +22,15 @@ module.exports = {
             }
             else{
                 const profileDataPinged = profileData = await profileModel.findOne({userID: userPinged.id}); //Attempts to look for a user in the DB with the user's id
+                if(!profileDataPinged) //If there was no profile data of the mentioned user then it will create a new account on the database
+                {
+                    let newUser = await profileModel.create({
+                        userID: userPinged.id,
+                        coins: 1,
+                    });
+                    //const savedUser = await newUser.save();
+                }
+            
 
                 pogCoinBalance.addFields(
                     { name: 'pog Coin Bank', value: `<@${userPinged.id}> has ${profileDataPinged.coins} <:pogcoin:899662337399750666>`}
@@ -35,7 +44,7 @@ module.exports = {
             setTimeout(() => {
                // Removes the user from the set after a while
                 cooldowns.delete(message.author.id);
-            }, 30 * 1000);
+            }, 10  * 1000);
         }
     }
 }
