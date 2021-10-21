@@ -9,6 +9,8 @@ module.exports = {
         } else { //if the author doesnt have a cooldown then this code executes
 
             const userPinged = message.mentions.users.first();
+            if(message.mentions.users.first().bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+
 
             const pogCoinBalance = new MessageEmbed()
             .setColor('#ff00ff')
