@@ -5,7 +5,7 @@ module.exports = {
     description: "pings the server to see the delay between the client and the server",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
-        if(message.mentions.users.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+        if(message.mentions.users.first().bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
 
         if (!message.mentions.users.first()) {
             message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
