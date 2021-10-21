@@ -172,8 +172,6 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
     let randomCoinChance = Math.floor(Math.random() * 1000)+1 //makes up a random number when a message is created
     if (randomCoinChance === 1){ //if the random number is equal to 1 then it will start the proccess of giving a pog coin
 
-        if(message.author.id === "388838784331939840") return message.channel.send("Sorry ric, no pogcoins for you");
-
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //looks for the id of the author
@@ -217,8 +215,6 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
 
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
  
-    if(message.author.id === "388838784331939840") return message.channel.send("Sorry ric, no pogcoins for you");
-
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
 
