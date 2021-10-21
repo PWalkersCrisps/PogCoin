@@ -20,13 +20,18 @@ module.exports = {
             return ['✅', '❌'].includes(reaction.emoji.name) && user.id === message.user.id;
         };
 
-        if (reaction.emoji.name === '✅') {
-            message.channel.send('Resetting...')
-            .then(message => client.destroy())
-            .then(() => client.login(process.env.DISCORD_TOKEN));
-        } 
-        else if (reaction.emoji.name === '❌') {
-            message.channel.send("Whatever suits you...")
-        }
+        message.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
+        .then(collected => {
+            const reaction = collected.first();
+
+            if (reaction.emoji.name === '✅') {
+                message.channel.send('Resetting...')
+                .then(message => client.destroy())
+                .then(() => client.login(process.env.DISCORD_TOKEN));
+            } 
+            else if (reaction.emoji.name === '❌') {
+                message.channel.send("Whatever suits you...")
+            }
+        })
     }
 }
