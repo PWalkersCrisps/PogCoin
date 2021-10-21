@@ -15,6 +15,16 @@ module.exports = {
             }
         });
 
+        const resetPoints = new MessageEmbed() //Starts the proccess for creating an embed
+        .setColor('#ffff00')
+        .setTimestamp()
+        .setFooter('Haha get deleted')
+        .addFields(
+            {name: "Make fun of this person", value: `<@${message.mentions.users.first().id}> Just lost ALL of their coins and have been reset, make fun of them, like REALLY make fun of them`} //Its creates a time stamp for the message then compares it to when the message is actually sent to get a mostly accurate representation of the Client/Server delay
+        );
+
+        message.channel.send({ embeds: [resetPoints] }) 
+
 
     }
 }
