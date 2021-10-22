@@ -35,7 +35,7 @@ module.exports = {
         const userProfile = new MessageEmbed()
         .setTitle(message.author.username)
         .addFields(
-            {name: `Pogcoin Stats`, value: `Total Coins: ${profileData.totalCoinsEarnt}\nTotal Donated: ${profileData.coinsDonated}\nTotal Recieved: ${profileData.coinsRecived}`},
+            {name: `Pogcoin Stats`, value: `Total Coins: ${profileData.totalCoinsEarnt}\nTotal Donated: ${profileData.coinsDonated}\nTotal Recieved: ${profileData.coinsReceived}`},
             {name: `Gamble Stats`, value: `Net Gambled: ${profileData.netGamble}`},
             {name: `Rob Stats`, value: `Successful Robberies: ${profileData.robSuccess}\nFailed Robberies: ${profileData.robFails}\nTimes Robbed: ${profileData.timesRobbed}`},
         )
