@@ -22,6 +22,16 @@ module.exports = {
             let newUser = await profileModel.create({
                 userID: message.mentions.users.first().id,
                 coins: 1,
+                dailyTimestamp: 0,
+                robTimestamp: 0,
+                totalCoinsEarnt: 0,
+                coinsDonated: 0,
+                coinsReceived: 0,
+                netGamble: 0,
+                robSuccess: 0,
+                robFails: 0,
+                timesRobbed: 0,
+
             });
             //const savedUser = await newUser.save();
         }

@@ -55,19 +55,18 @@ module.exports = {
                 pogCoinEmbedHelp.addFields(
                     {name: "Help", value: "This is the help command"},
                     {name: "Current prefix", value: `${process.env.DISCORD_PREFIX}`},
-                    {name: "Commands", value: `Ping - Pings the Server\n
-                    Profile {user} - Check your profile or someone else's\n
-                    Balance {user} - Check your current pogcoin balance\n
-                    Donate {user} [amount] - Give someone a pogcoin\n
-                    Shop - Lists the current items in the shop\n
-                    Buy [item] - Buys the selected item, given that you have enough money\n
-                    Gamble [amount] - Gamble for double or nothing\n
-                    About - The about for this bot\n
-                    \n
-                    Give {user} [Amount] - **Admin Command** - Give the user some coins\n
-                    Remove {user} [amount] - **Admin Command** - Remove coins from the user\n
-                    Reset {user} - **Admin Command** - Makes the mentioned user have the default amount of coins and stats\n
-                    `}
+                    {name: "Commands", value: `Ping - Pings the Server
+                    Profile {user} - Check your profile or someone else's
+                    Balance {user} - Check your current pogcoin balance
+                    Donate {user} [amount] - Give someone a pogcoin
+                    Shop - Lists the current items in the shop
+                    Buy [item] - Buys the selected item, given that you have enough money
+                    Gamble [amount] - Gamble for double or nothing
+                    About - The about for this bot
+                    
+                    Give {user} [Amount] - **Admin Command** - Give the user some coins
+                    Remove {user} [amount] - **Admin Command** - Remove coins from the user
+                    Reset {user} - **Admin Command** - Makes the mentioned user have the default amount of coins and stats`}
                 );
                 break;
         }

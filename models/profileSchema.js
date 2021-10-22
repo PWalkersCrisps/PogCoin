@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const profileSchema = new mongoose.Schema({
     userID: {type: mongoose.SchemaTypes.String, require: true, unique: true},
     coins: {type: mongoose.SchemaTypes.Number, default: 1},
+    dailyTimestamp: {type: mongoose.SchemaTypes.Number},
     robTimestamp: {type: mongoose.SchemaTypes.Number},
     totalCoinsEarnt: {type: mongoose.SchemaTypes.Number},
     coinsDonated: {type: mongoose.SchemaTypes.Number},
