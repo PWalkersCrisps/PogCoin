@@ -3,13 +3,14 @@ const cooldowns = new Set();
 module.exports = {
     name: "balance",
     description: "check your balance",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel){
         if (cooldowns.has(message.author.id)) { //checks if the author currently has a cooldown on this command
-            message.channel.send(`Dont think pog is gonna be too happy with you spamming\n\nPlease can you wait like 30 or so seconds?`); 
+            message.channel.send(`Dont think pog is gonna be too happy with you spamming\n\nPlease can you wait like 10 or so seconds?`); 
         } else { //if the author doesnt have a cooldown then this code executes
 
             const userPinged = message.mentions.users.first();
 
+            profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
 
             const pogCoinBalance = new MessageEmbed()
             .setColor('#ff00ff')
