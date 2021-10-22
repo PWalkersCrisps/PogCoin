@@ -24,7 +24,7 @@ module.exports = {
                 $inc: {
                     coins: amount, //decreases the amount of coins that the author has by the stated amount
                     netGamble: amount,
-                    totalCoins: amount,
+                    totalCoinsEarnt: amount,
                 }
             });
 

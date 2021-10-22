@@ -7,10 +7,8 @@ module.exports = {
 
         if(message.mentions.users.first().bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
 
-        if (!message.mentions.users.first()) {
-            message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
-            return;
-        }
+        if (!message.mentions.users.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
+        if (message.author.id === message.mentions.users.first().id) return message.channel.send("You cant donate to yourself...")
         //let amount = 1;
         //if (args.length) amount = args[1];
 
@@ -52,7 +50,7 @@ module.exports = {
             $inc: {
                 coins: 1, //increases the amount of coins that the mentioned has by 1
                 coinsReceived: 1,
-                totalCoins: 1,
+                totalCoinsEarnt: 1,
             }
         });
 
