@@ -152,7 +152,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
-    let randomCoinChance = Math.floor(Math.random() * 1000)+1 //makes up a random number when a message is created
+    let randomCoinChance = Math.floor(Math.random() * 600)+1 //makes up a random number when a message is created
     if (randomCoinChance === 1){ //if the random number is equal to 1 then it will start the proccess of giving a pog coin
 
         if (!cooldowns.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
@@ -161,6 +161,7 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             }, {
                 $inc: {
                     coins: 1, //when the id of the author is found, it gives them one coin
+                    totalCoinsEarnt: 1
                 }
             });
             

@@ -16,7 +16,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Pogcasino Replacement?')
 
-        let randomCoinChance = Math.floor(Math.random() * 100)+1
+        let randomCoinChance = Math.floor(Math.random() * 50)+1
         if (randomCoinChance === 1){
             const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
                 userID: message.author.id, //looks for the record of the message author's account
