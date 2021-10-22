@@ -21,7 +21,7 @@ module.exports = {
         {
             let newUser = await profileModel.create({
                 userID: message.mentions.users.first().id,
-                coins: 0,
+                coins: 1,
             });
             //const savedUser = await newUser.save();
         }
