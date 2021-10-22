@@ -55,7 +55,19 @@ module.exports = {
                 pogCoinEmbedHelp.addFields(
                     {name: "Help", value: "This is the help command"},
                     {name: "Current prefix", value: `${process.env.DISCORD_PREFIX}`},
-                    {name: "Commands", value: `Ping - Pings the Server\nBalance {user} - Check your current pogcoin balance\nDonate {user} - Give someone a pogcoin\nShop - Lists the current items in the shop\nBuy [item] - Buys the selected item, given that you have enough money\n\nGive {user} [Amount] - **Admin Command** - Give the user some coins \nRemove {user} [amount] - **Admin Command** - Remove coins from the user \nReset {user} - **Admin Command** - Makes the mentioned user have the default amount of coins and stats `}
+                    {name: "Commands", value: `Ping - Pings the Server\n
+                    Profile {user} - Check your profile or someone else's\n
+                    Balance {user} - Check your current pogcoin balance\n
+                    Donate {user} [amount] - Give someone a pogcoin\n
+                    Shop - Lists the current items in the shop\n
+                    Buy [item] - Buys the selected item, given that you have enough money\n
+                    Gamble [amount] - Gamble for double or nothing\n
+                    About - The about for this bot\n
+                    \n
+                    Give {user} [Amount] - **Admin Command** - Give the user some coins\n
+                    Remove {user} [amount] - **Admin Command** - Remove coins from the user\n
+                    Reset {user} - **Admin Command** - Makes the mentioned user have the default amount of coins and stats\n
+                    `}
                 );
                 break;
         }
