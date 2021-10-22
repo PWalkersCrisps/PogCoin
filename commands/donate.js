@@ -52,6 +52,7 @@ module.exports = {
             $inc: {
                 coins: 1, //increases the amount of coins that the mentioned has by 1
                 coinsReceived: 1,
+                totalCoins: 1,
             }
         });
 
