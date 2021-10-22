@@ -217,6 +217,15 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
         case "balls":
             client.commands.get('balls').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
             break;
+        case "profile":
+            client.commands.get('profile').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
+        case "about":
+            client.commands.get('about').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
+        case "gamble":
+            client.commands.get('gamble').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+            break;
         case "give":
             if(!(message.member.roles.cache.some(role => role.id === "827537023350472724") || message.member.roles.cache.some(role => role.id === "891780284100542544") || message.member.roles.cache.some(role => role.id === "886736195852337185"))) return message.channel.send("IMAGINE TRYING TO USE AN ADMIN COMMAND ecks dee")
             client.commands.get('give').execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
