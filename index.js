@@ -35,32 +35,8 @@ client.on("ready", () => { //when the client is 'ready' then it will execute eve
 
 });
 
-//runs when its invited to a new server
-client.on('guildCreate', joinedGuild => {
-
-    const serverJoin = new MessageEmbed()
-    .setColor("#ffff00")
-    .setTitle("pogcoin")
-    .setDescription("pogcoin has arrived into your uncapitalist society\n\nIt wont be uncapitalist, for any longer...")
-    .setThumbnail("https://cdn.discordapp.com/attachments/839247233518272602/899631633722929192/paintcoin.gif")
-    .setTimestamp()
-    .setFooter("Is this the new Reddit gold replacement? is it???")
-    .addFields(
-        {name: "Why im here?", value: "Ive just dectected a lack of capitalism here, so i decided to start one and force every single one of you into it"},
-        {name: "Cool, what do you do?", value: "You can get coins form me every hour, but heres a twist, you only have a chance of getting it"},
-        {name: "What can i do with these coins?", value: "You can spend them ig... i mean, i havent started building my shop in this town yet, you gotta give me some time to build, im not like macdonalds where i can just place a builder like its sims city or something like that. But at the moment ig give it to people that you think deserve it"},
-        {name: "Ok now wha...", value: "SHUT UP, youre questions are stupid"},
-        {name: "your*", value: "SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP, YOU KNOW WHAT IM GOING TO MAKE THE CHANCE OF GETTING THESE COINS EVEN HARDER"},
-        {name: "", value: "I woul very much appreciate it if you just didnt correct my mistakes, if you want to complain, go to PWalkersCrisps..."},
-
-    )
-
-    joinedGuild.channels.cache.find(channel => channel.id === "816008277619638332").send({ embeds: [serverJoin] });
-})
-
 //run whenever an emote is placed
-/*
-client.on('messageReactionAdd', async (reaction, user) => {
+/*client.on('messageReactionAdd', async (reaction, user) => {
 
     if(reaction.message.author.bot) return user.send("YOU IDIOT THAT WAS A BOT???")
 
@@ -131,9 +107,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     reaction.message.author.send({ embeds: [pogCoinDonate] });
 
 
-});
-
-*/
+});*/
 
 ///-----Mongoose-----///
 
@@ -186,12 +160,12 @@ client.on("messageCreate", async (message) =>{ //whenever a message is created t
             .setTimestamp()
             .setFooter('Reddit Gold Replacement?');    
             
-            if (message.member.roles.cache.some(role => role.name === 'he')){ //checks if the auther has the he/him role
+            if (message.member.roles.cache.some(role => role.name === 'he/him')){ //checks if the auther has the he/him role
                 pogCoinEmbedReward.addFields(
                     { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good boy`},
                 )        
             }
-            else if (message.member.roles.cache.some(role => role.name === 'her')){ //checks if the auther has the she/her role
+            else if (message.member.roles.cache.some(role => role.name === 'she/her')){ //checks if the auther has the she/her role
                 pogCoinEmbedReward.addFields(
                     { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good girl`},
                 )        
