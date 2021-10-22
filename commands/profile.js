@@ -10,7 +10,7 @@ module.exports = {
 
             const userProfile = new MessageEmbed()
             .setTitle(message.author.username)
-            .setThumbnail(message.member.avatarURL())
+            .setThumbnail(message.member.displayAvatarURL())
             .addFields(
                 {name: `Pogcoin Stats`, value: `Total Coins: ${profileData.totalCoinsEarnt}\nTotal Donated: ${profileData.coinsDonated}\nTotal Recieved: ${profileData.coinsRecived}`},
                 {name: `Gamble Stats`, value: `Net Gambled: ${profileData.netGamble}`},
