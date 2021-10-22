@@ -10,7 +10,6 @@ module.exports = {
 
             const userProfile = new MessageEmbed()
             .setTitle(message.author.username)
-            .setThumbnail(message.member.displayAvatarURL())
             .addFields(
                 {name: `Pogcoin Stats`, value: `Total Coins: ${profileData.totalCoinsEarnt}\nTotal Donated: ${profileData.coinsDonated}\nTotal Recieved: ${profileData.coinsRecived}`},
                 {name: `Gamble Stats`, value: `Net Gambled: ${profileData.netGamble}`},
@@ -31,16 +30,6 @@ module.exports = {
         
         }
 
-
-
-        const pogCoinPing = new MessageEmbed() //Starts the proccess for creating an embed
-        .setColor('#ffff00')
-        .setTimestamp()
-        .setFooter('Reddit Gold Replacement?')
-        .addFields(
-            {name: "", value: ``} //Its creates a time stamp for the message then compares it to when the message is actually sent to get a mostly accurate representation of the Client/Server delay
-        );
-
-        message.channel.send({ embeds: [pogCoinPing] }) 
+        message.channel.send({ embeds: [userProfile] }) 
     }
 }
