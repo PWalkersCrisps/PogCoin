@@ -22,7 +22,7 @@ module.exports = {
                     { name: 'pog Coin Bank', value: `You have ${profileData.coins} pogcoins`}
                 )    
             }
-            else if (userPinged.bot || message.mentions.roles.first() || undefined) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+            else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
             else{
                 const profileDataPinged = profileData = await profileModel.findOne({userID: userPinged.id}); //Attempts to look for a user in the DB with the user's id
                 if(!profileDataPinged) //If there was no profile data of the mentioned user then it will create a new account on the database
@@ -47,7 +47,7 @@ module.exports = {
             setTimeout(() => {
                // Removes the user from the set after a while
                 cooldowns.delete(message.author.id);
-            }, 10  * 1000);
+            }, 5  * 1000);
         }
     }
 }
