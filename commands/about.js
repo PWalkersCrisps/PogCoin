@@ -16,7 +16,7 @@ module.exports = {
             {name: "What can i do with these coins?", value: "You can spend them ig... i mean, i havent started building my shop in this town yet, you gotta give me some time to build, im not like macdonalds where i can just place a builder like its sims city or something like that. But at the moment ig give it to people that you think deserve it"},
             {name: "Ok now wha...", value: "SHUT UP, youre questions are stupid"},
             {name: "your*", value: "SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP SHUT UP"},
-            {name: "", value: "I woul very much appreciate it if you just didnt correct my mistakes, if you want to complain, go to PWalkersCrisps..."}
+            {name: ".", value: "I woul very much appreciate it if you just didnt correct my mistakes, if you want to complain, go to PWalkersCrisps..."}
         )
 
         message.channel.send({ embeds: [serverJoin] })
