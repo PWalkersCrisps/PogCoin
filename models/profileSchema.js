@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const profileSchema = new mongoose.Schema({
     userID: {type: mongoose.SchemaTypes.String, require: true, unique: true},
     coins: {type: mongoose.SchemaTypes.Number, default: 1},
-    robTimestamp: {type: mongoose.SchemaTypes.Timestamp},
+    robTimestamp: {type: mongoose.SchemaTypes.Number},
     totalCoinsEarnt: {type: mongoose.SchemaTypes.Number},
     coinsDonated: {type: mongoose.SchemaTypes.Number},
     coinsReceived: {type: mongoose.SchemaTypes.Number},
