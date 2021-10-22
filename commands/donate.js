@@ -9,8 +9,7 @@ module.exports = {
         else if (message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
         else if (!message.mentions.users.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
         else if (message.author.id === message.mentions.users.first().id) return message.channel.send("You cant donate to yourself...")
-        //let amount = 1;
-        //if (args.length) amount = args[1];
+        const amount = args[1] || 1;
 
         profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender
         if(profileDataSender.coins <= 0) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
@@ -19,8 +18,8 @@ module.exports = {
             userID: message.author.id, //looks for the record of the message author's account
         }, {
             $inc: {
-                coins: -1, //decreases the amount of coins that the author has by the stated amount
-                coinsDonated: 1,
+                coins: -amount, //decreases the amount of coins that the author has by the stated amount
+                coinsDonated: amount,
             }
         });
         
@@ -48,9 +47,9 @@ module.exports = {
             userID: message.mentions.users.first().id,
         }, {
             $inc: {
-                coins: 1, //increases the amount of coins that the mentioned has by 1
-                coinsReceived: 1,
-                totalCoinsEarnt: 1,
+                coins: amount, //increases the amount of coins that the mentioned has by 1
+                coinsReceived: amount,
+                totalCoinsEarnt: amount,
             }
         });
 

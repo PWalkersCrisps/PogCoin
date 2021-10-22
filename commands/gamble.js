@@ -7,9 +7,10 @@ module.exports = {
 
         const amount = args[0];
 
-        if(!amount) return message.channel.send("Please can you tell me how much youre willing to gamble");
+        if(!amount || profileData.coins <= 0) return message.channel.send("Please can you tell me how much youre willing to gamble");
 
         if (profileData.coins < amount) return message.channel.send("Gamble when you actually have enough money");
+
 
         const pogCoinFlip = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#ffff00')
