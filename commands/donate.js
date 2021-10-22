@@ -22,6 +22,7 @@ module.exports = {
         }, {
             $inc: {
                 coins: -1, //decreases the amount of coins that the author has by the stated amount
+                coinsDonated: 1,
             }
         });
         
@@ -50,6 +51,7 @@ module.exports = {
         }, {
             $inc: {
                 coins: 1, //increases the amount of coins that the mentioned has by 1
+                coinsReceived: 1,
             }
         });
 
