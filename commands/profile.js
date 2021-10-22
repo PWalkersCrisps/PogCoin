@@ -5,7 +5,7 @@ module.exports = {
 
         userPinged = message.mentions.users.first();
 
-        if(userPinged === undefined){
+        /*if(userPinged === undefined){
             const profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
 
             const userProfile = new MessageEmbed()
@@ -28,7 +28,17 @@ module.exports = {
                 //const savedUser = await newUser.save();
             }
         
-        }
+        }*/
+
+        const profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
+
+        const userProfile = new MessageEmbed()
+        .setTitle(message.author.username)
+        .addFields(
+            {name: `Pogcoin Stats`, value: `Total Coins: ${profileData.totalCoinsEarnt}\nTotal Donated: ${profileData.coinsDonated}\nTotal Recieved: ${profileData.coinsRecived}`},
+            {name: `Gamble Stats`, value: `Net Gambled: ${profileData.netGamble}`},
+            {name: `Rob Stats`, value: `Successful Robberies: ${profileData.robSuccess}\nFailed Robberies: ${profileData.robFails}\nTimes Robbed: ${profileData.timesRobbed}`},
+        )
 
         message.channel.send({ embeds: [userProfile] }) 
     }
