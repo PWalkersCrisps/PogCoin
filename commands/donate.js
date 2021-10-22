@@ -12,7 +12,8 @@ module.exports = {
         const amount = args[1] || 1;
 
         profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender
-        if(profileDataSender.coins <= 0) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
+        if(profileDataSender.coins < amount) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
+        else if (amount < 0) return message.channel.send(`<@${message.author.id}> Actually say a valid number???`)
 
         const senderResponse = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
             userID: message.author.id, //looks for the record of the message author's account
