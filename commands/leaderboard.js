@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 
 module.exports = {
     name: "leaderboard",
+    aliases: ["lb"],
+    cooldown: 5,
     description: "Displays the top 10 users",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData){
 
-
+        /*
         const id = profileData.userID;
         const coins = profileData.coins;
 
@@ -48,5 +50,6 @@ module.exports = {
 
 
         message.channel.send({ embeds: [LeaderboardEmbed] });
+        */
     }
 }

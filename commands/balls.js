@@ -1,7 +1,9 @@
 module.exports = {
     name: "balls",
+    aliases: ["penis", "penith", "cock"],
+    cooldown: 1,
     description: "balls",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData){
 
         const ballsEmbed = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#ffff00')
