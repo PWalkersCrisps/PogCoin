@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const cooldowns = new Map();
-const coinCooldown = new Map();
+const coinCooldown = new Set();
 
 module.exports = async(Discord, client, message) =>{
 
