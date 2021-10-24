@@ -3,7 +3,7 @@ require("dotenv").config();
 const cooldowns = new Map();
 const coinCooldown = new Map();
 
-module.exports = (Discord, client, message) =>{
+module.exports(async) = (Discord, client, message) =>{
 
     const mongoose = require("mongoose");
     const profileModel = require("./models/profileSchema.js");
