@@ -97,7 +97,7 @@ module.exports = async(Discord, client, message) =>{
     console.log(command.toString())
 
     try{
-        client.commands.get(command.toString()).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+        client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
     }
     catch(err){
         message.channel.send("Damn... there was an error trying to execute this command, if this error persists DM PWalkersCrisps about it")
