@@ -13,6 +13,14 @@ module.exports = async(Discord, client, message) =>{
 
     if(message.author.bot) return;
 
+    client.commands = new Discord.Collection();
+ 
+    const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+    for(const file of commandFiles){
+        const command = require(`./commands/${file}`);
+        client.commands.set(command.name, command);
+    }
+
     let profileData;
     try{
 
@@ -97,7 +105,7 @@ module.exports = async(Discord, client, message) =>{
     console.log(command.toString())
 
     try{
-        client.commands.get("help").execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+        client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
     }
     catch(err){
         message.channel.send("Damn... there was an error trying to execute this command, if this error persists DM PWalkersCrisps about it")
