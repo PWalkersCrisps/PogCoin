@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
+const Discord = require("discord.js");
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_MESSAGE_REACTIONS"] });
+
 
 module.exports = {
     name: "donate",
     description: "Donate a coin to someone",
     cooldown: 5,
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(args, message, MessageEmbed, profileModel, profileData){
 
         try{
             if(message.mentions.users.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
