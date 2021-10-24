@@ -11,8 +11,8 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 
 try{
-    ['command_handler.js', 'event_handler.js'].forEach(handler => {
-        require(`.handlers/${handler}`)(client, Discord)
+    ['command_handler', 'event_handler'].forEach(handler => {
+        require(`./handlers/${handler}`)(client, Discord)
     })
 }
 catch(err){
