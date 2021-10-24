@@ -76,13 +76,8 @@ client.on("messageCreate", async(message) => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    try{
-        client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
-    }
-    catch(err){
-        message.channel.send("Damn... there was an error trying to execute this command, if this error persists DM PWalkersCrisps about it")
-        console.log(err);
-    }
+    client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+    
 });
 
 ///-----Login-----///
