@@ -1,4 +1,4 @@
-
+const { Permissions } = require('discord.js');
 const mongoose = require('mongoose');
 
 module.exports = {

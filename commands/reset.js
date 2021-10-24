@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Permissions } = require('discord.js');
 
 module.exports = {
     name: "reset",
@@ -6,8 +7,8 @@ module.exports = {
     description: "resets a user's balance",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
-            if(!message.mentions.users.first()) return message.channel.send(`<@${message.author.id}> you idiot, you need to ping someone`)
             if (!member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.channel.send(`<@${message.author.id}> actually have permissions to use the command next time`);
+            if(!message.mentions.users.first()) return message.channel.send(`<@${message.author.id}> you idiot, you need to ping someone`)
 
             const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
                 userID: message.mentions.users.first().id, //looks for the record of the message author's account

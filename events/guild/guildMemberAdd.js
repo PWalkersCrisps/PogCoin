@@ -1,6 +1,8 @@
+const profileModel = require("./models/profileSchema.js");
+const { MessageEmbed } = require('discord.js'); 
+
 module.exports = async(Discord, client, newMember) =>{
 
-    const { MessageEmbed } = require('discord.js'); 
 
     try{
         const memberJoinEmbed = new MessageEmbed()
