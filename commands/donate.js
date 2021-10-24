@@ -12,7 +12,7 @@ module.exports = {
             if(message.mentions.members.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
             else if (message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
             else if (!message.mentions.members.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
-            else if (message.author.id === userMentioned.members.first().id) return message.channel.send("You cant donate to yourself...")
+            else if (message.author.id === message.mentions.members.first().id) return message.channel.send("You cant donate to yourself...")
             const amount = args[1] || 1;
 
             profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender
