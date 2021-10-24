@@ -1,6 +1,9 @@
 require("dotenv").config();
 
+const coinCooldown = new Set();
+
 module.exports = async(client, Discord, message) =>{
+
 
     const profileModel = require("../../models/profileSchema.js");
     const { MessageEmbed } = require('discord.js'); 

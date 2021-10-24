@@ -25,19 +25,23 @@ module.exports = async(Discord, client, newMember) =>{
     }
 
     try{
-        let newUser = await profileModel.create({
-            userID: message.author.id,
-            coins: 1,
-            dailyTimestamp: 0,
-            robTimestamp: 0,
-            totalCoinsEarnt: 0,
-            coinsDonated: 0,
-            coinsReceived: 0,
-            netGamble: 0,
-            robSuccess: 0,
-            robFails: 0,
-            timesRobbed: 0,
-        });
+        profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
+        if(!profileData) //Checks if the user has any data in the DB
+        {
+            let newUser = await profileModel.create({
+                userID: message.author.id,
+                coins: 1,
+                dailyTimestamp: 0,
+                robTimestamp: 0,
+                totalCoinsEarnt: 0,
+                coinsDonated: 0,
+                coinsReceived: 0,
+                netGamble: 0,
+                robSuccess: 0,
+                robFails: 0,
+                timesRobbed: 0,
+            });
+        }
     }
     catch(err){
         console.log(err);

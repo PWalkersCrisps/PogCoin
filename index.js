@@ -7,8 +7,6 @@ const profileModel = require("./models/profileSchema.js");
 const { MessageEmbed } = require('discord.js'); 
 const fs = require("fs");
 
-const coinCooldown = new Set();
-
 require("dotenv").config();
 
 ///-----Command/Event Handlers-----///
@@ -77,7 +75,7 @@ client.on("messageCreate", async(message) => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-    
+
     try{
         client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
     }
