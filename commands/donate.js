@@ -9,9 +9,9 @@ module.exports = {
         let userMentioned = message.mentions.members.first();
 
         try{
-            if(message.mentions.members.first().first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
-            else if (message.mentions.members.first().roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
-            else if (!message.mentions.members.first().users.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
+            if(message.mentions.members.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+            else if (message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
+            else if (!message.mentions.members.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
             else if (message.author.id === userMentioned.users.first().id) return message.channel.send("You cant donate to yourself...")
             const amount = args[1] || 1;
 
