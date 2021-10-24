@@ -76,8 +76,12 @@ client.on("messageCreate", async(message) => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
-    
+    try{
+        client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
+    }
+    catch(err){
+        console.log("cmd error");
+    }
 });
 
 ///-----Login-----///
