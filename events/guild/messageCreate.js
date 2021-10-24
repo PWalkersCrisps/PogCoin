@@ -1,8 +1,11 @@
 require("dotenv").config();
 
+const Discord = require("discord.js");
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_MESSAGE_REACTIONS"] });
+
 const coinCooldown = new Set();
 
-module.exports = async(client, Discord, message) =>{
+module.exports = async(message) =>{
 
 
     const profileModel = require("../../models/profileSchema.js");
