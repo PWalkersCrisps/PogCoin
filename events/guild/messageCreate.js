@@ -1,9 +1,6 @@
 require("dotenv").config();
 
-const cooldowns = new Map();
-const coinCooldown = new Set();
-
-module.exports = async(Discord, client, message) =>{
+module.exports = async(client, Discord, message) =>{
 
     const mongoose = require("mongoose");
     const profileModel = require("../../models/profileSchema.js");
@@ -12,14 +9,6 @@ module.exports = async(Discord, client, message) =>{
     const prefix = process.env.DISCORD_PREFIX;
 
     if(message.author.bot) return;
-
-    client.commands = new Discord.Collection();
- 
-    const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-    for(const file of commandFiles){
-        const command = require(`./commands/${file}`);
-        client.commands.set(command.name, command);
-    }
 
     let profileData;
     try{
@@ -92,24 +81,6 @@ module.exports = async(Discord, client, message) =>{
                 coinCooldown.delete(message.author.id);
             }, 60 * 60000); //First number is minutes the second one times it because it is in milliseconds        
         }
-    }
-
-    if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
-
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    ///-----CMD execution-----///
-
-    console.log(command)
-    console.log(command.toString())
-
-    try{
-        client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
-    }
-    catch(err){
-        message.channel.send("Damn... there was an error trying to execute this command, if this error persists DM PWalkersCrisps about it")
-        console.log(err);
     }
     
 }
