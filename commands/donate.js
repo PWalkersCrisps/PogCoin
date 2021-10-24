@@ -1,19 +1,18 @@
 const mongoose = require('mongoose');
-const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_MESSAGE_REACTIONS"] });
-
 
 module.exports = {
     name: "donate",
     description: "Donate a coin to someone",
     cooldown: 5,
-    async execute(args, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+
+        let userMentioned = message.mentions.member.first();
 
         try{
-            if(message.mentions.users.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
-            else if (message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
-            else if (!message.mentions.users.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
-            else if (message.author.id === message.mentions.users.first().id) return message.channel.send("You cant donate to yourself...")
+            if(userMentioned.users.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+            else if (userMentioned.roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
+            else if (!userMentioned.users.first()) return message.channel.send('You need to mention a user.'); //If no one was mentioned in the message then the rest of the script wont execute
+            else if (message.author.id === userMentioned.users.first().id) return message.channel.send("You cant donate to yourself...")
             const amount = args[1] || 1;
 
             profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender

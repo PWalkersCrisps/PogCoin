@@ -77,10 +77,7 @@ client.on("messageCreate", async(message) => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-
-    console.log(command)
-    console.log(command.toString())
-
+    
     try{
         client.commands.get(command).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
     }
