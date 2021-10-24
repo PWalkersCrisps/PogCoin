@@ -7,6 +7,32 @@ module.exports = async(client, Discord, message) =>{
 
     if(message.author.bot) return;
 
+    let profileData;
+    try{
+
+        profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
+        if(!profileData) //Checks if the user has any data in the DB
+        {
+            let newUser = await profileModel.create({
+                userID: message.author.id,
+                coins: 1,
+                dailyTimestamp: 0,
+                robTimestamp: 0,
+                totalCoinsEarnt: 0,
+                coinsDonated: 0,
+                coinsReceived: 0,
+                netGamble: 0,
+                robSuccess: 0,
+                robFails: 0,
+                timesRobbed: 0,
+            });
+            //const savedUser = await newUser.save();
+        }
+    } 
+    catch(err){
+        console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
+    }
+
     ///-----Pogcoin RNG-----//
 
     let randomCoinChance = Math.floor(Math.random() * 500)+1 //makes up a random number when a message is created
