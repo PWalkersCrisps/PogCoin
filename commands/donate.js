@@ -6,7 +6,7 @@ module.exports = {
     cooldown: 5,
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
-        let userMentioned = message.mentions.member.first();
+        let userMentioned = message.mentions.members.first();
 
         try{
             if(userMentioned.users.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
