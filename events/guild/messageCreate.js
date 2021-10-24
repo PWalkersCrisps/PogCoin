@@ -6,7 +6,7 @@ const coinCooldown = new Map();
 module.exports = async(Discord, client, message) =>{
 
     const mongoose = require("mongoose");
-    const profileModel = require("../models/profileSchema.js");
+    const profileModel = require("../../models/profileSchema.js");
     const { MessageEmbed } = require('discord.js'); 
 
     const prefix = process.env.DISCORD_PREFIX;
