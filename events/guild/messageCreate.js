@@ -89,9 +89,9 @@ module.exports = async(Discord, client, message) =>{
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
 
     const args = message.content.slice(prefix.length).split(/ +/);
-    const cmd = args.shift().toLowerCase(); //this turns the command into lowercase so i dont have to account for complexities like capitilisation
-
-    const command = client.command.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+    const cmd = args.shift().toLowerCase();
+    const command = client.commands.get(cmd) || 
+                    client.commands.find(a => a.aliases && a.aliases.includes(cmd));
 
     //-----Cooldowns-----///
     try{
