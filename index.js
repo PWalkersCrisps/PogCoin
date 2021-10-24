@@ -3,7 +3,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD
 
 const prefix = process.env.DISCORD_PREFIX;
 const mongoose = require("mongoose");
-const profileModel = require("../../models/profileSchema.js");
+const profileModel = require("./models/profileSchema.js");
 const { MessageEmbed } = require('discord.js'); 
 const fs = require("fs");
 
