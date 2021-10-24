@@ -1,4 +1,4 @@
-module.exports = (client, Discord) =>{
+module.exports = async(client, Discord) =>{
     try{
         const readyMessage = `${client.user.tag} is online, hopefully it works`
 

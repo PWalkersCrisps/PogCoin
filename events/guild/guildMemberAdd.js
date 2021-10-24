@@ -1,4 +1,4 @@
-module.exports = (Discord, client, newMember) =>{
+module.exports = async(Discord, client, newMember) =>{
 
     const { MessageEmbed } = require('discord.js'); 
 
@@ -19,6 +19,25 @@ module.exports = (Discord, client, newMember) =>{
         .setThumbnail("https://cdn.discordapp.com/attachments/839247233518272602/899631633722929192/paintcoin.gif")
     
         newMember.send({ embeds: [memberJoinEmbed] }) 
+    }
+    catch(err){
+        console.log(err);
+    }
+
+    try{
+        let newUser = await profileModel.create({
+            userID: message.author.id,
+            coins: 1,
+            dailyTimestamp: 0,
+            robTimestamp: 0,
+            totalCoinsEarnt: 0,
+            coinsDonated: 0,
+            coinsReceived: 0,
+            netGamble: 0,
+            robSuccess: 0,
+            robFails: 0,
+            timesRobbed: 0,
+        });
     }
     catch(err){
         console.log(err);

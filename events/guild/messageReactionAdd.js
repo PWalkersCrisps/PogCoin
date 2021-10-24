@@ -1,4 +1,4 @@
-module.exports = (Discord, client, reaction, user) =>{
+module.exports = async(Discord, client, reaction, user) =>{
     /*
     if(reaction.message.author.bot) return user.send("YOU IDIOT THAT WAS A BOT???")
 
