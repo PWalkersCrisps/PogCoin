@@ -1,4 +1,4 @@
-module.exports = () =>{
+module.exports = (Discord, client) =>{
     const channel = client.channels.cache.find(channel => channel.name === "heroku-log")
 
     const readyMessage = `${client.user.tag} is online, hopefully it works`
