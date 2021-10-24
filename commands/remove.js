@@ -6,8 +6,10 @@ module.exports = {
     cooldown: 5,
     description: "give a player some coins",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData) {
+        
 
         try{
+            if (!member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.channel.send(`<@${message.author.id}> actually have permissions to use the command next time`);
             if (!args.length){
                 message.channel.send("You need to mention a member to steal them coins");
                 return;
