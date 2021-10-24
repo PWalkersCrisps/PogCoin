@@ -94,7 +94,7 @@ module.exports = async(Discord, client, message) =>{
     //-----Cooldowns-----///
     try{
         if(!cooldowns.has(command.name)){
-            cooldowns.set(command.name, new Discord.Collection());
+            cooldowns.set(command.name, new Discord.Collections());
         }
     
         const currentTime = Date.now();
