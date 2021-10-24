@@ -11,7 +11,7 @@ module.exports = async(message) =>{
     const profileModel = require("../../models/profileSchema.js");
     const { MessageEmbed } = require('discord.js'); 
 
-    if(message.author.bot) return;
+    if(message.user.bot) return;
 
     let profileData;
     try{
