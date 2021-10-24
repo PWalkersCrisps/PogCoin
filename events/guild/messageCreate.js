@@ -93,6 +93,9 @@ module.exports = async(Discord, client, message) =>{
 
     ///-----CMD execution-----///
 
+    console.log(command)
+    console.log(command.toString())
+
     try{
         client.commands.get(command.toString()).execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
     }
