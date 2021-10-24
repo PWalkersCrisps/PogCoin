@@ -4,7 +4,7 @@ module.exports = {
     name: "reset",
     cooldown: 5,
     description: "resets a user's balance",
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             if(!message.mentions.users.first()) return message.channel.send(`<@${message.author.id}> you idiot, you need to ping someone`)
 

@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: "shop",
     cooldown: 5,
-    async execute(Discord, client, args, cmd, message, profileModel, profileData){
+    async execute(Discord, client, args, message, profileModel, profileData){
         try{
             if (items.length === 0) return message.channel.send(`<@${message.author.id}> Unfortunatly im not selling right now, ig you just need to be patient`);
 

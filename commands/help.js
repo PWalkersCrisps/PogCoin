@@ -4,7 +4,7 @@ module.exports = {
     name: "help",
     description: "Helps the user with commands",
     cooldown: 5,
-    async execute(Discord, client, args, cmd, message, profileModel, profileData){
+    async execute(Discord, client, args, message, profileModel, profileData){
 
         try{
             const cmdChoice = args[0];

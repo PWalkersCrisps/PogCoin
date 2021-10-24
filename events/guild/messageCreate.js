@@ -89,9 +89,7 @@ module.exports = async(Discord, client, message) =>{
     if(!message.content.startsWith(prefix)) return; //if the message didnt start with the bot's prefix, it just goes back to the start
 
     const args = message.content.slice(prefix.length).split(/ +/);
-    const cmd = args.shift().toLowerCase();
-    const command = client.commands.get(cmd) || 
-                    client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+    const command = args.shift().toLowerCase();
 
     //-----Cooldowns-----///
     try{
@@ -123,7 +121,7 @@ module.exports = async(Discord, client, message) =>{
     ///-----CMD execution-----///
 
     try{
-        command.execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData);
+        command.execute(Discord, client, args, message, MessageEmbed, profileModel, profileData);
     }
     catch(err){
         message.channel.send("Damn... there was an error trying to execute this command, if this error persists DM PWalkersCrisps about it")

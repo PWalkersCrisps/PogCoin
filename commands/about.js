@@ -2,7 +2,7 @@ module.exports = {
     name: "about",
     description: "About the bot",
     cooldown: 5,
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             const serverJoin = new MessageEmbed()
             .setColor("#ffff00")

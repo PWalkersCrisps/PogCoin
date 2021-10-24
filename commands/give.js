@@ -5,7 +5,7 @@ module.exports = {
     name: "give",
     description: "give a user some coins",
     cooldown: 5,
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData) {
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData) {
 
         try{
             if (!args.length){

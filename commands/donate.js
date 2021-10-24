@@ -4,7 +4,7 @@ module.exports = {
     name: "donate",
     description: "Donate a coin to someone",
     cooldown: 5,
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
         try{
             if(message.mentions.users.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")

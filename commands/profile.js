@@ -2,7 +2,7 @@ module.exports = {
     name: "profile",
     cooldown: 5,
     description: "Gets the profile of the user",
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel){
 
         userPinged = message.mentions.users.first();
 

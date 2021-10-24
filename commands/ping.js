@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["server"],
     cooldown: 5,
     description: "pings the server to see the delay between the client and the server",
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel, profileData){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
         try{
             const pogCoinPing = new MessageEmbed() //Starts the proccess for creating an embed

@@ -7,7 +7,7 @@ module.exports = {
     name: "buy",
     description: "Buy from the bot",
     cooldown: 5,
-    async execute(Discord, client, args, cmd, message){
+    async execute(Discord, client, args, message){
         try{
             profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
 

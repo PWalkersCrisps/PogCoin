@@ -5,7 +5,7 @@ module.exports = {
     aliases: ["bal", "bank", "coins", "money", "pogcoins"],
     cooldown: 5,
     description: "check your balance",
-    async execute(Discord, client, args, cmd, message, MessageEmbed, profileModel){
+    async execute(Discord, client, args, message, MessageEmbed, profileModel){
 
         const userPinged = message.mentions.users.first();
 
