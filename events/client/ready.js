@@ -1,12 +1,14 @@
 module.exports = (Discord, client) =>{
-    const channel = client.channels.cache.find(channel => channel.name === "heroku-log")
+    try{
+        const readyMessage = `${client.user.tag} is online, hopefully it works`
 
-    const readyMessage = `${client.user.tag} is online, hopefully it works`
+        console.log(readyMessage);
 
-    console.log(readyMessage);
-    channel.send(readyMessage);
-
-    client.user.setActivity("the glorious sounds of capitalism", {
-        type: "LISTENING",
-    });
+        client.user.setActivity("the glorious sounds of capitalism", {
+            type: "LISTENING",
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
 }
