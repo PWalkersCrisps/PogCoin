@@ -9,7 +9,7 @@ module.exports = {
         
 
         try{
-            if (!member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.channel.send(`<@${message.author.id}> actually have permissions to use the command next time`);
+            if (!message.author.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.channel.send(`<@${message.author.id}> actually have permissions to use the command next time`);
             if (!args.length){
                 message.channel.send("You need to mention a member to steal them coins");
                 return;
