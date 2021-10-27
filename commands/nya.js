@@ -7,7 +7,7 @@ module.exports = {
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             if (talkedRecently.has(message.author.id)) {
-                message.channel.send("Wait 10 minutes before getting typing this again. - " + message.author);
+                message.channel.send(`Wait 10 minutes before getting typing this again. - <@${message.author.id}`);
             } else {
                 const random_hex_color_code = () => {
                     let n = (Math.random() * 0xfffff * 1000000).toString(16);
