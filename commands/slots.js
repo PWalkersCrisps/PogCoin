@@ -23,7 +23,8 @@ module.exports = {
                 "<:pixel_pogcoin:902537185637584926>", //4x
             ];
 
-            const amount = args[0]
+            const amount = args[0];
+            if(!amount) return message.channel.send("Actually try to bet smthing?")
 
             function getRandomEmote(){
                 return Math.floor(Math.random() * outcomeEmotes.length);
