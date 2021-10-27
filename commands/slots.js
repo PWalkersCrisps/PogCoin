@@ -27,7 +27,7 @@ module.exports = {
             ];
 
             const amount = args[0];
-            if(!amount) return message.channel.send("Actually try to bet smthing?")
+            if(!amount || amount < 1) return message.channel.send("Actually try to bet smthing?")
             if(profileData.coins < amount) return message.channel.send("Actually have enough coins??")
 
             function getRandomEmote(){
@@ -63,7 +63,7 @@ module.exports = {
             .setTimestamp()
             .setFooter("Middle line only counts idiot")
             .addFields(
-                {name: `Poggers slot machine`, value: `${getRandomEmote(), getRandomEmote(), getRandomEmote()}\n${outcome1, outcome2, outcome3}\n${getRandomEmote(), getRandomEmote(), getRandomEmote()}`}
+                {name: `Poggers slot machine`, value: `${getRandomEmote()} ${getRandomEmote()} ${getRandomEmote()}\n${outcome1} ${outcome2} ${outcome3}\n${getRandomEmote()} ${getRandomEmote()} ${getRandomEmote()}`}
             )
             const pogCoinWinnings = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#f924e5')
