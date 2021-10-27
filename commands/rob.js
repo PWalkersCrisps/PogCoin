@@ -57,7 +57,8 @@ module.exports = {
                     userID: userPinged.id, //looks for the id of the author
                 }, {
                     $inc: {
-                        coins: -coinsGainedRNG, //when the id of the author is found, it gives them one coin
+                        coins: 2, //when the id of the author is found, it gives them one coin
+                        totalCoinsEarnt: 1,
                     }
                 });
                 pogCoinRob
