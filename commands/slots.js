@@ -68,7 +68,8 @@ module.exports = {
                         gambleWinnings(-2);
                         pogCoinWinnings.addFields(
                             {name: `Your winnings`, value: `Damn you lost, **HARD**.\n\nNow pay up, you owe us ${amount * -2}`},
-                        )            
+                        )
+
                         break;
                     case "<:pixel_bruh:902537185444642847>":
                         gambleWinnings(-1);
@@ -96,7 +97,7 @@ module.exports = {
                         break;
                 }
 
-
+                console.log("Slots Win")
                 
 
             }
