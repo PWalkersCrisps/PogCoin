@@ -24,4 +24,14 @@ module.exports = [
     "https://cdn.discordapp.com/attachments/816008277619638332/902969702211547218/Screenshot_20211027-181901_Discord.jpg",
     "https://cdn.discordapp.com/attachments/820076352303530045/902970013156270101/IMG_1837.png",
     "https://cdn.discordapp.com/attachments/816008277619638332/902970057305518090/Screenshot_20211027-182028_Discord.jpg",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902970499766816818/unknown.png",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902970695930241084/unknown.png",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902971128295878666/Screenshot_20211027-182206_Discord.jpg",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902971128501391360/Screenshot_20211027-182444_Discord.jpg",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902971751707848764/unknown.png",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902971891042623539/unknown.png",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902971922097274910/unknown.png",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902971972605059122/unknown.png",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902972284267024404/unknown.png",
+
 ]
