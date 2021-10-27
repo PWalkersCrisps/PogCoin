@@ -6,8 +6,8 @@ module.exports = {
     description: "uwu",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
-            if (talkedRecently.has(msg.author.id)) {
-                msg.channel.send("Wait 10 minutes before getting typing this again. - " + msg.author);
+            if (talkedRecently.has(message.author.id)) {
+                message.channel.send("Wait 10 minutes before getting typing this again. - " + message.author);
             } else {
                 const random_hex_color_code = () => {
                     let n = (Math.random() * 0xfffff * 1000000).toString(16);
@@ -22,10 +22,10 @@ module.exports = {
 
                 message.channel.send({ embeds: [uwuEmbed] });
                 // Adds the user to the set so that they can't talk for a minute
-                talkedRecently.add(msg.author.id);
+                talkedRecently.add(message.author.id);
                 setTimeout(() => {
                 // Removes the user from the set after a minute
-                talkedRecently.delete(msg.author.id);
+                talkedRecently.delete(message.author.id);
                 }, 600 * 1000);
             }
         }
