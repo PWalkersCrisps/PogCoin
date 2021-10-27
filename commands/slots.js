@@ -29,7 +29,7 @@ module.exports = {
                 return Math.floor(Math.random() * outcomeEmotes.length);
             }
 
-            function gambleWinnings(multiplier){
+            async function gambleWinnings(multiplier){
                 const response = await profileModel.findOneAndUpdate({
                     userID: message.author.id, //looks for the id of the author
                 }, {
