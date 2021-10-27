@@ -6,7 +6,7 @@ module.exports = {
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             const outcomeEmotes = [
-                "<:pixel_despair:90253718571308238  8>", //lose 2x the bet
+                "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
@@ -96,8 +96,12 @@ module.exports = {
                         break;
                 }
 
+
                 
 
+            }
+            else {
+                gambleWinnings(-1);
             }
 
             message.channel.send({ embeds: [pogCoinSlots, pogCoinWinnings] });
