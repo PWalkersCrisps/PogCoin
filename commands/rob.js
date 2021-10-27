@@ -20,9 +20,28 @@ module.exports = {
             let pogCoinRob = new MessageEmbed() //Starts the proccess for creating an embed
             .setTimestamp()
 
+            profileDataMentioned = await profileModel.findOne({userID: message.mentions.users.first().id}); //Gets the profile data of the user mentioned
+            if(!profileDataMentioned) //If there was no profile data of the mentioned user then it will create a new account on the database
+            {
+                let newUser = await profileModel.create({
+                    userID: message.mentions.users.first().id,
+                    coins: 1,
+                    dailyTimestamp: 0,
+                    robTimestamp: 0,
+                    totalCoinsEarnt: 0,
+                    coinsDonated: 0,
+                    coinsReceived: 0,
+                    netGamble: 0,
+                    robSuccess: 0,
+                    robFails: 0,
+                    timesRobbed: 0,
+
+                });
+                //const savedUser = await newUser.save();
+            }
             
             if(Math.random() < 0.35){
-                const coinsGainedRNG = getRandomInt()
+                const coinsGainedRNG = getRandomInt(profileDataMentioned.coins)
                 const response = await profileModel.findOneAndUpdate({
                     userID: message.author.id, //looks for the id of the author
                 }, {

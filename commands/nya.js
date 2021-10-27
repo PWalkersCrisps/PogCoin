@@ -1,8 +1,8 @@
 const lewdImages = require("../arrays/lewdImages")
 
 module.exports = {
-    name: "rob",
-    description: "steal someones money",
+    name: "nya",
+    description: "uwu",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             let uwuEmbed = new MessageEmbed()
