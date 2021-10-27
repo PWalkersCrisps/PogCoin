@@ -96,10 +96,11 @@ module.exports = {
                         break;
                 }
 
-                message.channel.send({ embeds: [pogCoinSlots] });
-                message.channel.send({ embeds: [pogCoinWinnings] });
+                
 
             }
+
+            message.channel.send({ embeds: [pogCoinSlots, pogCoinWinnings] });
 
         }
         catch(err){
