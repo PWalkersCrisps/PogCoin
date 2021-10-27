@@ -3,7 +3,7 @@ module.exports = {
     description: "Gets the profile of the user",
     async execute(Discord, client, args, message, MessageEmbed, profileModel){
 
-        userPinged = message.mentions.members.first();
+        userPinged = message.mentions.users.first();
 
         const userProfile = new MessageEmbed()
         .setTitle(message.author.username)

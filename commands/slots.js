@@ -99,10 +99,16 @@ module.exports = {
                     case "<:pixel_pepeBusiness:902537185364938825>":
                         gambleWinnings(2);
                         pogCoinSlots.setFooter("Holy shit you actually won?")
+                        pogCoinWinnings.addFields(
+                            {name: `Your winnings`, value: `**Wowza**, to think that you won, this is sincreasingly getting more poggers`},
+                        )
                         break;
                     case "<:pixel_pogcoin:902537185637584926>":
                         gambleWinnings(3);
                         pogCoinSlots.setFooter("Holy shit you actually won?")
+                        pogCoinWinnings.addFields(
+                            {name: `Your winnings`, value: `***HOLY FUCKING SHIT YOU GOT 4x OF YOUR ORIGINAL BET`},
+                        )
                         break;
                 }
 
