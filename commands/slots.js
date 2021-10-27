@@ -27,7 +27,7 @@ module.exports = {
             if(!amount) return message.channel.send("Actually try to bet smthing?")
 
             function getRandomEmote(){
-                return Math.floor(Math.random() * outcomeEmotes.length);
+                return outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
             }
 
             async function gambleWinnings(multiplier){
