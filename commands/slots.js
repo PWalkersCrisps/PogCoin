@@ -25,6 +25,7 @@ module.exports = {
 
             const amount = args[0];
             if(!amount) return message.channel.send("Actually try to bet smthing?")
+            if(profileData.coins < amount) return message.channel.send("Actually have enough coins??")
 
             function getRandomEmote(){
                 return outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
