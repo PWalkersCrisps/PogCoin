@@ -7,7 +7,7 @@ module.exports = {
             if(!userPinged) return message.channel.send(`<@${message.author.id}> can you actually try to steal from someone?`);
 
             profileDataPinged = await profileModel.findOne({userID: userPinged.id});
-            if(Math.round(profileData.coins * (5/100)) < 1) return message.channel.send(`<@${message.author.id}> you dont have enough coins, just dont be broke`);
+            if(profileData.coins < 1) return message.channel.send(`<@${message.author.id}> you dont have enough coins, just dont be broke`);
             else if(profileDataPinged.coins < 0) return message.channel.send(`<@${userPinged.id}> doesn't have enough coins for you to nick them`);
 
             function getRandomInt(max) {
