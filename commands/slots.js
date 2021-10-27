@@ -44,7 +44,7 @@ module.exports = {
                     });
                 }
                 catch(err){
-                    console.log(err);
+                    console.log(err)
                 }
             }
 
@@ -68,7 +68,7 @@ module.exports = {
             .setFooter("How it works here is that you either pay us or we pay you")
 
 
-            if (outcome1 == outcome2 == outcome3){
+            if (outcome1 == outcome2 && outcome2 == outcome3){
                 switch (outcome1){
                     case "<:pixel_despair:902537185713082388>":
                         gambleWinnings(-2);
