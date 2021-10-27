@@ -109,6 +109,9 @@ module.exports = {
             }
             else {
                 gambleWinnings(-1);
+                pogCoinWinnings.addFields(
+                    {name: `Your winnings`, value: `Damn you lost.\n\nBecause of that you have to give me ${amount * -1}`},
+                )
             }
 
             message.channel.send({ embeds: [pogCoinSlots, pogCoinWinnings] });

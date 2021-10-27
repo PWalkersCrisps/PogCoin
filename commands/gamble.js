@@ -6,6 +6,8 @@ module.exports = {
 
             const amount = args[0];
             if (amount < 1) return message.channel.send(`<${message.author.id}> Please can you actually try to gamble something?`)
+            if(profileData.coins < amount) return message.channel.send("Actually have enough coins??")
+
 
             let pogCoinGamble = new MessageEmbed() //Starts the proccess for creating an embed
             .setTimestamp()
