@@ -5,6 +5,9 @@ module.exports = {
         try{
             const userPinged = message.mentions.members.first();
             if(!userPinged) return message.channel.send(`<@${message.author.id}> can you actually try to steal from someone?`);
+            else if(message.mentions.members.first().bot) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+            else if (message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A ROLE???")
+
 
             profileDataPinged = await profileModel.findOne({userID: userPinged.id});
             if(profileData.coins < 1) return message.channel.send(`<@${message.author.id}> you dont have enough coins, just dont be broke`);
