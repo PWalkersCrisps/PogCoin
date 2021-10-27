@@ -63,7 +63,7 @@ module.exports = {
             .setTimestamp()
             .setFooter("Middle line only counts idiot")
             .addFields(
-                {name: `Poggers slot machine`, value: `${outcome1}${outcome2}${outcome3}`}
+                {name: `Poggers slot machine`, value: `${getRandomEmote(), getRandomEmote(), getRandomEmote()}\n${outcome1, outcome2, outcome3}\n${getRandomEmote(), getRandomEmote(), getRandomEmote()}`}
             )
             const pogCoinWinnings = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#f924e5')
