@@ -33,5 +33,7 @@ module.exports = [
     "https://cdn.discordapp.com/attachments/816008277619638332/902971922097274910/unknown.png",
     "https://cdn.discordapp.com/attachments/816008277619638332/902971972605059122/unknown.png",
     "https://cdn.discordapp.com/attachments/816008277619638332/902972284267024404/unknown.png",
-
+    "https://cdn.discordapp.com/attachments/816008277619638332/902978556320157726/Screenshot_20211027-182028_Discord.jpg",
+    "https://cdn.discordapp.com/attachments/816008277619638332/902979952373268520/Screenshot_20211027-185940_Discord.jpg",
+    
 ]
