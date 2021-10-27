@@ -32,15 +32,20 @@ module.exports = {
             }
 
             async function gambleWinnings(multiplier){
-                const response = await profileModel.findOneAndUpdate({
-                    userID: message.author.id, //looks for the id of the author
-                }, {
-                    $inc: {
-                        coins: amount * multiplier, //when the id of the author is found, it gives them one coin
-                        netGamble: amount * multiplier,
-                        totalCoinsEarnt: amount * multiplier,
-                    }
-                });
+                try{
+                    const response = await profileModel.findOneAndUpdate({
+                        userID: message.author.id, //looks for the id of the author
+                    }, {
+                        $inc: {
+                            coins: amount * multiplier, //when the id of the author is found, it gives them one coin
+                            netGamble: amount * multiplier,
+                            totalCoinsEarnt: amount * multiplier,
+                        }
+                    });
+                }
+                catch(err){
+                    console.log(err);
+                }
             }
 
             let outcome1 = getRandomEmote();
@@ -55,7 +60,7 @@ module.exports = {
             .setTimestamp()
             .setFooter("Middle line only counts idiot")
             .addFields(
-                {name: `Poggers slot machine`, value: `${getRandomEmote()}${getRandomEmote()}${getRandomEmote()}\n${outcome1}${outcome2}${outcome3}\n${getRandomEmote()}${getRandomEmote()}${getRandomEmote()}`}
+                {name: `Poggers slot machine`, value: `${outcome1}${outcome2}${outcome3}`}
             )
             const pogCoinWinnings = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#f924e5')
