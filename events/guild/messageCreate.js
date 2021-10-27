@@ -41,8 +41,7 @@ module.exports = async(message) =>{
 
     ///-----Pogcoin RNG-----//
 
-    let randomCoinChance = Math.floor(Math.random() * 500)+1 //makes up a random number when a message is created
-    if (randomCoinChance === 1){ //if the random number is equal to 1 then it will start the proccess of giving a pog coin
+    if (Math.random() < 0.002){
 
         if (!coinCooldown.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({

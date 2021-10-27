@@ -18,7 +18,7 @@ module.exports = {
 
         if(userPinged === undefined){
             pogCoinBalance.addFields(
-                { name: 'pog Coin Bank', value: `You have ${profileData.coins} pogcoins`}
+                { name: 'pog Coin Bank', value: `You have ${profileData.coins} <:pogcoin:899662337399750666> pogcoins`}
             )    
         }
         else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
