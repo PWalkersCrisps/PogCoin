@@ -11,6 +11,9 @@ module.exports = {
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
+                "<:pixel_despair:902537185713082388>", //lose 2x the bet
+                "<:pixel_despair:902537185713082388>", //lose 2x the bet
+                "<:pixel_bruh:902537185444642847>", //Nothing + insult
                 "<:pixel_bruh:902537185444642847>", //Nothing + insult
                 "<:pixel_bruh:902537185444642847>", //Nothing + insult
                 "<:pixel_bruh:902537185444642847>", //Nothing + insult
@@ -53,7 +56,7 @@ module.exports = {
             let outcome3 = getRandomEmote();
 
             if (Math.random() < 0.4) outcome2 = outcome1;
-            if (Math.random() < 0.6) outcome3 = outcome2;
+            if (Math.random() < 0.4) outcome3 = outcome2;
 
             const pogCoinSlots = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#aec234')
