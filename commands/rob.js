@@ -10,7 +10,7 @@ module.exports = {
 
 
             profileDataPinged = await profileModel.findOne({userID: userPinged.id});
-            if(profileData.coins < 1) return message.channel.send(`<@${message.author.id}> you dont have enough coins, just dont be broke`);
+            if(profileData.coins < 2) return message.channel.send(`<@${message.author.id}> you dont have enough coins, just dont be broke`);
             else if(profileDataPinged.coins < 0) return message.channel.send(`<@${userPinged.id}> doesn't have enough coins for you to nick them`);
 
             function getRandomInt(max) {
