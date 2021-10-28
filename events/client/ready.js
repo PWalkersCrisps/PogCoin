@@ -9,6 +9,6 @@ module.exports = async(client, Discord) =>{
         });
     }
     catch(err){
-        console.log(err);
+        console.error(err);
     }
 }

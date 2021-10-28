@@ -35,7 +35,7 @@ module.exports = async(Discord, client, reaction, user) =>{
         //const savedUser = await newUser.save();
     }
     catch(err){
-        console.log(err)
+        console.error(err)
     }
 
     if(profileData1.coins < 1) return user.send(`<@${user.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them

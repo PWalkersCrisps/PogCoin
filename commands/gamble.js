@@ -53,7 +53,7 @@ module.exports = {
             message.channel.send({ embeds: [pogCoinGamble] });
         }
         catch(err){
-            console.log(err);
+            console.error(err);
         }
     }
 }

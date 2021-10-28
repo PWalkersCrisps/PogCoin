@@ -82,7 +82,7 @@ module.exports = {
             message.channel.send({ embeds: [pogCoinDonate] });
         }
         catch(err){
-            console.log(err);
+            console.error(err);
         }
     }
 }

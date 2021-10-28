@@ -23,7 +23,7 @@ module.exports = {
             message.channel.send({ embeds: [serverJoin] })
         }
         catch(err){
-            console.log(err);
+            console.error(err);
         }
     }
 }

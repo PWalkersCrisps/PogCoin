@@ -24,7 +24,7 @@ module.exports = {
             message.channel.send({ embeds: [shoplistEmbed] })
         }
         catch(err){
-            console.log(err);
+            console.error(err);
         }
     }
 }

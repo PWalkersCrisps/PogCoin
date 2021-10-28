@@ -36,7 +36,7 @@ module.exports = async(message) =>{
         }
     } 
     catch(err){
-        console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
+        console.error(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
     ///-----Pogcoin RNG-----//

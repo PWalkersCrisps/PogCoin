@@ -27,7 +27,7 @@ try{
     })
 }
 catch(err){
-    console.log(err);
+    console.error(err);
 }
 
 ///-----Mongoose-----///
@@ -37,7 +37,7 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 }).then(() => {
     console.log(`Connected to the MongoDB database`)
 }).catch((err) => {
-    console.log(err);
+    console.error(err);
 });
 
 ///-----Executes When Message Is Created-----///
@@ -66,7 +66,7 @@ client.on("messageCreate", async(message) => {
         }
     } 
     catch(err){
-        console.log(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
+        console.error(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
     ///-----CMD execution-----///

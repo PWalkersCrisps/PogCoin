@@ -50,11 +50,11 @@ module.exports = {
 
             return message.channel.send(`<@${message.mentions.users.first().id}> has just lost ${amount} coins\n\nmake fun of them!! :emock:`);
             } catch (err) {
-            console.log(err);
+            console.error(err);
             }
         }
         catch(err){
-            console.log(err)
+            console.error(err)
         }
     },
 };

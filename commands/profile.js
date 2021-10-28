@@ -56,7 +56,7 @@ module.exports = {
             message.channel.send({ embeds: [userProfile] }); 
         }
         catch(err){
-            console.log(err);
+            console.error(err);
         }
     }
 }

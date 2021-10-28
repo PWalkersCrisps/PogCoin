@@ -38,7 +38,7 @@ module.exports = {
             message.channel.send({ embeds: [resetPoints] }) 
         }
         catch(err){
-            console.log(err);
+            console.error(err);
         }
     }
 }

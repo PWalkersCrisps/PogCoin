@@ -75,7 +75,7 @@ module.exports = {
             message.channel.send({ embeds: [pogCoinEmbedHelp] });
         }
         catch(err){
-            console.log(err)
+            console.error(err)
         }
     }
 }

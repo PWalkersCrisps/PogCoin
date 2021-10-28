@@ -22,6 +22,6 @@ module.exports = async(Discord, client, newMember) =>{
         newMember.send({ embeds: [memberJoinEmbed] }) 
     }
     catch(err){
-        console.log(err);
+        console.error(err);
     }
 };
