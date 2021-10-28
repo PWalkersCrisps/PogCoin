@@ -55,8 +55,8 @@ module.exports = {
             let outcome2 = getRandomEmote();
             let outcome3 = getRandomEmote();
 
-            if (Math.random() < 0.4) outcome2 = outcome1;
-            if (Math.random() < 0.4) outcome3 = outcome2;
+            if (Math.random() < 0.55) outcome2 = outcome1;
+            if (Math.random() < 0.55) outcome3 = outcome2;
 
             const pogCoinSlots = new MessageEmbed() //Starts the proccess for creating an embed
             .setColor('#aec234')
