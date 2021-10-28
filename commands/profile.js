@@ -8,8 +8,7 @@ module.exports = {
             const userProfile = new MessageEmbed()
             .setTitle(message.author.username)
 
-            if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
-            else if(userPinged === undefined){
+            if(userPinged === undefined){
                 let profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
                 
                 userProfile
@@ -21,7 +20,7 @@ module.exports = {
                 .setThumnail(message.author.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))
         
             }
-            else{
+            else if (userPinged){
                 let profileDataPinged = await profileModel.findOne({userID: userPinged.id}); //Attempts to look for a user in the DB with the user's id
                 if(!profileDataPinged) //If there was no profile data of the mentioned user then it will create a new account on the database
                 {
@@ -48,6 +47,8 @@ module.exports = {
                 )
                 .setThumnail(userPinged.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))                
             }
+            else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+
 
             const profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
 
