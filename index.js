@@ -44,9 +44,7 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 ///-----Executes When Message Is Created-----///
 client.on("messageCreate", async(message) => {
 
-    for (i in Range(blockedUsers.Range)){
-        if(message.author.id == blockedUsers[i]) return message.channel.send(`Sorry <@${message.author.id}>, but youve been blocked from using pogcoin`)
-    }
+
 
     let profileData;
     try{
