@@ -14,7 +14,16 @@ module.exports = {
                 userID: message.mentions.users.first().id, //looks for the record of the message author's account
             }, {
                 $set: {
-                    coins: 1, //decreases the amount of coins that the author has by the stated amount
+                    coins: 1,
+                    dailyTimestamp: 0,
+                    robTimestamp: 0,
+                    totalCoinsEarnt: 0,
+                    coinsDonated: 0,
+                    coinsReceived: 0,
+                    netGamble: 0,
+                    robSuccess: 0,
+                    robFails: 0,
+                    timesRobbed: 0,
                 }
             });
 
