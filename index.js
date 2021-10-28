@@ -3,8 +3,9 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD
 
 const prefix = process.env.DISCORD_PREFIX;
 const mongoose = require("mongoose");
+const { MessageEmbed } = require('discord.js');
 const profileModel = require("./models/profileSchema.js");
-const { MessageEmbed } = require('discord.js'); 
+const blockedUsers = require("./arrays/blockedUsers.js");
 const fs = require("fs");
 
 require("dotenv").config();
@@ -42,6 +43,11 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 
 ///-----Executes When Message Is Created-----///
 client.on("messageCreate", async(message) => {
+
+    const blockedUserID = blockedUsers.find((val) => (val.id) === message.author.id);
+    const blockedUserReason = blockedUsers.find((val) => (val.id) === message.author.id).reason;
+
+    if(message.author.id == blockedUserID) return message.channel.send(`Sorry <@${message.author.id}>, but youve been blocked from using pogcoin because of the following reasons\n${blockedUserReason}`)
 
     let profileData;
     try{
