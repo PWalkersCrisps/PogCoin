@@ -26,7 +26,7 @@ module.exports = {
                 setTimeout(() => {
                 // Removes the user from the set after a minute
                 talkedRecently.delete(message.guild.id);
-                }, 600 * 1000);
+                }, 60 * 60000);
             }
         }
         catch(err){
