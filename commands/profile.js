@@ -45,7 +45,7 @@ module.exports = {
                     {name: `Rob Stats`, value: `Successful Robberies: ${profileDataPinged.robSuccess}\nFailed Robberies: ${profileDataPinged.robFails}\nTimes Robbed: ${profileDataPinged.timesRobbed}`},
                 )
                 .setThumbnail(userPinged.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))                
-                .setTitle(userProfile.username)
+                .setTitle(userPinged.username)
             }
             else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
 
