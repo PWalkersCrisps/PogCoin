@@ -17,7 +17,7 @@ module.exports = {
                     {name: `Gamble Stats`, value: `Net Gambled: ${profileData.netGamble}`},
                     {name: `Rob Stats`, value: `Successful Robberies: ${profileData.robSuccess}\nFailed Robberies: ${profileData.robFails}\nTimes Robbed: ${profileData.timesRobbed}`},
                 )
-                .setThumnail(message.author.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))
+                .setThumbnail(message.author.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))
         
             }
             else if (userPinged){
@@ -45,7 +45,7 @@ module.exports = {
                     {name: `Gamble Stats`, value: `Net Gambled: ${profileDataPinged.netGamble}`},
                     {name: `Rob Stats`, value: `Successful Robberies: ${profileDataPinged.robSuccess}\nFailed Robberies: ${profileDataPinged.robFails}\nTimes Robbed: ${profileDataPinged.timesRobbed}`},
                 )
-                .setThumnail(userPinged.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))                
+                .setThumbnail(userPinged.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))                
             }
             else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
 
