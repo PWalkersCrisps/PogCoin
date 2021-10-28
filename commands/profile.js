@@ -6,7 +6,6 @@ module.exports = {
             userPinged = message.mentions.users.first();
 
             const userProfile = new MessageEmbed()
-            .setTitle(message.author.username)
 
             if(userPinged === undefined){
                 let profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
@@ -18,7 +17,7 @@ module.exports = {
                     {name: `Rob Stats`, value: `Successful Robberies: ${profileData.robSuccess}\nFailed Robberies: ${profileData.robFails}\nTimes Robbed: ${profileData.timesRobbed}`},
                 )
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))
-        
+                .setTitle(message.author.username)
             }
             else if (userPinged){
                 let profileDataPinged = await profileModel.findOne({userID: userPinged.id}); //Attempts to look for a user in the DB with the user's id
@@ -46,6 +45,7 @@ module.exports = {
                     {name: `Rob Stats`, value: `Successful Robberies: ${profileDataPinged.robSuccess}\nFailed Robberies: ${profileDataPinged.robFails}\nTimes Robbed: ${profileDataPinged.timesRobbed}`},
                 )
                 .setThumbnail(userPinged.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))                
+                .setTitle(userProfile.username)
             }
             else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
 
