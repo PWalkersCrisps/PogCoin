@@ -7,7 +7,7 @@ module.exports = {
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             if (talkedRecently.has(message.guild.id)) {
-                message.channel.send(`<@${message.author.id}> its a server cooldown, wait like 10 mins`);
+                message.channel.send(`<@${message.author.id}> its a server cooldown, wait like 60 mins`);
             } else {
                 const random_hex_color_code = () => {
                     let n = (Math.random() * 0xfffff * 1000000).toString(16);
