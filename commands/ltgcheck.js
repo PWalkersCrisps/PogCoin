@@ -19,7 +19,7 @@ module.exports = {
                 };
 
                 let ltgEmbed = new MessageEmbed()
-                .setImage(lewdImages[Math.floor(Math.random() * randomImg.length)])
+                .setImage(randomImg[Math.floor(Math.random() * randomImg.length)])
                 .setColor(random_hex_color_code())
                 .setTitle("Low Tier God's advice")
                 // Adds the user to the set so that they can't talk for a minute
