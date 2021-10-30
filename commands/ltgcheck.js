@@ -1,8 +1,8 @@
 const talkedRecently = new Set();
 
 module.exports = {
-    name: "auction",
-    description: "Sell someone else",
+    name: "ltgcheck",
+    description: "ltgcheck",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
             if (talkedRecently.has(message.guild.id)) {
