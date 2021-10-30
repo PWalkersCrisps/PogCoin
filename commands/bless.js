@@ -1,6 +1,6 @@
 module.exports = {
-    name: "auction",
-    description: "Sell someone else",
+    name: "bless",
+    description: "",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         
         try{
