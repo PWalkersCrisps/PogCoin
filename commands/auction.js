@@ -92,6 +92,7 @@ module.exports = {
                     break;
                 
             }
+            
             message.channel.send({ embeds: [pogCoinAuction] });
 
 

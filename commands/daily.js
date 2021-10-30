@@ -41,6 +41,7 @@ module.exports = {
                     )
                 }
 
+                
                 message.channel.send({ embeds: [pogCoinDaily] });
 
             }
