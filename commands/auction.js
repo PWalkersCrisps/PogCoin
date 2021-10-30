@@ -10,7 +10,7 @@ module.exports = {
                 "426455031571677197",
             ];
 
-            if (!message.author.id == currentAuctioneerID) return message.channel.send("Sorry, only someone with auction perms can use this");
+            if (!currentAuctioneerID.includes(message.author.id)) return message.channel.send("Sorry, only someone with auction perms can use this");
 
             
             const auctionMode = args [0];
