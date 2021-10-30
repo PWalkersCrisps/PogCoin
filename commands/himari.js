@@ -1,7 +1,7 @@
 const talkedRecently = new Set();
 
 module.exports = {
-    name: "nya",
+    name: "himari",
     description: "uwu",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{

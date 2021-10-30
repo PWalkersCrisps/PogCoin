@@ -67,7 +67,7 @@ module.exports = {
                         //const savedUser = await newUser.save();
                     }
         
-                    if(profileData.coins < amount) return message.channel.send(`<@${message.author.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`)
+                    if(profileDataMentioned.coins < amount) return message.channel.send(`<@${message.author.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`)
 
                     const response1 = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
                         userID: userPinged.id, //looks for the record of the message author's account
@@ -86,14 +86,7 @@ module.exports = {
                     });
 
                     pogCoinAuction
-                    .setDescription(`<@${message.author.id}> is now selling someone, please be sensible because your coins will actually be taken away.`)
-                    .addFields(
-                        {
-                            name: `Auctions`,
-                            value: `<@${userPinged.id}> is being sold with the inital starting bid of ${amount} pogcoins`
-                        }
-                    )
-                    .setThumbnail(userPinged.displayAvatarURL({ dynamic: true , size: 2048 , format: "png" }))
+                    .setDescription(`<@${userPinged.id}> just won the auction with ${amount} pogcoins`)
 
 
                     break;
