@@ -13,8 +13,8 @@ module.exports = {
             .setTimestamp()
             
             let probability;
-            if (amount => 90) probability = 0.033
-            else probability = (( -amount + 100) / 2) / 150
+            if (amount => 70) probability = 0.2
+            else probability = (( -amount + 100) / 2) / 75
 
             if(Math.random() < probability){
                 const response = await profileModel.findOneAndUpdate({

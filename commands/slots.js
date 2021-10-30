@@ -11,10 +11,6 @@ module.exports = {
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
-                "<:pixel_despair:902537185713082388>", //lose 2x the bet
-                "<:pixel_despair:902537185713082388>", //lose 2x the bet
-                "<:pixel_bruh:902537185444642847>", //Nothing + insult
-                "<:pixel_bruh:902537185444642847>", //Nothing + insult
                 "<:pixel_bruh:902537185444642847>", //Nothing + insult
                 "<:pixel_bruh:902537185444642847>", //Nothing + insult
                 "<:pixel_bruh:902537185444642847>", //Nothing + insult

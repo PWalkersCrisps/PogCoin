@@ -40,7 +40,7 @@ module.exports = {
                 //const savedUser = await newUser.save();
             }
             
-            if(Math.random() < 0.35){
+            if(Math.random() < 0.40){
                 const coinsGainedRNG = getRandomInt(profileDataMentioned.coins)
                 const response = await profileModel.findOneAndUpdate({
                     userID: message.author.id, //looks for the id of the author
