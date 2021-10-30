@@ -32,7 +32,14 @@ module.exports = {
 
                 }
                 else {
+                    const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
+                        userID: message.author.id, //looks for the record of the message author's account
+                    }, {
+                        $set: {
+                            dailyTimestamp: Date.now()/1000,
+                        },
 
+                    });
                     pogCoinDaily.addFields(
                         {
                             name: `Daily coins`,
@@ -41,7 +48,7 @@ module.exports = {
                     )
                 }
 
-                
+
                 message.channel.send({ embeds: [pogCoinDaily] });
 
             }
