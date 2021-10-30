@@ -2,7 +2,7 @@ module.exports = {
     name: "bless",
     description: "",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
-        
+        /*
         try{
 
 
@@ -20,6 +20,7 @@ module.exports = {
         catch(err){
             console.error(err)
         }
+        */
     }
 }
 
