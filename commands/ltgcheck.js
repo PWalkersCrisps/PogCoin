@@ -22,6 +22,9 @@ module.exports = {
                 .setImage(randomImg[Math.floor(Math.random() * randomImg.length)])
                 .setColor(random_hex_color_code())
                 .setTitle("Low Tier God's advice")
+
+                message.channel.send({ embeds: [ltgEmbed] });
+
                 // Adds the user to the set so that they can't talk for a minute
                 talkedRecently.add(message.guild.id);
                 setTimeout(() => {
