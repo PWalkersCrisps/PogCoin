@@ -40,6 +40,9 @@ module.exports = {
                         }
                     )
                 }
+
+                message.channel.send({ embeds: [pogCoinDaily] });
+
             }
             else{
                 message.channel.send(`<@${message.author.id}> you are still on cooldown, you just need to wait ${profileData.dailyTimestamp + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!`)
