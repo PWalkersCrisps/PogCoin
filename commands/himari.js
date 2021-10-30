@@ -20,13 +20,13 @@ module.exports = {
                 .setFooter("Please do not ruin the innocence of Himari, we all love them");
 
                 message.channel.send({ embeds: [uwuEmbed] });
-                
+
                 // Adds the user to the set so that they can't talk for a minute
                 talkedRecently.add(message.guild.id);
                 setTimeout(() => {
                 // Removes the user from the set after a minute
                 talkedRecently.delete(message.guild.id);
-                }, 20 * 60000);
+                }, 2 * 60000);
             }
         }
         catch(err){
