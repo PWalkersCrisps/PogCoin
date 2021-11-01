@@ -3,7 +3,7 @@ module.exports = {
     description: "gamble your life savings away",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
-
+            if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             const amount = args[0];
             if (amount < 1) return message.channel.send(`<${message.author.id}> Please can you actually try to gamble something?`)
             if(profileData.coins < amount) return message.channel.send("Actually have enough coins??")

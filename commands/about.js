@@ -4,6 +4,7 @@ module.exports = {
     cooldown: 5,
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
+            if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             const serverJoin = new MessageEmbed()
             .setColor("#ffff00")
             .setTitle("pogcoin")

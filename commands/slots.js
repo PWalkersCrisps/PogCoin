@@ -5,6 +5,7 @@ module.exports = {
     description: "Gamble your life savings away",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
+            if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             const outcomeEmotes = [
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
