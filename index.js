@@ -44,7 +44,6 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 ///-----Executes When Message Is Created-----///
 client.on("messageCreate", async(message) => {
 
-    if (blockedUsers.includes(message.author.id)) return message.channel.send(`<@${message.author.id}>, lol fuck you youre blocked from the bot now!!`)
 
     let profileData;
     try{
@@ -75,6 +74,7 @@ client.on("messageCreate", async(message) => {
     ///-----CMD execution-----///
 
     if(!message.content.startsWith(prefix) || message.author.bot) return; //if the message didnt start with the bot's prefix, it just goes back to the start
+    if (blockedUsers.includes(message.author.id)) return message.channel.send(`<@${message.author.id}>, lol fuck you youre blocked from the bot now!!`)
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
