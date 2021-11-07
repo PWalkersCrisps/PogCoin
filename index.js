@@ -44,7 +44,7 @@ mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
 ///-----Executes When Message Is Created-----///
 client.on("messageCreate", async(message) => {
 
-    if (blockedUsers.includes(message.author.id)) return message.channel.send(`${message.author.id}, lol fuck you youre blocked from the bot now!!`)
+    if (blockedUsers.includes(message.author.id)) return message.channel.send(`<@${message.author.id}>, lol fuck you youre blocked from the bot now!!`)
 
     let profileData;
     try{
