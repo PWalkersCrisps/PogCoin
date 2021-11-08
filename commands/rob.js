@@ -20,7 +20,7 @@ module.exports = {
 
             function randomCoinRNG(){
                 if(profileDataMentioned.coins > 65){
-                    return Math.random() < 0.15 * 66/20
+                    return Math.random() < 0.15 * 66/40
                 }
                 return Math.random() < 0.15 * profileDataMentioned.coins/20
             }
