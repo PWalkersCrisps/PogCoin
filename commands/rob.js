@@ -22,7 +22,7 @@ module.exports = {
                 if(profileDataMentioned.coins > 65){
                     return Math.random() < 0.15 * 66/40
                 }
-                return Math.random() < 0.15 * profileDataMentioned.coins/20
+                return Math.random() < 0.15 * profileDataMentioned.coins/40
             }
 
             let pogCoinRob = new MessageEmbed() //Starts the proccess for creating an embed
