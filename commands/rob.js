@@ -18,6 +18,13 @@ module.exports = {
                 return Math.round(Math.random() * max);
             }
 
+            function randomCoinRNG(profileDataCoins){
+                if(profileDataCoins > 65){
+                    return Math.random() < 0.15 * 66/20
+                }
+                return Math.random() < 0.15 * profileDataCoins/20
+            }
+
             let pogCoinRob = new MessageEmbed() //Starts the proccess for creating an embed
             .setTimestamp()
 
@@ -41,7 +48,7 @@ module.exports = {
                 //const savedUser = await newUser.save();
             }
             
-            if(Math.random() < 0.15 * profileDataMentioned.coins/100){
+            if(randomCoinRNG(profileDataMentioned.coins)){
                 const coinsGainedRNG = getRandomInt(profileDataMentioned.coins)
                 const response = await profileModel.findOneAndUpdate({
                     userID: message.author.id, //looks for the id of the author
