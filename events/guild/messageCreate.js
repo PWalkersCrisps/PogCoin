@@ -39,6 +39,10 @@ module.exports = async(message) =>{
         console.error(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
     }
 
+    if(message.content === "*quickCheck"){
+        message.channel.send("app/events/guild/messageCreate.js works")
+    }
+
     ///-----Pogcoin RNG-----//
 
     if (Math.random() < 0.1){
