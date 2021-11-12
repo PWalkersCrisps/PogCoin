@@ -10,6 +10,8 @@ const fs = require("fs");
 
 require("dotenv").config();
 
+const coinCooldown = new Set();
+
 ///-----Command/Event Handlers-----///
 
 client.commands = new Discord.Collection();
