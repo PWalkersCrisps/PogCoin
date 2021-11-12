@@ -49,7 +49,7 @@ client.on("messageCreate", async(message) => {
     ///-----Pogcoin RNG-----//
 
     if (Math.random() < 0.1){
-
+        if(message.author.bot) return;
         if (!coinCooldown.has(message.author.id)) { //goes to check if the cooldowns map *DOESNT* habe the author's
             const response = await profileModel.findOneAndUpdate({
                 userID: message.author.id, //looks for the id of the author
