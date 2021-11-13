@@ -1,7 +1,7 @@
 const talkedRecently = new Set();
 
 module.exports = {
-    name: "ariBirthday",
+    name: "ari",
     description: "get coins daily at a chance",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
