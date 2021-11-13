@@ -6,7 +6,7 @@ module.exports = {
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
 
         if (!talkedRecently.has(message.author.id)) {
-            if(message.author.id === "632520343839309825") return message.channel.send(`You aint ari`);
+            if(!message.author.id === "632520343839309825") return message.channel.send(`You aint ari`);
 
 
             let pogCoinDaily = new MessageEmbed()
