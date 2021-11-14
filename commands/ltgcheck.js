@@ -10,7 +10,6 @@ module.exports = {
             } else {
                 const randomImg = [
                     "https://cdn.discordapp.com/attachments/816008277619638332/903245120399355924/image0-40.png",
-                    "https://cdn.discordapp.com/attachments/882364852964847727/902245848841322566/0c6431c4e4c2357157b2a20217ca47dccff72becdf0e333050606c73d0c7118d_1.jpg",
                     "https://cdn.discordapp.com/attachments/816008277619638332/905492943845093456/B927E6C3-934F-4D5D-83B6-63FC7534B741.jpg",
                 ]
 
