@@ -2,6 +2,7 @@ module.exports = {
     name: "rob",
     description: "steal someones money",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+        /*
         try{
             if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             const userPinged = message.mentions.members.first();
@@ -105,5 +106,6 @@ module.exports = {
         catch(err){
             console.error(err);
         }
+        */
     }
 }
