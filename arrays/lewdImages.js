@@ -37,5 +37,7 @@ module.exports = [
     "https://cdn.discordapp.com/attachments/816008277619638332/902979952373268520/Screenshot_20211027-185940_Discord.jpg", //Ari
     "https://cdn.discordapp.com/attachments/892401496564580382/909856006006251581/Screenshot_20211115-122241.png", //IB4K
     "https://cdn.discordapp.com/attachments/816008277619638332/909855106042822656/Screenshot_20211115-121910.png", //IB4K
-    
+    "https://cdn.discordapp.com/attachments/816008277619638332/912357695602962432/Screenshot_20211121-053445_Discord.jpg", //Shocky
+    "https://cdn.discordapp.com/attachments/816008277619638332/912357745708105778/unknown.png", //Wooshie
+    "https://cdn.discordapp.com/attachments/816008277619638332/912357237861781584/Screenshot_20211121-234940.png", //someone?    
 ]
