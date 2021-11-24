@@ -66,12 +66,12 @@ client.on("messageCreate", async(message) => {
             .setTimestamp()
             .setFooter('Reddit Gold Replacement?');    
             
-            if (message.member.roles.cache.some(role => role.name === 'he/him')){ //checks if the auther has the he/him role
+            if (message.member.roles.cache.some(role => role.name === 'He/Him')){ //checks if the auther has the he/him role
                 pogCoinEmbedReward.addFields(
                     { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good boy`},
                 )        
             }
-            else if (message.member.roles.cache.some(role => role.name === 'she/her')){ //checks if the auther has the she/her role
+            else if (message.member.roles.cache.some(role => role.name === 'She/Her')){ //checks if the auther has the she/her role
                 pogCoinEmbedReward.addFields(
                     { name: 'pog Coin', value: `Youve been rewarded with a pog Coin for being a good girl`},
                 )        
