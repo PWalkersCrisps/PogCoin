@@ -3,7 +3,7 @@ module.exports = {
     description: "get coins daily at a chance",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
         try{
-            if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
+            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             if(profileData.dailyTimestamp + 86400 <= Date.now() / 1000){
 
                 let pogCoinDaily = new MessageEmbed()

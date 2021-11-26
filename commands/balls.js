@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 1,
     description: "balls",
     async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
-        if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
+        if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
         const ballsEmbed = new MessageEmbed() //Starts the proccess for creating an embed
         .setColor('#ffff00')
         .setTimestamp()

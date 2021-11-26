@@ -6,7 +6,7 @@ module.exports = {
     cooldown: 5,
     async execute(Discord, client, args, message, profileModel, profileData){
         try{
-            if(message.channel.id === "816008277619638332") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
+            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             if (items.length === 0) return message.channel.send(`<@${message.author.id}> Unfortunatly im not selling right now, ig you just need to be patient`);
 
             const shoplistEmbed = new MessageEmbed()
