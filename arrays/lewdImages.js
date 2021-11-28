@@ -1,8 +1,7 @@
 module.exports = [
-    "https://cdn.discordapp.com/attachments/816008277619638332/902206219828207636/unknown-1.jpg", //Ari
     "https://cdn.discordapp.com/attachments/816008277619638332/902206535621562388/Screenshot_20211024-223853_Discord.jpg", //Concon is hot
     "https://cdn.discordapp.com/attachments/816008277619638332/902206546015039588/Screenshot_20211024-220215_Discord.jpg", //IB4K
-    "https://cdn.discordapp.com/attachments/816008277619638332/900820208544002108/unknown.jpg", //Ari
+    
     "https://cdn.discordapp.com/attachments/816008277619638332/902207540786520064/unknown.png", //LuftWaffle
     "https://cdn.discordapp.com/attachments/816008277619638332/902208330947239947/unknown.png", //LuftWaffle
     "https://cdn.discordapp.com/attachments/816008277619638332/902208798742159371/unknown.png", //Rune + Luftwaffle
@@ -13,7 +12,7 @@ module.exports = [
     "https://cdn.discordapp.com/attachments/873856248179724288/902535655064756224/unknown.png", //Wooshie
     "https://cdn.discordapp.com/attachments/873856248179724288/902535595547590656/unknown.png", //Ginger
     "https://cdn.discordapp.com/attachments/873856248179724288/902535251325243432/unknown.png", //Potatohead
-    "https://cdn.discordapp.com/attachments/873856248179724288/902535161416130611/unknown.png", //Ari
+    
     "https://cdn.discordapp.com/attachments/873856248179724288/902535111688470608/unknown.png", //Bazinga
     "https://cdn.discordapp.com/attachments/873856248179724288/902535037449289778/unknown.png", //Rune
     "https://cdn.discordapp.com/attachments/886319667860357130/902757672766545940/Screen_Shot_2021-10-26_at_11.10.36_PM.png", //PWC
@@ -34,7 +33,7 @@ module.exports = [
     "https://cdn.discordapp.com/attachments/816008277619638332/902971972605059122/unknown.png", //Ric
     "https://cdn.discordapp.com/attachments/816008277619638332/902972284267024404/unknown.png", //Ric
     "https://cdn.discordapp.com/attachments/816008277619638332/902978556320157726/Screenshot_20211027-182028_Discord.jpg", //Concon
-    "https://cdn.discordapp.com/attachments/816008277619638332/902979952373268520/Screenshot_20211027-185940_Discord.jpg", //Ari
+    
     "https://cdn.discordapp.com/attachments/892401496564580382/909856006006251581/Screenshot_20211115-122241.png", //IB4K
     "https://cdn.discordapp.com/attachments/816008277619638332/909855106042822656/Screenshot_20211115-121910.png", //IB4K
     "https://cdn.discordapp.com/attachments/816008277619638332/912357695602962432/Screenshot_20211121-053445_Discord.jpg", //Shocky
