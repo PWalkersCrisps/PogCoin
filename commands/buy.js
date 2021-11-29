@@ -34,13 +34,15 @@ module.exports = {
 
             message.member.roles.add(message.guild.roles.cache.find(r => r.id === roleGive));
 
-            const pogCoinDonate = new MessageEmbed()
+            const pogCoinBuy = new MessageEmbed()
             .setColor('#00ffff')
             .setTimestamp()
             .setFooter('Amazon Replacement?')
             .addFields(
                 {name: "pogshop", value: `wowza, moneybags <@${message.author.id}> just got ${message.guild.roles.cache.find(r => r.id === roleGive)}`}
             )
+
+            message.author.send({ embeds: [pogCoinBuy] });
         }
         catch(err){
             console.error(err);
