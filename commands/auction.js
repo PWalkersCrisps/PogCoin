@@ -1,7 +1,7 @@
 module.exports = {
     name: "auction",
     description: "Sell someone else",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         
         try{
 
@@ -10,12 +10,12 @@ module.exports = {
                 "426455031571677197",
             ];
 
-            if (!currentAuctioneerID.includes(message.author.id)) return message.channel.send("Sorry, only someone with auction perms can use this");
+            if (!currentAuctioneerID.includes(message.author.id)) return interaction.reply({ content: "Sorry, only someone with auction perms can use this", ephemeral: true});
 
             
-            const auctionMode = args [0];
-            const userPinged = message.mentions.users.first();
-            const amount = args[2];
+            const auctionMode = interaction.options.getString('input');
+            const userPinged = interaction.options.getUser('target');
+            const amount = interaction.options.getInteger('int');
 
             if(!auctionMode) return message.channel.send(`<@${message.author.id}> you need to decide on how your handling the auction? [Start/Sell/Stop]`)
             
@@ -93,7 +93,7 @@ module.exports = {
                 
             }
             
-            message.channel.send({ embeds: [pogCoinAuction] });
+            interaction.reply({ embeds: [pogCoinAuction] });
 
 
         }

@@ -1,10 +1,8 @@
 module.exports = {
     name: "about",
     description: "About the bot",
-    cooldown: 5,
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
-            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             const serverJoin = new MessageEmbed()
             .setColor("#ffff00")
             .setTitle("pogcoin")
@@ -21,7 +19,7 @@ module.exports = {
                 {name: ".", value: "I woul very much appreciate it if you just didnt correct my mistakes, if you want to complain, go to PWalkersCrisps..."}
             )
 
-            message.channel.send({ embeds: [serverJoin] })
+            interaction.reply({ embeds: [serverJoin], ephemeral: true })
         }
         catch(err){
             console.error(err);

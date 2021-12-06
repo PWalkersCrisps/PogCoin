@@ -1,15 +1,10 @@
-const cooldowns = new Set();
-
 module.exports = {
     name: "balance",
-    aliases: ["bal", "bank", "coins", "money", "pogcoins"],
-    cooldown: 5,
     description: "check your balance",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel){
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
 
-        const userPinged = message.mentions.users.first();
-
-        profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
+        const userPinged = interaction.options.getUser('target');
+        profileData = await profileModel.findOne({userID: interaction.user.id}); //Attempts to look for a user in the DB with the user's id
 
         const pogCoinBalance = new MessageEmbed()
         .setColor('#ff00ff')
@@ -21,7 +16,7 @@ module.exports = {
                 { name: 'pog Coin Bank', value: `You have ${profileData.coins} <:pogcoin:899662337399750666> pogcoins`}
             )    
         }
-        else if (userPinged.bot || message.mentions.roles.first()) return message.author.send("YOU IDIOT THAT WAS A BOT???")
+        else if (userPinged.bot) return interaction.reply({ content: "YOU IDIOT THAT WAS A BOT???", ephemeral: true })
         else{
             const profileDataPinged = profileData = await profileModel.findOne({userID: userPinged.id}); //Attempts to look for a user in the DB with the user's id
             if(!profileDataPinged) //If there was no profile data of the mentioned user then it will create a new account on the database
@@ -48,7 +43,7 @@ module.exports = {
             )    
         }
 
-        message.channel.send({ embeds: [pogCoinBalance] });
+        interaction.reply({ embeds: [pogCoinBalance] });
 
         
     }
