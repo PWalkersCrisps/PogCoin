@@ -1,6 +1,10 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
     name: "about",
     description: "About the bot",
+    data: new SlashCommandBuilder().setName('about')
+    .setDescription('what da hell is this bot about?'),
     async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
             const serverJoin = new MessageEmbed()
