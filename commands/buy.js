@@ -41,7 +41,7 @@ module.exports = {
                 {name: "pogshop", value: `wowza, moneybags <@${message.author.id}> just got ${message.guild.roles.cache.find(r => r.id === roleGive)}`}
             )
 
-            message.author.send({ embeds: [pogCoinBuy] });
+            message.channel.send({ embeds: [pogCoinBuy] });
         }
         catch(err){
             console.error(err);
