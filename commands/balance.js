@@ -1,6 +1,12 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
     name: "balance",
     description: "check your balance",
+    data:  new SlashCommandBuilder().setName('balance')
+    .setDescription('Check how broke you or someone else is')
+    .addUserOption(option => option.setName('target').setDescription('Who do you want to donate to?')),
+
     async execute(client, interaction, MessageEmbed, profileModel, profileData){
 
         const userPinged = interaction.options.getUser('target');

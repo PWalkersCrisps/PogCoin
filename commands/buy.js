@@ -6,7 +6,10 @@ const profileModel = require("../models/profileSchema.js");
 module.exports = {
     name: "buy",
     description: "Buy from the bot",
-    cooldown: 5,
+    data: new SlashCommandBuilder().setName('buy')
+    .setDescription('Buys an item from the shops')
+    .addStringOption(option => option.setName('input').setDescription('Enter a string')),
+    
     async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
             profileData = await profileModel.findOne({userID: message.author.id}); //Attempts to look for a user in the DB with the user's id
