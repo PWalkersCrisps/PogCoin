@@ -1,12 +1,16 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
     name: "gamble",
     description: "gamble your life savings away",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    data: new SlashCommandBuilder().setName('gamble')
+    .setDescription('Gamble all of your life savings away')
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
-            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
-            const amount = args[0];
-            if (amount < 1) return message.channel.send(`<${message.author.id}> Please can you actually try to gamble something?`)
-            if(profileData.coins < amount) return message.channel.send("Actually have enough coins??")
+            const amount = interaction.options.getInteger('int');
+            if (amount < 1) return interaction.reply({ content: `<${interaction.user.id}> Please can you actually try to gamble something?`, ephemeral: true})
+            if(profileData.coins < amount) return interaction.reply({ content: "Actually have enough coins??", ephemeral: true });
 
 
             let pogCoinGamble = new MessageEmbed() //Starts the proccess for creating an embed
@@ -18,7 +22,7 @@ module.exports = {
 
             if(Math.random() < probability){
                 const response = await profileModel.findOneAndUpdate({
-                    userID: message.author.id, //looks for the id of the author
+                    userID: interaction.user.id, //looks for the id of the author
                 }, {
                     $inc: {
                         coins: amount, //when the id of the author is found, it gives them one coin
@@ -30,12 +34,12 @@ module.exports = {
                 .setFooter('Holy shit you actually won?')
                 .setColor('YELLOW')
                 .addFields(
-                    {name: `!!!YOU WON!!!`, value: `<@${message.author.id}> HOLY FUCKING SHIT YOU ACTUALLY WON? I PROBABLY SHOULD GIVE YOU ${amount * 2} <:pogcoin:899662337399750666>`}
+                    {name: `!!!YOU WON!!!`, value: `<@${interaction.user.id}> HOLY FUCKING SHIT YOU ACTUALLY WON? I PROBABLY SHOULD GIVE YOU ${amount * 2} <:pogcoin:899662337399750666>`}
                 )
             }
             else{
                 const response = await profileModel.findOneAndUpdate({
-                    userID: message.author.id, //looks for the id of the author
+                    userID: interaction.user.id, //looks for the id of the author
                 }, {
                     $inc: {
                         coins: -amount, //when the id of the author is found, it gives them one coin
@@ -46,11 +50,11 @@ module.exports = {
                 .setFooter('Vegas Replacement?')
                 .setColor('RED')
                 .addFields(
-                    {name: `YOU LOST!`, value: `<@${message.author.id}> omg you actually lost ${amount} <:pogcoin:899662337399750666>, i really want to make fun of you`}
+                    {name: `YOU LOST!`, value: `<@${interaction.user.id}> omg you actually lost ${amount} <:pogcoin:899662337399750666>, i really want to make fun of you`}
                 )
             }
 
-            message.channel.send({ embeds: [pogCoinGamble] });
+            interaction.reply({ embeds: [pogCoinGamble] });
         }
         catch(err){
             console.error(err);

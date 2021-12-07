@@ -1,11 +1,14 @@
 const randomInsult = require("../arrays/randomInsult");
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: "slots",
     description: "Gamble your life savings away",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    data: new SlashCommandBuilder().setName('slots')
+    .setDescription('Gamble all of your life savings away')
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
-            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             const outcomeEmotes = [
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
                 "<:pixel_despair:902537185713082388>", //lose 2x the bet
@@ -23,9 +26,9 @@ module.exports = {
                 "<:pixel_pogcoin:902537185637584926>", //4x
             ];
 
-            const amount = args[0];
-            if(!amount || amount < 1) return message.channel.send("Actually try to bet smthing?")
-            if(profileData.coins < amount) return message.channel.send("Actually have enough coins??")
+            const amount = interaction.options.getInteger('int');
+            if(!amount || amount < 1) return interaction.reply("Actually try to bet smthing?")
+            if(profileData.coins < amount) return interaction.reply("Actually have enough coins??")
 
             function getRandomEmote(){
                 return outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
@@ -34,7 +37,7 @@ module.exports = {
             async function gambleWinnings(multiplier){
                 try{
                     const response = await profileModel.findOneAndUpdate({
-                        userID: message.author.id, //looks for the id of the author
+                        userID: interaction.user.id, //looks for the id of the author
                     }, {
                         $inc: {
                             coins: amount * multiplier, //when the id of the author is found, it gives them one coin
@@ -108,10 +111,6 @@ module.exports = {
                         )
                         break;
                 }
-
-                console.log("Slots Win")
-                
-
             }
             else {
                 gambleWinnings(-1);
@@ -120,7 +119,7 @@ module.exports = {
                 )
             }
 
-            message.channel.send({ embeds: [pogCoinSlots, pogCoinWinnings] });
+            interaction.reply({ embeds: [pogCoinSlots, pogCoinWinnings] });
 
         }
         catch(err){

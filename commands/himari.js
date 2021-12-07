@@ -1,12 +1,16 @@
 const talkedRecently = new Set();
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: "himari",
     description: "uwu",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    data: new SlashCommandBuilder().setName('himari')
+    .setDescription('Why?????'),
+
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
-            if (talkedRecently.has(message.guild.id)) {
-                message.channel.send(`<@${message.author.id}> its a server cooldown, wait like 2 mins`);
+            if (talkedRecently.has(interaction.guild.id)) {
+                interaction.channel.send(`<@${interaction.author.id}> its a server cooldown, wait like 2 mins`);
             } else {
                 const random_hex_color_code = () => {
                     let n = (Math.random() * 0xfffff * 1000000).toString(16);
@@ -19,13 +23,13 @@ module.exports = {
                 .setTitle("WHY DO YOU DO THIS???")
                 .setFooter("Please do not ruin the innocence of Himari, we all love them");
 
-                message.channel.send({ embeds: [uwuEmbed] });
+                interaction.reply({ embeds: [uwuEmbed] });
 
                 // Adds the user to the set so that they can't talk for a minute
-                talkedRecently.add(message.guild.id);
+                talkedRecently.add(interaction.guild.id);
                 setTimeout(() => {
                 // Removes the user from the set after a minute
-                talkedRecently.delete(message.guild.id);
+                talkedRecently.delete(interaction.guild.id);
                 }, 2 * 60000);
             }
         }

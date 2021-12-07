@@ -1,9 +1,13 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
     name: "daily",
     description: "get coins daily at a chance",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    data: new SlashCommandBuilder().setName('daily')
+    .setDescription('Get your daily coin, but beware, there is a 50% chance of getting nothing!'),
+
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
-            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
             if(profileData.dailyTimestamp + 86400 <= Date.now() / 1000){
 
                 let pogCoinDaily = new MessageEmbed()
@@ -54,7 +58,7 @@ module.exports = {
 
             }
             else{
-                message.channel.send(`<@${message.author.id}> you are still on cooldown, you just need to wait ${profileData.dailyTimestamp + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!`)
+                interaction.reply({ content: `<@${message.author.id}> you are still on cooldown, you just need to wait ${profileData.dailyTimestamp + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!`, })
             }
         }
         catch(err){

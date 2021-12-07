@@ -1,7 +1,7 @@
 module.exports = {
     name: "rob",
     description: "steal someones money",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         /*
         try{
             if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);

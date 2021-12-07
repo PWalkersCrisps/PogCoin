@@ -1,29 +1,29 @@
 const { Permissions } = require('discord.js');
 const mongoose = require('mongoose');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: "give",
     description: "give a user some coins",
-    cooldown: 5,
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData) {
+    data: new SlashCommandBuilder().setName('give')
+    .setDescription('Admin command lol')
+    .addUserOption(option => option.setName('target').setDescription('Whos balance do you want to edit?'))
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to give?')),
+
+    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
 
         try{
-            if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !message.member.id == "426455031571677197") return message.channel.send(`<@${message.author.id}> actually have permissions to use the command next time`);
-            if (!args.length){
-                message.channel.send("You need to mention a member to give them coins");
-                return;
-            }
-            const amount = args[1];
-            if (!message.mentions.users.first()) return message.channel.send("That user does not exist");
+            if (!interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == "426455031571677197") return interaction.reply({ content: `<@${message.author.id}> actually have permissions to use the command next time`, ephemeral: true});
 
-            if (amount % 1 != 0 || amount <= 0) return message.channel.send("Ayo if you want to actually give money make it an actual number");
+            const amount = interaction.options.getInteger('int');
+            if (amount % 1 != 0 || amount <= 0) return interaction.reply({ content: "Ayo if you want to actually give money make it an actual number", ephemeral: true});
 
             try {
-            const targetData = await profileModel.findOne({ userID: message.mentions.users.first().id });
+            const targetData = await profileModel.findOne({ userID: interaction.options.getMember('target').id });
             if (!targetData)
             {
                 let newUser = await profileModel.create({
-                    userID: message.mentions.users.first().id,
+                    userID: interaction.options.getMember('target').id,
                     coins: 1,
                     dailyTimestamp: 0,
                     robTimestamp: 0,
@@ -38,19 +38,20 @@ module.exports = {
                 });
                 //const savedUser = await newUser.save();
             }
+            } catch (err) {
+                console.error(err);
+            }
 
             const response = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
-                userID: message.mentions.users.first().id, //looks for the record of the message author's account
+                userID: interaction.options.getMember('target').id, //looks for the record of the message author's account
             }, {
                 $inc: {
                     coins: amount, //decreases the amount of coins that the author has by the stated amount
                 }
             });
 
-            return message.channel.send(`<@${message.mentions.users.first().id}> has just been given ${amount} coins\n\nmake fun of them ig?`);
-            } catch (err) {
-            console.error(err);
-            }
+            return message.channel.send(`<@${interaction.options.getMember('target').id}> has just been given ${amount} coins\n\nmake fun of them ig?`);
+
         }
         catch(err){
             console.error(err);

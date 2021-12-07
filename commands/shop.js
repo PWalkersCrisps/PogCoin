@@ -1,13 +1,14 @@
 const items = require("../arrays/shopitems")
 const { MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: "shop",
-    cooldown: 5,
-    async execute(Discord, client, args, message, profileModel, profileData){
+    data: new SlashCommandBuilder().setName('shop')
+    .setDescription('view what you want to buy'),
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
-            if(message.channel.id === "903398509171060749") return message.channel.send(`Please use this in <#899055241104879616> or else this chat will be spammed`);
-            if (items.length === 0) return message.channel.send(`<@${message.author.id}> Unfortunatly im not selling right now, ig you just need to be patient`);
+            if (items.length === 0) return inte(`<@${interaction.user.id}> Unfortunatly im not selling right now, ig you just need to be patient`);
 
             const shoplistEmbed = new MessageEmbed()
             .setColor("#7de48b")
@@ -22,7 +23,7 @@ module.exports = {
                 )
             });
 
-            message.channel.send({ embeds: [shoplistEmbed] })
+            interaction.reply({ embeds: [shoplistEmbed], ephemeral: true })
         }
         catch(err){
             console.error(err);

@@ -1,4 +1,4 @@
-const profileModel = require("./models/profileSchema.js");
+const profileModel = require("../models/profileSchema.js");
 const coinCooldown = new Set();
 
 module.exports = {

@@ -1,13 +1,16 @@
 const lewdImages = require("../arrays/lewdImages")
 const talkedRecently = new Set();
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: "nya",
     description: "uwu",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData){
+    data: new SlashCommandBuilder().setName('nya')
+    .setDescription('UwU OwO OmO im very hornmy'),
+    async execute(client, interaction, MessageEmbed, profileModel, profileData){
         try{
             if (talkedRecently.has(message.guild.id)) {
-                message.channel.send(`<@${message.author.id}> its a server cooldown, wait like 20 mins`);
+                interaction.reply(`<@${interaction.user.id}> its a server cooldown, wait like 20 mins`);
             } else {
                 const random_hex_color_code = () => {
                     let n = (Math.random() * 0xfffff * 1000000).toString(16);
@@ -20,12 +23,12 @@ module.exports = {
                 .setTitle("Damn these people really being horny???")
                 .setFooter("If you see anyone else being horny on main, screenshot it and send it to PWC");
 
-                message.channel.send({ embeds: [uwuEmbed] });
+                interaction.reply({ embeds: [uwuEmbed] });
                 // Adds the user to the set so that they can't talk for a minute
-                talkedRecently.add(message.guild.id);
+                talkedRecently.add(interaction.guild.id);
                 setTimeout(() => {
                 // Removes the user from the set after a minute
-                talkedRecently.delete(message.guild.id);
+                talkedRecently.delete(interaction.guild.id);
                 }, 20 * 60000);
             }
         }

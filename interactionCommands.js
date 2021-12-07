@@ -35,9 +35,6 @@ module.exports = [
         .addUserOption(option => option.setName('target').setDescription('Whos balance do you want to edit?'))
         .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to give?')),
 
-        new SlashCommandBuilder().setName('help')
-        .setDescription('Imagine using a help command, this command hasnt been updated since the first update'),
-
         new SlashCommandBuilder().setName('himari')
         .setDescription('Why?????'),
 
@@ -46,10 +43,7 @@ module.exports = [
 
         new SlashCommandBuilder().setName('nya')
         .setDescription('UwU OwO OmO im very hornmy'),
-
-        new SlashCommandBuilder().setName('ping')
-        .setDescription('Replies with server latinency'),
-
+        
         new SlashCommandBuilder().setName('profile')
         .setDescription('Who are you... or who are they?')
         .addUserOption(option => option.setName('target').setDescription('Whos profile do you want to see??')),

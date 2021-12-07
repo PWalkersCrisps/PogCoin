@@ -1,21 +1,26 @@
 const { Permissions } = require('discord.js');
 const mongoose = require('mongoose');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: "remove",
-    cooldown: 5,
     description: "give a player some coins",
-    async execute(Discord, client, args, message, MessageEmbed, profileModel, profileData) {
+    data: new SlashCommandBuilder().setName('remove')
+    .setDescription('Admin command lol')
+    .addUserOption(option => option.setName('target').setDescription('Whos balance do you want to edit?'))
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to remove?')),
+
+    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
         
 
         try{
-            if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !message.member.id == "426455031571677197") return message.channel.send(`<@${message.author.id}> actually have permissions to use the command next time`);
+            if (!interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == "426455031571677197") return interaction.reply(`<@${message.author.id}> actually have permissions to use the command next time`);
             if (!args.length){
                 message.channel.send("You need to mention a member to steal them coins");
                 return;
             }
-            const amount = args[1];
-            if (!message.mentions.users.first()) return message.channel.send("That user does not exist");
+            const amount = interaction.options.getInteger('int');
+            if (!message.mentions.users.first()) return interaction.reply({ content: "That user does not exist", ephemeral: true });
 
             if (amount % 1 != 0 || amount <= 0) return message.channel.send("Ayo if you want to actually take money make it an actual number");
 
