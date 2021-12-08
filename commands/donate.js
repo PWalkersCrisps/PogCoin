@@ -1,38 +1,36 @@
-const mongoose = require('mongoose');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-    name: "donate",
-    description: "Donate a coin to someone",
+    name: 'donate',
+    description: 'Donate a coin to someone',
     data: new SlashCommandBuilder().setName('donate')
     .setDescription('Gibvs someone money')
     .addUserOption(option => option.setName('target').setDescription('Who do you want to donate to?'))
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to donate?')),
-    async execute(client, interaction, MessageEmbed, profileModel, profileData){
+    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
 
-        let userMentioned = message.mentions.members.first();
+        const userMentioned = interaction.options.getMember('target');
 
-        try{
-             if (message.author.id === message.mentions.members.first().id) return message.channel.send("You cant donate to yourself...")
+        try {
+            if (interaction.user.id === userMentioned.id) return interaction.reply({ content: 'You cant donate to yourself...', ephemeral: true });
             const amount = interaction.options.getInteger('int') || 1;
 
-            profileDataSender = await profileModel.findOne({userID: message.author.id}); //Gets the profile data of the sender
-            if(profileDataSender.coins < amount) return message.channel.send(`<@${message.author.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`); //Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
-            else if (amount < 1) return message.channel.send(`<@${message.author.id}> Actually say a valid number???`)
+            const profileDataSender = await profileModel.findOne({ userID: interaction.user.id }); // Gets the profile data of the sender
+            if (profileDataSender.coins < amount) return interaction.reply({ content: `<@${interaction.user.id}> Bruh, are you actually this broke? Try giving people coins when you actually have some pogcoins <:nioCyoR:891377626831290509> <:staremock:821120707035267133>`, ephemeral: true }); // Using the profile data from earlier, the bot makes a check if the user actually has any coins, if not the rest of the script wont execute, and then the bot mocks them
+            else if (amount < 1) return interaction.reply({ content: `<@${interaction.user.id}> Actually say a valid number???`, ephemeral: true });
 
-            const senderResponse = await profileModel.findOneAndUpdate({ //finds the profile of the author then updates it
-                userID: message.author.id, //looks for the record of the message author's account
+            const senderResponse = await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
+                userID: interaction.user.id, // looks for the record of the message author's account
             }, {
                 $inc: {
-                    coins: -amount, //decreases the amount of coins that the author has by the stated amount
+                    coins: -amount, // decreases the amount of coins that the author has by the stated amount
                     coinsDonated: amount,
-                }
+                },
             });
-            
-            profileDataMentioned = await profileModel.findOne({userID: interaction.options.getUser('target').id}); //Gets the profile data of the user mentioned
-            if(!profileDataMentioned) //If there was no profile data of the mentioned user then it will create a new account on the database
-            {
-                let newUser = await profileModel.create({
+
+            const profileDataMentioned = await profileModel.findOne({ userID: interaction.options.getUser('target').id }); // Gets the profile data of the user mentioned
+            if (!profileDataMentioned) { // If there was no profile data of the mentioned user then it will create a new account on the database
+                const newUser = await profileModel.create({
                     userID: interaction.options.getUser('target').id,
                     coins: 1,
                     dailyTimestamp: 0,
@@ -46,17 +44,17 @@ module.exports = {
                     timesRobbed: 0,
 
                 });
-                //const savedUser = await newUser.save();
+                // const savedUser = await newUser.save();
             }
 
-            const reciverResponse = await profileModel.findOneAndUpdate({ //finds the profile of the user that the author mentioned then updates it
+            const reciverResponse = await profileModel.findOneAndUpdate({ // finds the profile of the user that the author mentioned then updates it
                 userID: interaction.options.getUser('target').id,
             }, {
                 $inc: {
-                    coins: amount, //increases the amount of coins that the mentioned has by 1
+                    coins: amount, // increases the amount of coins that the mentioned has by 1
                     coinsReceived: amount,
                     totalCoinsEarnt: amount,
-                }
+                },
             });
 
             const pogCoinDonate = new MessageEmbed()
@@ -64,26 +62,21 @@ module.exports = {
             .setTimestamp()
             .setFooter('Reddit Gold Replacement?');
 
-            pogCoinDonate.addFields(
-                { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${interaction.options.getUser('target').id}> a pog Coin?!?`}
-            )
-
-
-            // if (amount === 1){
-            //     pogCoinDonate.addFields(
-            //         { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> a pog Coin?!?`}
-            //     )
-            // }
-            // else if (amount > 1){
-            //     pogCoinDonate.addFields(
-            //         { name: 'pog Coin Charity', value: `<@${message.author.id}> just gave <@${message.mentions.users.first().id}> ${amount} pog Coins?!?`}
-            //     )    
-            // }
+            if (amount == 1) {
+                pogCoinDonate.addFields(
+                    { name: 'pog Coin Charity', value: `<@${interaction.user.id}> just gave <@${interaction.options.getUser('target').id}> a pogcoin?!?` },
+                );
+            }
+            else {
+                pogCoinDonate.addFields(
+                    { name: 'pog Coin Charity', value: `<@${interaction.user.id}> just gave <@${interaction.options.getUser('target').id}> pogcoins?!?` },
+                );
+            }
 
             interaction.reply({ embeds: [pogCoinDonate] });
         }
-        catch(err){
+        catch (err) {
             console.error(err);
         }
-    }
-}
+    },
+};
