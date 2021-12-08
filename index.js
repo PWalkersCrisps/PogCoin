@@ -44,6 +44,31 @@ client.on('interactionCreate', async interaction => {
 
     const command = client.commands.get(interaction.commandName);
 
+    let profileData;
+    try{
+        profileData = await profileModel.findOne({userID: interaction.user.id}); //Attempts to look for a user in the DB with the user's id
+        if(!profileData) //Checks if the user has any data in the DB
+        {
+            let newUser = await profileModel.create({
+                userID: interaction.user.id,
+                coins: 1,
+                dailyTimestamp: 0,
+                robTimestamp: 0,
+                totalCoinsEarnt: 0,
+                coinsDonated: 0,
+                coinsReceived: 0,
+                netGamble: 0,
+                robSuccess: 0,
+                robFails: 0,
+                timesRobbed: 0,
+            });
+            //const savedUser = await newUser.save();
+        }
+    }
+    catch(err){
+        console.error(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
+    }
+
     if (!command) return;
 
     try {

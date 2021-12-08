@@ -1,5 +1,7 @@
 const profileModel = require("../models/profileSchema.js");
 const coinCooldown = new Set();
+const { MessageEmbed } = require('discord.js');
+
 
 module.exports = {
 	name: 'messageCreate',
