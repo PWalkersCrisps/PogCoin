@@ -69,7 +69,7 @@ module.exports = {
             }
             else {
                 pogCoinDonate.addFields(
-                    { name: 'pog Coin Charity', value: `<@${interaction.user.id}> just gave <@${interaction.options.getUser('target').id}> pogcoins?!?` },
+                    { name: 'pog Coin Charity', value: `<@${interaction.user.id}> just gave <@${interaction.options.getUser('target').id}>  ${amount} pogcoins?!?` },
                 );
             }
 
