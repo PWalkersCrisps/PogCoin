@@ -1,14 +1,14 @@
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS ] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS ] });
 
-const profileModel = require("./models/profileSchema.js");
-const blockedUsers = require("./arrays/blockedUsers.js");
-const mongoose = require("mongoose");
-const fs = require("fs");
+const profileModel = require('./models/profileSchema.js');
+const blockedUsers = require('./arrays/blockedUsers.js');
+const mongoose = require('mongoose');
+const fs = require('fs');
 
-require("dotenv").config();
+require('dotenv').config();
 
-///-----Command/Event Handlers-----///
+// /-----Command/Event Handlers-----///
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
@@ -28,15 +28,15 @@ for (const file of eventFiles) {
 	}
 }
 
-///-----Mongoose-----///
-mongoose.connect(process.env.MONGODB_SRV, { //idk what this shit does
+// -----Mongoose----- //
+mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    console.log(`Connected to the MongoDB database`)
+    console.log('Connected to the MongoDB database');
 }).catch((err) => {
     console.error(err);
-}); 
+});
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
@@ -45,11 +45,10 @@ client.on('interactionCreate', async interaction => {
     const command = client.commands.get(interaction.commandName);
 
     let profileData;
-    try{
-        profileData = await profileModel.findOne({userID: interaction.user.id}); //Attempts to look for a user in the DB with the user's id
-        if(!profileData) //Checks if the user has any data in the DB
-        {
-            let newUser = await profileModel.create({
+    try {
+        profileData = await profileModel.findOne({ userID: interaction.user.id });
+        if (!profileData) {
+            await profileModel.create({
                 userID: interaction.user.id,
                 coins: 1,
                 dailyTimestamp: 0,
@@ -62,11 +61,11 @@ client.on('interactionCreate', async interaction => {
                 robFails: 0,
                 timesRobbed: 0,
             });
-            //const savedUser = await newUser.save();
+            // const savedUser = await newUser.save();
         }
     }
-    catch(err){
-        console.error(err) //if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
+    catch (err) {
+        console.error(err);
     }
 
     if (!command) return;
@@ -80,5 +79,5 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-///-----Login-----///
-client.login(process.env.DISCORD_TOKEN); //this is the token of the bot
+// /-----Login-----///
+client.login(process.env.DISCORD_TOKEN);
