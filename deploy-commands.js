@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const commands = require('./interactionCommands.js');
 
-require("dotenv").config();
+require('dotenv').config();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 

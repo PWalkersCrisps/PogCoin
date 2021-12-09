@@ -43,7 +43,7 @@ module.exports = [
 
         new SlashCommandBuilder().setName('nya')
         .setDescription('UwU OwO OmO im very hornmy'),
-        
+
         new SlashCommandBuilder().setName('profile')
         .setDescription('Who are you... or who are they?')
         .addUserOption(option => option.setName('target').setDescription('Whos profile do you want to see??')),
@@ -70,8 +70,6 @@ module.exports = [
         new SlashCommandBuilder().setName('slots')
         .setDescription('Gamble all of your life savings away')
         .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
-
-        
 
 
 ];

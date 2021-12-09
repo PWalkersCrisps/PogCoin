@@ -2,26 +2,27 @@ const talkedRecently = new Set();
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-    name: "himari",
-    description: "uwu",
+    name: 'himari',
+    description: 'uwu',
     data: new SlashCommandBuilder().setName('himari')
     .setDescription('Why?????'),
 
-    async execute(client, interaction, MessageEmbed, profileModel, profileData){
-        try{
+    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
+        try {
             if (talkedRecently.has(interaction.guild.id)) {
                 interaction.channel.send(`<@${interaction.author.id}> its a server cooldown, wait like 2 mins`);
-            } else {
+            }
+ else {
                 const random_hex_color_code = () => {
-                    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+                    const n = (Math.random() * 0xfffff * 1000000).toString(16);
                     return '#' + n.slice(0, 6);
                 };
 
-                let uwuEmbed = new MessageEmbed()
-                .setImage("https://cdn.discordapp.com/attachments/816008277619638332/903704994337947678/attachment-7.gif")
+                const uwuEmbed = new MessageEmbed()
+                .setImage('https://cdn.discordapp.com/attachments/816008277619638332/903704994337947678/attachment-7.gif')
                 .setColor(random_hex_color_code())
-                .setTitle("WHY DO YOU DO THIS???")
-                .setFooter("Please do not ruin the innocence of Himari, we all love them");
+                .setTitle('WHY DO YOU DO THIS???')
+                .setFooter('Please do not ruin the innocence of Himari, we all love them');
 
                 interaction.reply({ embeds: [uwuEmbed] });
 
@@ -33,10 +34,10 @@ module.exports = {
                 }, 2 * 60000);
             }
         }
-        catch(err){
+        catch (err) {
             console.error(err);
         }
 
-    }
+    },
 
-}
+};

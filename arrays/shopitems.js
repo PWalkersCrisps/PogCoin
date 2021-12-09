@@ -1,7 +1,7 @@
 module.exports = [
     {
-        item: "embedperms",
+        item: 'embedperms',
         price: 25,
-        roleid: "914792018130137108"
-    }
-]
+        roleid: '914792018130137108',
+    },
+];
