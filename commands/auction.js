@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { createProfile } = require('./modules/profileData.js');
 
 module.exports = {
     name: 'auction',
@@ -35,7 +36,7 @@ module.exports = {
             const pogCoinAuction = new MessageEmbed()
             .setTitle('Time to do some little selling');
 
-
+            let profileDataMentioned;
             switch (interaction.options.getSubcommand()) {
                 case 'start':
                     pogCoinAuction
@@ -50,24 +51,14 @@ module.exports = {
 
                     break;
                 case 'end':
-                    // eslint-disable-next-line no-case-declarations
-                    const profileDataMentioned = await profileModel.findOne({ userID: userPinged.id }); // Gets the profile data of the user mentioned
-                    if (!profileDataMentioned) { // If there was no profile data of the mentioned user then it will create a new account on the database
-                        await profileModel.create({
-                            userID: interaction.options.getMember('target').id,
-                            coins: 1,
-                            dailyTimestamp: 0,
-                            robTimestamp: 0,
-                            totalCoinsEarnt: 0,
-                            coinsDonated: 0,
-                            coinsReceived: 0,
-                            netGamble: 0,
-                            robSuccess: 0,
-                            robFails: 0,
-                            timesRobbed: 0,
-
-                        });
-                        // const savedUser = await newUser.save();
+                    try {
+                        profileDataMentioned = await profileModel.findOne({ userID: interaction.user.id });
+                        if (!profileDataMentioned) {
+                            createProfile(interaction.user.id);
+                        }
+                    }
+                    catch (err) {
+                        console.error(err);
                     }
 
                     if (profileDataMentioned.coins < amount) { return interaction.reply(`<@${interaction.user.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`); }

@@ -1,10 +1,11 @@
 const { Client, Collection, Intents, MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS ] });
 
-const profileModel = require('./models/profileSchema.js');
-const blockedUsers = require('./arrays/blockedUsers.js');
 const mongoose = require('mongoose');
 const fs = require('fs');
+const { createProfile } = require('./modules/profileData.js');
+const profileModel = require('./models/profileSchema.js');
+const blockedUsers = require('./arrays/blockedUsers.js');
 
 require('dotenv').config();
 
@@ -48,20 +49,7 @@ client.on('interactionCreate', async interaction => {
     try {
         profileData = await profileModel.findOne({ userID: interaction.user.id });
         if (!profileData) {
-            await profileModel.create({
-                userID: interaction.user.id,
-                coins: 1,
-                dailyTimestamp: 0,
-                robTimestamp: 0,
-                totalCoinsEarnt: 0,
-                coinsDonated: 0,
-                coinsReceived: 0,
-                netGamble: 0,
-                robSuccess: 0,
-                robFails: 0,
-                timesRobbed: 0,
-            });
-            // const savedUser = await newUser.save();
+            createProfile(interaction.user.id);
         }
     }
     catch (err) {
