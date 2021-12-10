@@ -3,7 +3,7 @@ const { Routes } = require('discord-api-types/v9');
 const { CLIENT_ID, GUILD_ID } = require('./config.json');
 const fs = require('fs');
 
-const commands = require('./interactionCommands.js');
+const commands = require('./arrays/interactionCommands.js');
 
 require('dotenv').config();
 

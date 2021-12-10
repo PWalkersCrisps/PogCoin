@@ -10,7 +10,7 @@ module.exports = {
     .addUserOption(option => option.setName('target').setDescription('Who do you want to reset?')),
     async execute(client, interaction, MessageEmbed, profileModel, profileData) {
         try {
-            if (!interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == '426455031571677197') return interaction.reply(`<@${message.author.id}> actually have permissions to use the command next time`);
+            if (!interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
 
             const response = await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
                 userID: interaction.options.getMember('target').id, // looks for the record of the message author's account

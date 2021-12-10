@@ -15,11 +15,11 @@ module.exports = {
         try {
             if (!interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == '426455031571677197') return interaction.reply(`<@${interaction.user.id}> actually have permissions to use the command next time`);
             const amount = interaction.options.getInteger('int');
-            try {
-            const targetData = await profileModel.findOne({ userID: message.mentions.users.first().id });
+
+            const targetData = await profileModel.findOne({ userID: interaction.options.getMember('target').id });
             if (!targetData) {
                 const newUser = await profileModel.create({
-                    userID: message.mentions.users.first().id,
+                    userID: interaction.options.getMember('target').id,
                     coins: 1,
                     dailyTimestamp: 0,
                     robTimestamp: 0,
@@ -36,18 +36,15 @@ module.exports = {
             }
 
             const response = await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
-                userID: message.mentions.users.first().id, // looks for the record of the message author's account
+                userID: interaction.options.getMember('target').id, // looks for the record of the message author's account
             }, {
                 $inc: {
                     coins: -amount, // decreases the amount of coins that the author has by the stated amount
                 },
             });
 
-            return message.channel.send(`<@${message.mentions.users.first().id}> has just lost ${amount} coins\n\nmake fun of them!! :emock:`);
-            }
- catch (err) {
-            console.error(err);
-            }
+            return interaction.reply(`<@${interaction.options.getMember('target').id}> has just lost ${amount} coins\n\nmake fun of them!! :emock:`);
+
         }
         catch (err) {
             console.error(err);

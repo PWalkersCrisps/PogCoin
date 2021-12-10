@@ -33,8 +33,8 @@ module.exports = {
 
 
             function getRandomEmote() {
-                returnEmote = outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
-                return;
+                const returnEmote = outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
+                return returnEmote;
             }
 
             async function gambleWinnings(multiplier) {
