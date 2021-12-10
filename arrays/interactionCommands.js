@@ -12,11 +12,13 @@ module.exports = [
                 subcommand
                         .setName('start')
                         .setDescription('Start an auction')
+                        .addUserOption(option => option.setName('target').setDescription('Who are you auctioning?').setRequired(true)),
                         .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to sell someone for?').setRequired(true)))
         .addSubcommand(subcommand =>
                 subcommand
                         .setName('end')
                         .setDescription('End an auction')
+                        .addUserOption(option => option.setName('target').setDescription('Whos buying them?').setRequired(true)),
                         .addIntegerOption(option => option.setName('amount').setDescription('How much did they buy someone for?').setRequired(true))),
 
         new SlashCommandBuilder()
@@ -74,11 +76,11 @@ module.exports = [
         new SlashCommandBuilder().setName('reset')
         .setDescription('Admin command lol')
         .addUserOption(option => option.setName('target').setDescription('Who do you want to reset?').setRequired(true)),
-
+/*
         new SlashCommandBuilder().setName('rob')
         .setDescription('Doing a bit of stealing')
-        .addUserOption(option => option.setName('target').setDescription('Who do you want to steak from?').setRequired(true)),
-
+        .addUserOption(option => option.setName('target').setDescription('Who do you want to steal from?').setRequired(true)),
+*/
         new SlashCommandBuilder().setName('shop')
         .setDescription('view what you want to buy'),
 
