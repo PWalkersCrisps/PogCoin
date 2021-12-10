@@ -2,9 +2,9 @@ const { CLIENT_ID, GUILD_ID } = require('../config.json');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
-const commands = require('../interactionCommands.js');
+const commands = require('../arrays/interactionCommands.js');
 
-require("dotenv").config();
+require('dotenv').config();
 
 const date = new Date().toLocaleDateString();
 const time = new Date().toLocaleTimeString();
@@ -17,8 +17,8 @@ module.exports = {
 	name: 'ready',
 	once: true,
 	async execute(client) {
-        try{
-            const readyMessage = `${client.user.tag} is online, hopefully it works`
+        try {
+            const readyMessage = `${client.user.tag} is online, hopefully it works`;
 
             console.log(readyMessage);
 
@@ -39,8 +39,8 @@ module.exports = {
 
             console.log('Successfully reloaded application (/) commands.');
         }
-        catch(err){
+        catch (err) {
             console.error(err);
         }
-    }
-}
+    },
+};

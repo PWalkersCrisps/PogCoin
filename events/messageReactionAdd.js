@@ -50,7 +50,7 @@ module.exports = {
                 coinsDonated: 1,
             }
         });
-        
+
         profileData2 = await profileModel.findOne({userID: reaction.message.author.id}); //Gets the profile data of the user mentioned
         if(!profileData2) //If there was no profile data of the mentioned user then it will create a new account on the database
         {
@@ -90,5 +90,5 @@ module.exports = {
 
         reaction.message.author.send({ embeds: [pogCoinDonate] });
         */
-    }
+    },
 };
