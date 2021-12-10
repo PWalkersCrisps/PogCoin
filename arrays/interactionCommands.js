@@ -12,13 +12,13 @@ module.exports = [
                 subcommand
                         .setName('start')
                         .setDescription('Start an auction')
-                        .addUserOption(option => option.setName('target').setDescription('Who are you auctioning?').setRequired(true)),
+                        .addUserOption(option => option.setName('target').setDescription('Who are you auctioning?').setRequired(true))
                         .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to sell someone for?').setRequired(true)))
         .addSubcommand(subcommand =>
                 subcommand
                         .setName('end')
                         .setDescription('End an auction')
-                        .addUserOption(option => option.setName('target').setDescription('Whos buying them?').setRequired(true)),
+                        .addUserOption(option => option.setName('target').setDescription('Whos buying them?').setRequired(true))
                         .addIntegerOption(option => option.setName('amount').setDescription('How much did they buy someone for?').setRequired(true))),
 
         new SlashCommandBuilder()
