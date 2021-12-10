@@ -1,4 +1,4 @@
-const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
+const { Client, Collection, Intents, MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS ] });
 
 const profileModel = require('./models/profileSchema.js');
@@ -71,7 +71,7 @@ client.on('interactionCreate', async interaction => {
     if (!command) return;
 
     try {
-        await command.execute(client, interaction, MessageEmbed, profileModel, profileData);
+        await command.execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData);
     }
     catch (error) {
         console.error(error);
