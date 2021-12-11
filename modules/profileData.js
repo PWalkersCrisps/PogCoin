@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const profileModel = require('./models/profileSchema.js');
+const profileModel = require('../models/profileSchema.js');
 async function createProfile(userID) {
     await profileModel.create({
         userID: userID,
