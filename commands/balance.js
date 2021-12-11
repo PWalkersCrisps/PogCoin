@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { createProfile } = require('../modules/profileData.js');
+const profileModel = require('../models/profileSchema.js');
 
 module.exports = {
     name: 'balance',
@@ -8,7 +9,7 @@ module.exports = {
     .setDescription('Check how broke you or someone else is')
     .addUserOption(option => option.setName('target').setDescription('Who do you want to donate to?')),
 
-    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
+    async execute(client, interaction, MessageEmbed, profileData) {
 
         const userPinged = interaction.options.getUser('target');
         profileData = await profileModel.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
