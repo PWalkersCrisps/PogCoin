@@ -25,22 +25,9 @@ module.exports = {
         }
         else if (userPinged.bot) { return interaction.reply({ content: 'YOU IDIOT THAT WAS A BOT???', ephemeral: true }); }
         else {
-            const profileDataPinged = profileData = await profileModel.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
+            const profileDataPinged = await profileModel.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
             if (!profileDataPinged) { // If there was no profile data of the mentioned user then it will create a new account on the database
-                const newUser = await profileModel.create({
-                    userID: userPinged.id,
-                    coins: 1,
-                    dailyTimestamp: 0,
-                    robTimestamp: 0,
-                    totalCoinsEarnt: 0,
-                    coinsDonated: 0,
-                    coinsReceived: 0,
-                    netGamble: 0,
-                    robSuccess: 0,
-                    robFails: 0,
-                    timesRobbed: 0,
-                });
-                // const savedUser = await newUser.save();
+                createProfile(interaction.user.id);
             }
 
 
