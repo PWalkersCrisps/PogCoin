@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const profileSchema = new mongoose.Schema({
     userID: { type: mongoose.SchemaTypes.String, require: true, unique: true },
     coins: { type: mongoose.SchemaTypes.Number, default: 1 },
-    dailyTimestamp: { type: mongoose.SchemaTypes.Number },
-    robTimestamp: { type: mongoose.SchemaTypes.Number },
     totalCoinsEarnt: { type: mongoose.SchemaTypes.Number },
     coinsDonated: { type: mongoose.SchemaTypes.Number },
     coinsReceived: { type: mongoose.SchemaTypes.Number },
@@ -14,5 +12,13 @@ const profileSchema = new mongoose.Schema({
     timesRobbed: { type: mongoose.SchemaTypes.Number },
 });
 
-const model = mongoose.model('ProfileModels', profileSchema);
-module.exports = mongoose.model('Profile', profileSchema);
+const cooldownSchema = new mongoose.Schema({
+    userID: { type: mongoose.SchemaTypes.String, require: true, unique: true },
+    dailyTimestamp: { type: mongoose.SchemaTypes.Number },
+    robTimestamp: { type: mongoose.SchemaTypes.Number },
+});
+
+module.exports = [
+    mongoose.model('Profile', profileSchema),
+    mongoose.model('Cooldowns', cooldownSchema),
+];
