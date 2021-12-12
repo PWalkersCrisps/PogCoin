@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { Permissions } = require('discord.js');
 const { createProfile } = require('../modules/profileData.js');
 
 module.exports = {
@@ -18,82 +19,68 @@ module.exports = {
                     .setDescription('End an auction')
                     .addIntegerOption(option => option.setName('amount').setDescription('How much did they buy someone for?').setRequired(true))),
 
-    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
 
-        try {
+        const currentAuctioneerID = [
+            '790793241665863710', // Whooshie
+            '426455031571677197', // PWC
+        ];
 
-            const currentAuctioneerID = [
-                '790793241665863710',
-                '426455031571677197',
-            ];
+        if (!currentAuctioneerID.includes(interaction.user.id) || interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return interaction.reply({ content: 'Sorry, only someone with auction perms can use this', ephemeral: true });
 
-            if (!currentAuctioneerID.includes(interaction.user.id)) return interaction.reply({ content: 'Sorry, only someone with auction perms can use this', ephemeral: true });
+        const userPinged = interaction.options.getUser('target');
+        const amount = interaction.options.getInteger('int');
 
-            const auctionMode = interaction.options.getString('input');
-            const userPinged = interaction.options.getUser('target');
-            const amount = interaction.options.getInteger('int');
+        const pogCoinAuction = new MessageEmbed()
+        .setTitle('Time to do some little selling');
 
-            const pogCoinAuction = new MessageEmbed()
-            .setTitle('Time to do some little selling');
+        let profileDataMentioned;
+        switch (interaction.options.getSubcommand()) {
+            case 'start':
+                pogCoinAuction
+                .setDescription(`<@${interaction.user.id}> is now selling someone, please be sensible because your coins will actually be taken away.`)
+                .addFields(
+                    {
+                        name: 'Auctions',
+                        value: `<@${userPinged.id}> is being sold with the inital starting bid of ${amount} pogcoins`,
+                    },
+                )
+                .setThumbnail(userPinged.displayAvatarURL({ dynamic: true, size: 2048, format: 'png' }));
 
-            let profileDataMentioned;
-            switch (interaction.options.getSubcommand()) {
-                case 'start':
-                    pogCoinAuction
-                    .setDescription(`<@${interaction.user.id}> is now selling someone, please be sensible because your coins will actually be taken away.`)
-                    .addFields(
-                        {
-                            name: 'Auctions',
-                            value: `<@${userPinged.id}> is being sold with the inital starting bid of ${amount} pogcoins`,
-                        },
-                    )
-                    .setThumbnail(userPinged.displayAvatarURL({ dynamic: true, size: 2048, format: 'png' }));
+                break;
+            case 'end':
 
-                    break;
-                case 'end':
-                    try {
-                        profileDataMentioned = await profileModel.findOne({ userID: interaction.user.id });
-                        if (!profileDataMentioned) {
-                            createProfile(interaction.user.id);
-                        }
-                    }
-                    catch (err) {
-                        console.error(err);
-                    }
-
-                    if (profileDataMentioned.coins < amount) { return interaction.reply(`<@${interaction.user.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`); }
-
-                    await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
-                        userID: userPinged.id, // looks for the record of the message author's account
-                    }, {
-                        $inc: {
-                            coins: -amount, // decreases the amount of coins that the author has by the stated amount
-                        },
-                    });
-
-                    await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
-                        userID: interaction.user.id, // looks for the record of the message author's account
-                    }, {
-                        $inc: {
-                            coins: amount, // decreases the amount of coins that the author has by the stated amount
-                        },
-                    });
-
-                    pogCoinAuction
-                    .setDescription(`<@${userPinged.id}> just won the auction with ${amount} pogcoins`);
+                profileDataMentioned = await profileSchema.findOne({ userID: interaction.user.id });
 
 
-                    break;
+                if (profileDataMentioned.coins < amount) { return interaction.reply(`<@${interaction.user.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`); }
 
-            }
+                await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+                    userID: userPinged.id, // looks for the record of the message author's account
+                }, {
+                    $inc: {
+                        coins: -amount, // decreases the amount of coins that the author has by the stated amount
+                    },
+                });
 
-            interaction.reply({ embeds: [pogCoinAuction] });
+                await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+                    userID: interaction.user.id, // looks for the record of the message author's account
+                }, {
+                    $inc: {
+                        coins: amount, // decreases the amount of coins that the author has by the stated amount
+                    },
+                });
 
+                pogCoinAuction
+                .setDescription(`<@${userPinged.id}> just won the auction with ${amount} pogcoins`);
+
+
+                break;
 
         }
-        catch (err) {
-            console.error(err);
-        }
+
+        interaction.reply({ embeds: [pogCoinAuction] });
+
 
     },
 };
