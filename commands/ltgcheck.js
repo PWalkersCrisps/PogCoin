@@ -6,12 +6,12 @@ module.exports = {
     description: 'ltgcheck',
     data: new SlashCommandBuilder().setName('ltgcheck')
     .setDescription('Lets hear his advice'),
-    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
         try {
             if (talkedRecently.has(interaction.guild.id)) {
                 interaction.reply(`<@${interaction.author.id}> its a server cooldown, wait like 1 min`);
             }
- else {
+            else {
                 const randomImg = [
                     'https://cdn.discordapp.com/attachments/816008277619638332/903245120399355924/image0-40.png',
                     'https://cdn.discordapp.com/attachments/816008277619638332/905492943845093456/B927E6C3-934F-4D5D-83B6-63FC7534B741.jpg',
@@ -30,10 +30,10 @@ module.exports = {
                 interaction.reply({ embeds: [ltgEmbed] });
 
                 // Adds the user to the set so that they can't talk for a minute
-                talkedRecently.add(interaction.guild.id);
+                talkedRecently.add(interaction.user.guild.id);
                 setTimeout(() => {
                 // Removes the user from the set after a minute
-                talkedRecently.delete(interaction.guild.id);
+                talkedRecently.delete(interaction.user.guild.id);
                 }, 1 * 60000);
             }
         }
