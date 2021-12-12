@@ -8,7 +8,7 @@ module.exports = {
 
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
 
-        if (parseFloat(profileData.dailyTimestamp) + 86400 <= Date.now() / 1000) {
+        if (cooldownSchema.dailyTimestamp + 86400 <= Date.now() / 1000) {
 
             const pogCoinDaily = new MessageEmbed()
             .setColor('#ab5612')
@@ -56,7 +56,7 @@ module.exports = {
 
         }
         else {
-            interaction.reply({ content: `<@${interaction.user.id}> you are still on cooldown, you just need to wait ${parseFloat(profileData.dailyTimestamp) + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!` });
+            interaction.reply({ content: `<@${interaction.user.id}> you are still on cooldown, you just need to wait ${cooldownSchema.dailyTimestamp + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!` });
         }
     },
 };
