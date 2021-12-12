@@ -8,125 +8,119 @@ module.exports = {
     data: new SlashCommandBuilder().setName('slots')
     .setDescription('Gamble all of your life savings away')
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
-    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
-        try {
-            const outcomeEmotes = [
-                '<:pixel_despair:902537185713082388>', // lose 2x the bet
-                '<:pixel_despair:902537185713082388>', // lose 2x the bet
-                '<:pixel_despair:902537185713082388>', // lose 2x the bet
-                '<:pixel_despair:902537185713082388>', // lose 2x the bet
-                '<:pixel_despair:902537185713082388>', // lose 2x the bet
-                '<:pixel_bruh:902537185444642847>', // Nothing + insult
-                '<:pixel_bruh:902537185444642847>', // Nothing + insult
-                '<:pixel_bruh:902537185444642847>', // Nothing + insult
-                '<:pixel_7:902537185713074207>', // 2x
-                '<:pixel_7:902537185713074207>', // 2x
-                '<:pixel_7:902537185713074207>', // 2x
-                '<:pixel_pepeBusiness:902537185364938825>', // 3x
-                '<:pixel_pepeBusiness:902537185364938825>', // 3x
-                '<:pixel_pogcoin:902537185637584926>', // 4x
-            ];
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+        const outcomeEmotes = [
+            '<:pixel_despair:902537185713082388>', // lose 2x the bet
+            '<:pixel_despair:902537185713082388>', // lose 2x the bet
+            '<:pixel_despair:902537185713082388>', // lose 2x the bet
+            '<:pixel_despair:902537185713082388>', // lose 2x the bet
+            '<:pixel_despair:902537185713082388>', // lose 2x the bet
+            '<:pixel_bruh:902537185444642847>', // Nothing + insult
+            '<:pixel_bruh:902537185444642847>', // Nothing + insult
+            '<:pixel_bruh:902537185444642847>', // Nothing + insult
+            '<:pixel_7:902537185713074207>', // 2x
+            '<:pixel_7:902537185713074207>', // 2x
+            '<:pixel_7:902537185713074207>', // 2x
+            '<:pixel_pepeBusiness:902537185364938825>', // 3x
+            '<:pixel_pepeBusiness:902537185364938825>', // 3x
+            '<:pixel_pogcoin:902537185637584926>', // 4x
+        ];
 
-            const amount = interaction.options.getInteger('int');
-            if (!amount || amount < 1) return interaction.reply('Actually try to bet smthing?');
-            if (profileData.coins < amount) return interaction.reply('Actually have enough coins??');
+        const amount = interaction.options.getInteger('int');
+        if (!amount || amount < 1) return interaction.reply('Actually try to bet smthing?');
+        if (profileData.coins < amount) return interaction.reply('Actually have enough coins??');
 
 
-            function getRandomEmote() {
-                const returnEmote = outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
-                return returnEmote;
+        function getRandomEmote() {
+            const returnEmote = outcomeEmotes[Math.floor(Math.random() * outcomeEmotes.length)];
+            return returnEmote;
+        }
+
+        async function gambleWinnings(multiplier) {
+            try {
+                const response = await profileSchema.findOneAndUpdate({
+                    userID: interaction.user.id, // looks for the id of the author
+                }, {
+                    $inc: {
+                        coins: amount * multiplier, // when the id of the author is found, it gives them one coin
+                        netGamble: amount * multiplier,
+                        totalCoinsEarnt: amount * multiplier,
+                    },
+                });
             }
-
-            async function gambleWinnings(multiplier) {
-                try {
-                    const response = await profileModel.findOneAndUpdate({
-                        userID: interaction.user.id, // looks for the id of the author
-                    }, {
-                        $inc: {
-                            coins: amount * multiplier, // when the id of the author is found, it gives them one coin
-                            netGamble: amount * multiplier,
-                            totalCoinsEarnt: amount * multiplier,
-                        },
-                    });
-                }
-                catch (err) {
-                    console.error(err);
-                }
+            catch (err) {
+                console.error(err);
             }
+        }
 
-            const outcome1 = getRandomEmote();
-            let outcome2 = getRandomEmote();
-            let outcome3 = getRandomEmote();
+        const outcome1 = getRandomEmote();
+        let outcome2 = getRandomEmote();
+        let outcome3 = getRandomEmote();
 
-            if (Math.random() < 0.55) outcome2 = outcome1;
-            if (Math.random() < 0.55) outcome3 = outcome2;
+        if (Math.random() < 0.55) outcome2 = outcome1;
+        if (Math.random() < 0.55) outcome3 = outcome2;
 
-            const pogCoinSlots = new MessageEmbed() // Starts the proccess for creating an embed
-            .setColor('#aec234')
-            .setTimestamp()
-            .setFooter('Middle line only counts idiot')
-            .addFields(
-                { name: 'Poggers slot machine', value: `${getRandomEmote()} ${getRandomEmote()} ${getRandomEmote()}\n${outcome1} ${outcome2} ${outcome3}\n${getRandomEmote()} ${getRandomEmote()} ${getRandomEmote()}` },
+        const pogCoinSlots = new MessageEmbed() // Starts the proccess for creating an embed
+        .setColor('#aec234')
+        .setTimestamp()
+        .setFooter('Middle line only counts idiot')
+        .addFields(
+            { name: 'Poggers slot machine', value: `${getRandomEmote()} ${getRandomEmote()} ${getRandomEmote()}\n${outcome1} ${outcome2} ${outcome3}\n${getRandomEmote()} ${getRandomEmote()} ${getRandomEmote()}` },
+        );
+        const pogCoinWinnings = new MessageEmbed() // Starts the proccess for creating an embed
+        .setColor('#f924e5')
+        .setTimestamp()
+        .setFooter('How it works here is that you either pay us or we pay you');
+
+
+        if (outcome1 == outcome2 && outcome2 == outcome3) {
+            switch (outcome1) {
+                case '<:pixel_despair:902537185713082388>':
+                    gambleWinnings(-2);
+                    pogCoinWinnings.addFields(
+                        { name: 'Your winnings', value: `Damn you lost, **HARD**.\n\nNow pay up, you owe us ${amount * -2}` },
+                    );
+
+                    break;
+                case '<:pixel_bruh:902537185444642847>':
+                    gambleWinnings(-1);
+                    pogCoinSlots.addFields(
+                        { name: 'lo insulta', value: `${randomInsult[Math.floor(Math.random() * randomInsult.length)]}` },
+                    );
+                    pogCoinWinnings.addFields(
+                        { name: 'Your winnings', value: `Damn you lost.\n\nBecause of that you have to give me ${amount * -1}` },
+                    );
+                    break;
+                case '<:pixel_7:902537185713074207>':
+                    gambleWinnings(1);
+                    pogCoinSlots.setFooter('Holy shit you actually won?');
+                    pogCoinWinnings.addFields(
+                        { name: 'Your winnings', value: '**Wowza**, to think that you won, thats amazing' },
+                    );
+                    break;
+                case '<:pixel_pepeBusiness:902537185364938825>':
+                    gambleWinnings(2);
+                    pogCoinSlots.setFooter('Holy shit you actually won?');
+                    pogCoinWinnings.addFields(
+                        { name: 'Your winnings', value: '**Wowza**, to think that you won, this is sincreasingly getting more poggers' },
+                    );
+                    break;
+                case '<:pixel_pogcoin:902537185637584926>':
+                    gambleWinnings(3);
+                    pogCoinSlots.setFooter('Holy shit you actually won?');
+                    pogCoinWinnings.addFields(
+                        { name: 'Your winnings', value: '***HOLY FUCKING SHIT YOU GOT 4x OF YOUR ORIGINAL BET' },
+                    );
+                    break;
+            }
+        }
+        else {
+            gambleWinnings(-1);
+            pogCoinWinnings.addFields(
+                { name: 'Your winnings', value: `Damn you lost.\n\nBecause of that you have to give me ${amount * -1}` },
             );
-            const pogCoinWinnings = new MessageEmbed() // Starts the proccess for creating an embed
-            .setColor('#f924e5')
-            .setTimestamp()
-            .setFooter('How it works here is that you either pay us or we pay you');
-
-
-            if (outcome1 == outcome2 && outcome2 == outcome3) {
-                switch (outcome1) {
-                    case '<:pixel_despair:902537185713082388>':
-                        gambleWinnings(-2);
-                        pogCoinWinnings.addFields(
-                            { name: 'Your winnings', value: `Damn you lost, **HARD**.\n\nNow pay up, you owe us ${amount * -2}` },
-                        );
-
-                        break;
-                    case '<:pixel_bruh:902537185444642847>':
-                        gambleWinnings(-1);
-                        pogCoinSlots.addFields(
-                            { name: 'lo insulta', value: `${randomInsult[Math.floor(Math.random() * randomInsult.length)]}` },
-                        );
-                        pogCoinWinnings.addFields(
-                            { name: 'Your winnings', value: `Damn you lost.\n\nBecause of that you have to give me ${amount * -1}` },
-                        );
-                        break;
-                    case '<:pixel_7:902537185713074207>':
-                        gambleWinnings(1);
-                        pogCoinSlots.setFooter('Holy shit you actually won?');
-                        pogCoinWinnings.addFields(
-                            { name: 'Your winnings', value: '**Wowza**, to think that you won, thats amazing' },
-                        );
-                        break;
-                    case '<:pixel_pepeBusiness:902537185364938825>':
-                        gambleWinnings(2);
-                        pogCoinSlots.setFooter('Holy shit you actually won?');
-                        pogCoinWinnings.addFields(
-                            { name: 'Your winnings', value: '**Wowza**, to think that you won, this is sincreasingly getting more poggers' },
-                        );
-                        break;
-                    case '<:pixel_pogcoin:902537185637584926>':
-                        gambleWinnings(3);
-                        pogCoinSlots.setFooter('Holy shit you actually won?');
-                        pogCoinWinnings.addFields(
-                            { name: 'Your winnings', value: '***HOLY FUCKING SHIT YOU GOT 4x OF YOUR ORIGINAL BET' },
-                        );
-                        break;
-                }
-            }
-            else {
-                gambleWinnings(-1);
-                pogCoinWinnings.addFields(
-                    { name: 'Your winnings', value: `Damn you lost.\n\nBecause of that you have to give me ${amount * -1}` },
-                );
-            }
-
-            interaction.reply({ embeds: [pogCoinSlots, pogCoinWinnings] });
-
         }
-        catch (err) {
-            console.error(err);
-        }
+
+        interaction.reply({ embeds: [pogCoinSlots, pogCoinWinnings] });
     },
 };
