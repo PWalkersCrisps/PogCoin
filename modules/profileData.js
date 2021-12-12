@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-const profileModel = require('../models/profileSchema.js');
+const { profileSchema, cooldownSchema } = require('../models/profileSchema.js');
 async function createProfile(userID) {
-    await profileModel.create({
+    await profileSchema.create({
         userID: userID,
         coins: 1,
-        dailyTimestamp: 0,
-        robTimestamp: 0,
         totalCoinsEarnt: 0,
         coinsDonated: 0,
         coinsReceived: 0,
@@ -14,7 +12,11 @@ async function createProfile(userID) {
         robFails: 0,
         timesRobbed: 0,
     });
-    // const savedUser = await newUser.save();
+    await cooldownSchema.create({
+        userID: userID,
+        dailyTimestamp: 0,
+        robTimestamp: 0,
+    });
 }
 
 module.exports = { createProfile };
