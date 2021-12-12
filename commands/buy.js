@@ -8,44 +8,41 @@ module.exports = {
     .setDescription('Buys an item from the shops')
     .addStringOption(option => option.setName('input').setDescription('Enter a string')),
 
-    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
-        try {
-            profileData = await profileModel.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
 
-            const itemToBuy = interaction.options.getString('input');
+        profileData = await profileSchema.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
 
-            const validItem = !!items.find((val) => val.item.toLowerCase() === itemToBuy);
-            if (!validItem) return interaction.reply('Actually try to buy a real item??');
+        const itemToBuy = interaction.options.getString('input');
 
-            const itemPrice = items.find((val) => (val.item.toLowerCase()) === itemToBuy).price;
+        const validItem = !!items.find((val) => val.item.toLowerCase() === itemToBuy);
+        if (!validItem) return interaction.reply('Actually try to buy a real item??');
 
-            if (profileData.coins < itemPrice) return interaction.reply('Man... youre broke, get more more pogcoins');
+        const itemPrice = items.find((val) => (val.item.toLowerCase()) === itemToBuy).price;
 
-            const response = await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
-                userID: interaction.user.id, // looks for the record of the message author's account
-            }, {
-                $inc: {
-                    coins: -itemPrice, // decreases the amount of coins that the author has by the stated amount
-                },
-            });
+        if (profileData.coins < itemPrice) return interaction.reply('Man... youre broke, get more more pogcoins');
 
-            const roleGive = items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid;
+        const response = await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+            userID: interaction.user.id, // looks for the record of the message author's account
+        }, {
+            $inc: {
+                coins: -itemPrice, // decreases the amount of coins that the author has by the stated amount
+            },
+        });
 
-            interaction.member.roles.add(interaction.guild.roles.cache.find(r => r.id === roleGive));
+        const roleGive = items.find((val) => (val.item.toLowerCase()) === itemToBuy).roleid;
 
-            const pogCoinBuy = new MessageEmbed()
-            .setColor('#00ffff')
-            .setTimestamp()
-            .setFooter('Amazon Replacement?')
-            .addFields(
-                { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${interaction.guild.roles.cache.find(r => r.id === roleGive)}` },
-            );
+        interaction.member.roles.add(interaction.guild.roles.cache.find(r => r.id === roleGive));
 
-            interaction.reply({ embeds: [pogCoinBuy] });
-        }
-        catch (err) {
-            console.error(err);
-        }
+        const pogCoinBuy = new MessageEmbed()
+        .setColor('#00ffff')
+        .setTimestamp()
+        .setFooter('Amazon Replacement?')
+        .addFields(
+            { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${interaction.guild.roles.cache.find(r => r.id === roleGive)}` },
+        );
+
+        interaction.reply({ embeds: [pogCoinBuy] });
+
 
     },
 };
