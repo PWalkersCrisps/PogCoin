@@ -1,4 +1,5 @@
-const profileModel = require('../models/profileSchema.js');
+const { profileSchema, cooldownSchema } = require('../models/profileSchema.js');
+const { createProfile } = require('../modules/profileData.js');
 const coinCooldown = new Set();
 const { MessageEmbed } = require('discord.js');
 
@@ -7,12 +8,22 @@ module.exports = {
 	name: 'messageCreate',
 	async execute(message) {
 
+        let profileData;
+        try {
+            profileData = await profileSchema.findOne({ userID: message.user.id });
+            if (!profileData) {
+                createProfile(message.user.id);
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
 
         // /-----Pogcoin RNG-----//
         if (Math.random() < 0.01) {
             if (message.author.bot) return;
             if (!coinCooldown.has(message.author.id)) { // goes to check if the cooldowns map *DOESNT* habe the author's
-                const response = await profileModel.findOneAndUpdate({
+                const response = await profileSchema.findOneAndUpdate({
                     userID: message.author.id, // looks for the id of the author
                 }, {
                     $inc: {
@@ -51,31 +62,6 @@ module.exports = {
                     coinCooldown.delete(message.author.id);
                 }, 60 * 60000); // First number is minutes the second one times it because it is in milliseconds
             }
-        }
-
-        let profileData;
-        try {
-
-            profileData = await profileModel.findOne({ userID: message.author.id }); // Attempts to look for a user in the DB with the user's id
-            if (!profileData) {// Checks if the user has any data in the DB
-                const newUser = await profileModel.create({
-                    userID: message.author.id,
-                    coins: 1,
-                    dailyTimestamp: 0,
-                    robTimestamp: 0,
-                    totalCoinsEarnt: 0,
-                    coinsDonated: 0,
-                    coinsReceived: 0,
-                    netGamble: 0,
-                    robSuccess: 0,
-                    robFails: 0,
-                    timesRobbed: 0,
-                });
-                // const savedUser = await newUser.save();
-            }
-        }
-        catch (err) {
-            console.error(err); // if mongoose had a problem trying to create a new user, then it will log it in the console rather then crashing
         }
     },
 };
