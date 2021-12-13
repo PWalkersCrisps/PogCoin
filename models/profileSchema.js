@@ -15,9 +15,14 @@ const profileSchema = new mongoose.Schema({
 });
 const model = mongoose.model('ProfileModels', profileSchema);
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports = [
     mongoose.model('Profile', profileSchema),
 ];
+=======
+
+module.exports = mongoose.model('Profile', profileSchema);
+>>>>>>> parent of 44c52f3 (Upload)
 =======
 
 module.exports = mongoose.model('Profile', profileSchema);

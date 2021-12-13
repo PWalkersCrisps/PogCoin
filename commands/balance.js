@@ -1,6 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { createProfile } = require('../modules/profileData.js');
+=======
+>>>>>>> parent of 44c52f3 (Upload)
 =======
 >>>>>>> parent of 44c52f3 (Upload)
 

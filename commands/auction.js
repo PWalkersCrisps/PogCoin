@@ -1,7 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { Permissions } = require('discord.js');
 const { createProfile } = require('../modules/profileData.js');
+=======
+>>>>>>> parent of 44c52f3 (Upload)
 =======
 >>>>>>> parent of 44c52f3 (Upload)
 
@@ -57,6 +60,10 @@ module.exports = {
                 profileDataMentioned = await profileModel.findOne({ userID: interaction.user.id });
 =======
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 44c52f3 (Upload)
             switch (interaction.options.getSubcommand()) {
                 case 'start':
                     pogCoinAuction
