@@ -1,5 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+<<<<<<< HEAD
 const { createProfile } = require('../modules/profileData.js');
+=======
+>>>>>>> parent of 44c52f3 (Upload)
 
 module.exports = {
     name: 'balance',

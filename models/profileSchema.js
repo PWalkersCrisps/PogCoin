@@ -14,6 +14,11 @@ const profileSchema = new mongoose.Schema({
     robTimestamp: { type: mongoose.SchemaTypes.Number },
 });
 const model = mongoose.model('ProfileModels', profileSchema);
+<<<<<<< HEAD
 module.exports = [
     mongoose.model('Profile', profileSchema),
 ];
+=======
+
+module.exports = mongoose.model('Profile', profileSchema);
+>>>>>>> parent of 44c52f3 (Upload)

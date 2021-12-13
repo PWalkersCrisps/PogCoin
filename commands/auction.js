@@ -1,6 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+<<<<<<< HEAD
 const { Permissions } = require('discord.js');
 const { createProfile } = require('../modules/profileData.js');
+=======
+>>>>>>> parent of 44c52f3 (Upload)
 
 module.exports = {
     name: 'auction',
@@ -47,10 +50,47 @@ module.exports = {
                 )
                 .setThumbnail(userPinged.displayAvatarURL({ dynamic: true, size: 2048, format: 'png' }));
 
+<<<<<<< HEAD
                 break;
             case 'end':
 
                 profileDataMentioned = await profileModel.findOne({ userID: interaction.user.id });
+=======
+
+            switch (interaction.options.getSubcommand()) {
+                case 'start':
+                    pogCoinAuction
+                    .setDescription(`<@${interaction.user.id}> is now selling someone, please be sensible because your coins will actually be taken away.`)
+                    .addFields(
+                        {
+                            name: 'Auctions',
+                            value: `<@${userPinged.id}> is being sold with the inital starting bid of ${amount} pogcoins`,
+                        },
+                    )
+                    .setThumbnail(userPinged.displayAvatarURL({ dynamic: true, size: 2048, format: 'png' }));
+
+                    break;
+                case 'end':
+                    // eslint-disable-next-line no-case-declarations
+                    const profileDataMentioned = await profileModel.findOne({ userID: userPinged.id }); // Gets the profile data of the user mentioned
+                    if (!profileDataMentioned) { // If there was no profile data of the mentioned user then it will create a new account on the database
+                        await profileModel.create({
+                            userID: interaction.options.getMember('target').id,
+                            coins: 1,
+                            dailyTimestamp: 0,
+                            robTimestamp: 0,
+                            totalCoinsEarnt: 0,
+                            coinsDonated: 0,
+                            coinsReceived: 0,
+                            netGamble: 0,
+                            robSuccess: 0,
+                            robFails: 0,
+                            timesRobbed: 0,
+
+                        });
+                        // const savedUser = await newUser.save();
+                    }
+>>>>>>> parent of 44c52f3 (Upload)
 
 
                 if (profileDataMentioned.coins < amount) { return interaction.reply(`<@${interaction.user.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`); }
