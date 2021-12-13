@@ -13,7 +13,7 @@ const profileSchema = new mongoose.Schema({
     dailyTimestamp: { type: mongoose.SchemaTypes.Number },
     robTimestamp: { type: mongoose.SchemaTypes.Number },
 });
-
+const model = mongoose.model('ProfileModels', profileSchema);
 module.exports = [
     mongoose.model('Profile', profileSchema),
 ];
