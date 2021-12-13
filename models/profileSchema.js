@@ -10,15 +10,10 @@ const profileSchema = new mongoose.Schema({
     robSuccess: { type: mongoose.SchemaTypes.Number },
     robFails: { type: mongoose.SchemaTypes.Number },
     timesRobbed: { type: mongoose.SchemaTypes.Number },
-});
-
-const cooldownSchema = new mongoose.Schema({
-    userID: { type: mongoose.SchemaTypes.String, require: true, unique: true },
     dailyTimestamp: { type: mongoose.SchemaTypes.Number },
     robTimestamp: { type: mongoose.SchemaTypes.Number },
 });
 
 module.exports = [
     mongoose.model('Profile', profileSchema),
-    mongoose.model('Cooldowns', cooldownSchema),
 ];

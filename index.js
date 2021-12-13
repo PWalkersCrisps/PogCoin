@@ -4,7 +4,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const mongoose = require('mongoose');
 const fs = require('fs');
 const { createProfile } = require('./modules/profileData.js');
-const { profileSchema, cooldownSchema } = require('./models/profileSchema.js');
+const profileModel = require('./models/profileSchema.js');
 const blockedUsers = require('./arrays/blockedUsers.js');
 
 require('dotenv').config();
@@ -47,7 +47,7 @@ client.on('interactionCreate', async interaction => {
 
     let profileData;
     try {
-        profileData = await profileSchema.findOne({ userID: interaction.user.id });
+        profileData = await profileModel.findOne({ userID: interaction.user.id });
         if (!profileData) {
             createProfile(interaction.user.id);
         }
@@ -59,7 +59,7 @@ client.on('interactionCreate', async interaction => {
     if (!command) return;
 
     try {
-        await command.execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData);
+        await command.execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData);
     }
     catch (error) {
         console.error(error);

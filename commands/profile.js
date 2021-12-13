@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder().setName('profile')
     .setDescription('Who are you... or who are they?')
     .addUserOption(option => option.setName('target').setDescription('Whos profile do you want to see??')),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
         const userPinged = interaction.options.getMember('target');
 
         const userProfile = new MessageEmbed();
@@ -22,7 +22,7 @@ module.exports = {
             .setTitle(interaction.user.username);
         }
         else if (userPinged) {
-            const profileDataPinged = await profileSchema.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
+            const profileDataPinged = await profileModel.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
             userProfile
             .addFields(
                 { name: 'Pogcoin Stats', value: `Total Coins: ${profileDataPinged.totalCoinsEarnt}\nTotal Donated: ${profileDataPinged.coinsDonated}\nTotal Recieved: ${profileDataPinged.coinsReceived}` },

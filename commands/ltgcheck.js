@@ -6,7 +6,7 @@ module.exports = {
     description: 'ltgcheck',
     data: new SlashCommandBuilder().setName('ltgcheck')
     .setDescription('Lets hear his advice'),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
         try {
             if (talkedRecently.has(interaction.guild.id)) {
                 interaction.reply(`<@${interaction.author.id}> its a server cooldown, wait like 1 min`);

@@ -8,9 +8,9 @@ module.exports = {
     .setDescription('Buys an item from the shops')
     .addStringOption(option => option.setName('input').setDescription('Enter a string')),
 
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
 
-        profileData = await profileSchema.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
+        profileData = await profileModel.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
 
         const itemToBuy = interaction.options.getString('input');
 
@@ -21,7 +21,7 @@ module.exports = {
 
         if (profileData.coins < itemPrice) return interaction.reply('Man... youre broke, get more more pogcoins');
 
-        const response = await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+        const response = await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
             userID: interaction.user.id, // looks for the record of the message author's account
         }, {
             $inc: {

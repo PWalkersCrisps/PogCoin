@@ -8,7 +8,7 @@ module.exports = {
     data: new SlashCommandBuilder().setName('slots')
     .setDescription('Gamble all of your life savings away')
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, profileData) {
         const outcomeEmotes = [
             '<:pixel_despair:902537185713082388>', // lose 2x the bet
             '<:pixel_despair:902537185713082388>', // lose 2x the bet

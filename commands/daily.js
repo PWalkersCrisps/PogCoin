@@ -6,9 +6,9 @@ module.exports = {
     data: new SlashCommandBuilder().setName('daily')
     .setDescription('Get your daily coin, but beware, there is a 50% chance of getting nothing!'),
 
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
 
-        if (cooldownSchema.dailyTimestamp + 86400 <= Date.now() / 1000) {
+        if (profileModel.dailyTimestamp + 86400 <= Date.now() / 1000) {
 
             const pogCoinDaily = new MessageEmbed()
             .setColor('#ab5612')
@@ -16,7 +16,7 @@ module.exports = {
             .setFooter('Wages in america replacement?');
 
             if (Math.random() < 0.5) {
-                await profileSchema.findOneAndUpdate({
+                await profileModel.findOneAndUpdate({
                     userID: interaction.user.id,
                 }, {
                     $inc: {
@@ -42,7 +42,7 @@ module.exports = {
                 );
             }
 
-            await cooldownSchema.findOneAndUpdate({
+            await profileModel.findOneAndUpdate({
                 userID: interaction.user.id,
             }, {
                 $set: {
@@ -56,7 +56,7 @@ module.exports = {
 
         }
         else {
-            interaction.reply({ content: `<@${interaction.user.id}> you are still on cooldown, you just need to wait ${cooldownSchema.dailyTimestamp + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!` });
+            interaction.reply({ content: `<@${interaction.user.id}> you are still on cooldown, you just need to wait ${profileModel.dailyTimestamp + 86400 - Date.now() / 1000} seconds\n\n\n do the math yourself, NERD!!` });
         }
     },
 };

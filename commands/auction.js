@@ -19,7 +19,7 @@ module.exports = {
                     .setDescription('End an auction')
                     .addIntegerOption(option => option.setName('amount').setDescription('How much did they buy someone for?').setRequired(true))),
 
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
 
         const currentAuctioneerID = [
             '790793241665863710', // Whooshie
@@ -50,12 +50,12 @@ module.exports = {
                 break;
             case 'end':
 
-                profileDataMentioned = await profileSchema.findOne({ userID: interaction.user.id });
+                profileDataMentioned = await profileModel.findOne({ userID: interaction.user.id });
 
 
                 if (profileDataMentioned.coins < amount) { return interaction.reply(`<@${interaction.user.id}> dont you realise... <@${userPinged.id}> is actually broke. chose the second highest bidder ig`); }
 
-                await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+                await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
                     userID: userPinged.id, // looks for the record of the message author's account
                 }, {
                     $inc: {
@@ -63,7 +63,7 @@ module.exports = {
                     },
                 });
 
-                await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+                await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
                     userID: interaction.user.id, // looks for the record of the message author's account
                 }, {
                     $inc: {

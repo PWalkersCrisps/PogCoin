@@ -5,7 +5,7 @@ module.exports = {
     description: 'pings the server to see the delay between the client and the server',
     data: new SlashCommandBuilder().setName('ping')
     .setDescription('Replies with server latinency'),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
 
         const pogCoinPing = new MessageEmbed() // Starts the proccess for creating an embed
         .setColor('#ffff00')

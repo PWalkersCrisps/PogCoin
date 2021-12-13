@@ -7,7 +7,7 @@ module.exports = {
     description: 'uwu',
     data: new SlashCommandBuilder().setName('nya')
     .setDescription('UwU OwO OmO im very hornmy'),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
         if (talkedRecently.has(interaction.guild.id)) {
             interaction.reply(`<@${interaction.user.id}> its a server cooldown, wait like 20 mins`);
         }

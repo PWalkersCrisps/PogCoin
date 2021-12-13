@@ -9,12 +9,12 @@ module.exports = {
     .addUserOption(option => option.setName('target').setDescription('Whos balance do you want to edit?'))
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to remove?')),
 
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
 
         if (!interaction.user.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == '426455031571677197') return interaction.reply(`<@${interaction.user.id}> actually have permissions to use the command next time`);
         const amount = interaction.options.getInteger('int');
 
-        const response = await profileSchema.findOneAndUpdate({ // finds the profile of the author then updates it
+        const response = await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
             userID: interaction.options.getMember('target').id, // looks for the record of the message author's account
         }, {
             $inc: {

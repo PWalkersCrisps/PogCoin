@@ -5,7 +5,7 @@ module.exports = {
     name: 'shop',
     data: new SlashCommandBuilder().setName('shop')
     .setDescription('view what you want to buy'),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
         if (items.length === 0) return interaction.reply({ content: `<@${interaction.user.id}> i'm not selling right now, ig you just need to be patient`, ephemeral: true });
 
         const shoplistEmbed = new MessageEmbed()

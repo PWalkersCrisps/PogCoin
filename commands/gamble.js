@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder().setName('gamble')
     .setDescription('Gamble all of your life savings away')
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
         const amount = interaction.options.getInteger('int');
         if (amount < 1) return interaction.reply({ content: `<${interaction.user.id}> Please can you actually try to gamble something?`, ephemeral: true });
         if (profileData.coins < amount) return interaction.reply({ content: 'Actually have enough coins??', ephemeral: true });
@@ -20,7 +20,7 @@ module.exports = {
         else probability = ((-amount + 100) / 2) / 75;
 
         if (Math.random() < probability) {
-            const response = await profileSchema.findOneAndUpdate({
+            const response = await profileModel.findOneAndUpdate({
                 userID: interaction.user.id, // looks for the id of the author
             }, {
                 $inc: {
@@ -37,7 +37,7 @@ module.exports = {
             );
         }
         else {
-            const response = await profileSchema.findOneAndUpdate({
+            const response = await profileModel.findOneAndUpdate({
                 userID: interaction.user.id, // looks for the id of the author
             }, {
                 $inc: {

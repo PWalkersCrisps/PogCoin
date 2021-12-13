@@ -7,7 +7,7 @@ module.exports = {
     data: new SlashCommandBuilder().setName('himari')
     .setDescription('Why?????'),
 
-    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileSchema, cooldownSchema, profileData) {
+    async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileModel, profileData) {
         if (talkedRecently.has(interaction.guild.id)) {
             interaction.channel.send(`<@${interaction.author.id}> its a server cooldown, wait like 2 mins`);
         }
