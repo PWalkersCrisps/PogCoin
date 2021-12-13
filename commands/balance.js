@@ -8,10 +8,10 @@ module.exports = {
     .setDescription('Check how broke you or someone else is')
     .addUserOption(option => option.setName('target').setDescription('Who do you want to donate to?')),
 
-    async execute(client, interaction, MessageEmbed, profileModel, profileData) {
+    async execute(client, interaction, MessageEmbed, profileModel) {
 
         const userPinged = interaction.options.getUser('target');
-        profileData = await profileModel.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
+        let profileData = await profileModel.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
 
         const pogCoinBalance = new MessageEmbed()
         .setColor('#ff00ff')
