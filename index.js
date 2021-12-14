@@ -4,7 +4,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const mongoose = require('mongoose');
 const fs = require('fs');
 const { createProfile } = require('./modules/profileData.js');
-const { model } = require('../models/profileSchema.js');
+const { model } = require('./models/profileSchema.js');
 const blockedUsers = require('./arrays/blockedUsers.js');
 
 require('dotenv').config();
