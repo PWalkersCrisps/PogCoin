@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { createProfile } = require('../modules/profileData.js');
+const { model } = require('../models/profileSchema.js');
 
 module.exports = {
     name: 'balance',
@@ -8,10 +9,10 @@ module.exports = {
     .setDescription('Check how broke you or someone else is')
     .addUserOption(option => option.setName('target').setDescription('Who do you want to donate to?')),
 
-    async execute(client, interaction, MessageEmbed, profileModel) {
+    async execute(client, interaction, MessageEmbed) {
 
         const userPinged = interaction.options.getUser('target');
-        let profileData = await profileModel.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
+        let profileData = await model.findOne({ userID: interaction.user.id }); // Attempts to look for a user in the DB with the user's id
 
         const pogCoinBalance = new MessageEmbed()
         .setColor('#ff00ff')
@@ -25,9 +26,9 @@ module.exports = {
         }
         else if (userPinged.bot) { return interaction.reply({ content: 'YOU IDIOT THAT WAS A BOT???', ephemeral: true }); }
         else {
-            const profileDataPinged = profileData = await profileModel.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
+            const profileDataPinged = profileData = await model.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
             if (!profileDataPinged) { // If there was no profile data of the mentioned user then it will create a new account on the database
-                const newUser = await profileModel.create({
+                const newUser = await model.create({
                     userID: userPinged.id,
                     coins: 1,
                     dailyTimestamp: 0,
