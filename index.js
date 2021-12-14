@@ -4,7 +4,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const mongoose = require('mongoose');
 const fs = require('fs');
 const { createProfile } = require('./modules/profileData.js');
-const { profileModel } = require('./models/profileSchema.js');
+const profileModel = require('./models/profileSchema.js');
 const blockedUsers = require('./arrays/blockedUsers.js');
 
 require('dotenv').config();
@@ -33,6 +33,7 @@ for (const file of eventFiles) {
 mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    userFindAndModify: false,
 }).then(() => {
     console.log('Connected to the MongoDB database');
 }).catch((err) => {
