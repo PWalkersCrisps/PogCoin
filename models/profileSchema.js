@@ -14,6 +14,6 @@ const profileModel = new mongoose.Schema({
     timesRobbed: { type: mongoose.SchemaTypes.Number },
 });
 
-const model = mongoose.model("Profile", profileSchema);
+const model = mongoose.model("Profile", profileModel);
 
 module.exports = model;

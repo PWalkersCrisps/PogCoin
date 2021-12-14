@@ -33,7 +33,6 @@ for (const file of eventFiles) {
 mongoose.connect(process.env.MONGODB_SRV, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    userFindAndModify: false,
 }).then(() => {
     console.log('Connected to the MongoDB database');
 }).catch((err) => {
